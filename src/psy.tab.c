@@ -133,29 +133,32 @@ enum yysymbol_kind_t
   YYSYMBOL_PLUS_PLUS = 31,                 /* PLUS_PLUS  */
   YYSYMBOL_MINUS_MINUS = 32,               /* MINUS_MINUS  */
   YYSYMBOL_QUESTION_MARK = 33,             /* QUESTION_MARK  */
-  YYSYMBOL_SINGLE_QUOTE = 34,              /* SINGLE_QUOTE  */
-  YYSYMBOL_DOUBLE_QUOTE = 35,              /* DOUBLE_QUOTE  */
-  YYSYMBOL_ECHO = 36,                      /* ECHO  */
-  YYSYMBOL_IF = 37,                        /* IF  */
-  YYSYMBOL_ELSE = 38,                      /* ELSE  */
-  YYSYMBOL_FOR = 39,                       /* FOR  */
-  YYSYMBOL_DO = 40,                        /* DO  */
-  YYSYMBOL_WHILE = 41,                     /* WHILE  */
-  YYSYMBOL_TYPE = 42,                      /* TYPE  */
-  YYSYMBOL_FUN = 43,                       /* FUN  */
-  YYSYMBOL_RET = 44,                       /* RET  */
-  YYSYMBOL_ARROW = 45,                     /* ARROW  */
-  YYSYMBOL_LEFT_PAREN = 46,                /* LEFT_PAREN  */
-  YYSYMBOL_RIGHT_PAREN = 47,               /* RIGHT_PAREN  */
-  YYSYMBOL_LEFT_BRACE = 48,                /* LEFT_BRACE  */
-  YYSYMBOL_RIGHT_BRACE = 49,               /* RIGHT_BRACE  */
-  YYSYMBOL_LEFT_SQUARE = 50,               /* LEFT_SQUARE  */
-  YYSYMBOL_RIGHT_SQUARE = 51,              /* RIGHT_SQUARE  */
-  YYSYMBOL_DOT = 52,                       /* DOT  */
-  YYSYMBOL_COLON = 53,                     /* COLON  */
-  YYSYMBOL_SEMI_COLON = 54,                /* SEMI_COLON  */
-  YYSYMBOL_YYACCEPT = 55,                  /* $accept  */
-  YYSYMBOL_dummy = 56                      /* dummy  */
+  YYSYMBOL_BANG = 34,                      /* BANG  */
+  YYSYMBOL_SINGLE_QUOTE = 35,              /* SINGLE_QUOTE  */
+  YYSYMBOL_DOUBLE_QUOTE = 36,              /* DOUBLE_QUOTE  */
+  YYSYMBOL_ECHO = 37,                      /* ECHO  */
+  YYSYMBOL_IF = 38,                        /* IF  */
+  YYSYMBOL_ELSE = 39,                      /* ELSE  */
+  YYSYMBOL_FOR = 40,                       /* FOR  */
+  YYSYMBOL_DO = 41,                        /* DO  */
+  YYSYMBOL_WHILE = 42,                     /* WHILE  */
+  YYSYMBOL_BREAK = 43,                     /* BREAK  */
+  YYSYMBOL_CONTINUE = 44,                  /* CONTINUE  */
+  YYSYMBOL_TYPE = 45,                      /* TYPE  */
+  YYSYMBOL_FUN = 46,                       /* FUN  */
+  YYSYMBOL_RET = 47,                       /* RET  */
+  YYSYMBOL_ARROW = 48,                     /* ARROW  */
+  YYSYMBOL_LEFT_PAREN = 49,                /* LEFT_PAREN  */
+  YYSYMBOL_RIGHT_PAREN = 50,               /* RIGHT_PAREN  */
+  YYSYMBOL_LEFT_BRACE = 51,                /* LEFT_BRACE  */
+  YYSYMBOL_RIGHT_BRACE = 52,               /* RIGHT_BRACE  */
+  YYSYMBOL_LEFT_SQUARE = 53,               /* LEFT_SQUARE  */
+  YYSYMBOL_RIGHT_SQUARE = 54,              /* RIGHT_SQUARE  */
+  YYSYMBOL_DOT = 55,                       /* DOT  */
+  YYSYMBOL_COLON = 56,                     /* COLON  */
+  YYSYMBOL_SEMI_COLON = 57,                /* SEMI_COLON  */
+  YYSYMBOL_YYACCEPT = 58,                  /* $accept  */
+  YYSYMBOL_dummy = 59                      /* dummy  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -486,7 +489,7 @@ union yyalloc
 #define YYLAST   1
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  55
+#define YYNTOKENS  58
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  2
 /* YYNRULES -- Number of rules.  */
@@ -495,7 +498,7 @@ union yyalloc
 #define YYNSTATES  4
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   309
+#define YYMAXUTOK   312
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -539,14 +542,15 @@ static const yytype_int8 yytranslate[] =
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
       35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
-      45,    46,    47,    48,    49,    50,    51,    52,    53,    54
+      45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
+      55,    56,    57
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    28,    28
+       0,    29,    29
 };
 #endif
 
@@ -567,10 +571,11 @@ static const char *const yytname[] =
   "PLUS", "MINUS", "STAR", "SLASH", "PERC", "LESS", "GREATER", "LESS_EQ",
   "GREATER_EQ", "BANG_EQ", "EQ_EQ", "AND", "PIPE", "EXP", "TILDE",
   "LESS_LESS", "GREATER_GREATER", "EQ", "PLUS_EQ", "MINUS_EQ", "PLUS_PLUS",
-  "MINUS_MINUS", "QUESTION_MARK", "SINGLE_QUOTE", "DOUBLE_QUOTE", "ECHO",
-  "IF", "ELSE", "FOR", "DO", "WHILE", "TYPE", "FUN", "RET", "ARROW",
-  "LEFT_PAREN", "RIGHT_PAREN", "LEFT_BRACE", "RIGHT_BRACE", "LEFT_SQUARE",
-  "RIGHT_SQUARE", "DOT", "COLON", "SEMI_COLON", "$accept", "dummy", YY_NULLPTR
+  "MINUS_MINUS", "QUESTION_MARK", "BANG", "SINGLE_QUOTE", "DOUBLE_QUOTE",
+  "ECHO", "IF", "ELSE", "FOR", "DO", "WHILE", "BREAK", "CONTINUE", "TYPE",
+  "FUN", "RET", "ARROW", "LEFT_PAREN", "RIGHT_PAREN", "LEFT_BRACE",
+  "RIGHT_BRACE", "LEFT_SQUARE", "RIGHT_SQUARE", "DOT", "COLON",
+  "SEMI_COLON", "$accept", "dummy", YY_NULLPTR
 };
 
 static const char *
@@ -634,13 +639,13 @@ static const yytype_int8 yycheck[] =
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     8,    56,     0
+       0,     8,    59,     0
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    55,    56
+       0,    58,    59
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -1110,7 +1115,7 @@ yyreduce:
   switch (yyn)
     {
 
-#line 1114 "psy.tab.c"
+#line 1119 "psy.tab.c"
 
       default: break;
     }
@@ -1303,7 +1308,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 29 "psy.y"
+#line 30 "psy.y"
 
 
 int main(void)

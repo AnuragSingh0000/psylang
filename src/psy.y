@@ -3,7 +3,7 @@
 %}
 
 %token VAR INT FLOAT STRING DYN // tokens for mentioning the types
-%token INT_CONSTANT FLOAT_CONSTANT STRING_CONSTANT NULL// token to store the constants like ints, floats, strings eg 1, 1.0, "hello"
+%token INT_CONSTANT FLOAT_CONSTANT STRING_CONSTANT // token to store the constants like ints, floats, strings eg 1, 1.0, "hello"
 
 %token PLUS MINUS STAR SLASH PERC // tokens for arithmetic ops
 %token LESS GREATER LESS_EQ GREATER_EQ BANG_EQ EQ_EQ // comparision operators
@@ -17,7 +17,7 @@
 
 %token ECHO // for print statemnts
 %token IF ELSE // conditionals
-%token FOR DO WHILE  // loops
+%token FOR DO WHILE BREAK CONTINUE// loops
 
 %token TYPE // user defined types
 %token FUN RET ARROW // for functions
