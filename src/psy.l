@@ -1,5 +1,6 @@
 %{
 #include <stdlib.h>
+#include <string.h>
 #include "psy.tab.h"
 %}
 
@@ -39,7 +40,7 @@
 "++"           return PLUS_PLUS;
 "--"           return MINUS_MINUS;
 
-"echo"         return ECHO;
+"echo"         return ECH;
 "if"           return IF;
 "else"         return ELSE;
 "while"        return WHILE;
@@ -61,6 +62,34 @@
 "."            return DOT;
 ":"            return COLON;
 ";"            return SEMI_COLON;
+
+[_A-Za-z][_A-Za-z0-9]* {
+    yylval.sval = strdup(yytext);
+    return IDENTIFIER;
+}
+
+[0-9]+ {
+    yylval.ival = atoi(yytext);
+    return INT_CONSTANT;
+}
+
+[0-9]+[\.][0-9]+ {
+    yylval.fval = atof(yytext);
+    return FLOAT_CONSTANT;
+}
+                        
+\"[^\n"]*\" {
+    yylval.sval = strdup(yytext);
+    return STRING_CONSTANT;
+}    
+
+\'[^\n']*\' {
+    yylval.sval = strdup(yytext);
+    return STRING_CONSTANT;
+}    
+
+[ \t\r\n]+      ;
+
 %%
  
 int yywrap(void) {
