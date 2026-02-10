@@ -89,6 +89,9 @@
     yylval.sval = strdup(yytext);
     return STRING_CONSTANT;
 }    
+
+
+\$\$[^\n]*        {}  // ignore rest of the line after $$ (but do not consume the newline). For comments
   
 [ \t\r\n]+      {}
 
