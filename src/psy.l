@@ -4,6 +4,8 @@
 #include "psy.tab.h"
 %}
 
+%option yylineno
+
 %%
 
 "+"            return PLUS;
@@ -88,10 +90,16 @@
     return STRING_CONSTANT;
 }    
 
-[ \t\r\n]+      ;
+
+\$\$[^\n]*        {}  // ignore rest of the line after $$ (but do not consume the newline). For comments
+  
+[ \t\r\n]+      {}
+
+.               {fprintf(stderr, "Unexpected token %s, at line %d\n", yytext, yylineno); exit(1);}
 
 %%
  
+
 int yywrap(void) {
     return 1;
 }
