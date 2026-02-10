@@ -2,12 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "psy.tab.h"
-
-int lexerror(void)
-{
-    fprintf(stderr, "Unexpected token %s, at line %d\n", yytext, yylineno);
-    return 0;
-}
 %}
 
 %option yylineno
@@ -98,7 +92,7 @@ int lexerror(void)
   
 [ \t\r\n]+      {}
 
-.     {lexerror(); exit(1);}
+.               {fprintf(stderr, "Unexpected token %s, at line %d\n", yytext, yylineno); exit(1);}
 
 %%
  

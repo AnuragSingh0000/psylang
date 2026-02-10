@@ -535,14 +535,8 @@ char *yytext;
 #include <stdlib.h>
 #include <string.h>
 #include "psy.tab.h"
-
-int lexerror(void)
-{
-    fprintf(stderr, "Unexpected token %s, at line %d\n", yytext, yylineno);
-    return 0;
-}
-#line 545 "lex.yy.c"
-#line 546 "lex.yy.c"
+#line 539 "lex.yy.c"
+#line 540 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -759,10 +753,10 @@ YY_DECL
 		}
 
 	{
-#line 15 "psy.l"
+#line 9 "psy.l"
 
 
-#line 766 "lex.yy.c"
+#line 760 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -831,247 +825,247 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 17 "psy.l"
+#line 11 "psy.l"
 return PLUS;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 18 "psy.l"
+#line 12 "psy.l"
 return MINUS;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 19 "psy.l"
+#line 13 "psy.l"
 return STAR;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 20 "psy.l"
+#line 14 "psy.l"
 return SLASH;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 21 "psy.l"
+#line 15 "psy.l"
 return PERC;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 23 "psy.l"
+#line 17 "psy.l"
 return VAR;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 24 "psy.l"
+#line 18 "psy.l"
 return INT;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 25 "psy.l"
+#line 19 "psy.l"
 return FLOAT;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 26 "psy.l"
+#line 20 "psy.l"
 return STRING;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 27 "psy.l"
+#line 21 "psy.l"
 return DYN;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 29 "psy.l"
+#line 23 "psy.l"
 return DOUBLE_QUOTE;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 30 "psy.l"
+#line 24 "psy.l"
 return SINGLE_QUOTE;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 31 "psy.l"
+#line 25 "psy.l"
 return AND;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 32 "psy.l"
+#line 26 "psy.l"
 return DOUBLE_AND;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 33 "psy.l"
+#line 27 "psy.l"
 return TILDE;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 34 "psy.l"
+#line 28 "psy.l"
 return BANG;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 35 "psy.l"
+#line 29 "psy.l"
 return PIPE;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 36 "psy.l"
+#line 30 "psy.l"
 return DOUBLE_PIPE;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 38 "psy.l"
+#line 32 "psy.l"
 return LESS;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 39 "psy.l"
+#line 33 "psy.l"
 return GREATER;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 40 "psy.l"
+#line 34 "psy.l"
 return GREATER_EQ;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 41 "psy.l"
+#line 35 "psy.l"
 return LESS_EQ;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 42 "psy.l"
+#line 36 "psy.l"
 return BANG_EQ;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 43 "psy.l"
+#line 37 "psy.l"
 return EQ_EQ;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 45 "psy.l"
+#line 39 "psy.l"
 return EQ;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 46 "psy.l"
+#line 40 "psy.l"
 return PLUS_EQ;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 47 "psy.l"
+#line 41 "psy.l"
 return MINUS_EQ;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 48 "psy.l"
+#line 42 "psy.l"
 return PLUS_PLUS;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 49 "psy.l"
+#line 43 "psy.l"
 return MINUS_MINUS;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 51 "psy.l"
+#line 45 "psy.l"
 return ECH;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 52 "psy.l"
+#line 46 "psy.l"
 return IF;
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 53 "psy.l"
+#line 47 "psy.l"
 return ELSE;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 54 "psy.l"
+#line 48 "psy.l"
 return WHILE;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 55 "psy.l"
+#line 49 "psy.l"
 return FOR;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 56 "psy.l"
+#line 50 "psy.l"
 return DO;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 58 "psy.l"
+#line 52 "psy.l"
 return TYPE;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 59 "psy.l"
+#line 53 "psy.l"
 return FUN;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 60 "psy.l"
+#line 54 "psy.l"
 return RET;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 61 "psy.l"
+#line 55 "psy.l"
 return ARROW;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 63 "psy.l"
+#line 57 "psy.l"
 return LEFT_BRACE;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 64 "psy.l"
+#line 58 "psy.l"
 return RIGHT_BRACE;
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 65 "psy.l"
+#line 59 "psy.l"
 return LEFT_PAREN;
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 66 "psy.l"
+#line 60 "psy.l"
 return RIGHT_PAREN;
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 67 "psy.l"
+#line 61 "psy.l"
 return LEFT_SQUARE;
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 68 "psy.l"
+#line 62 "psy.l"
 return RIGHT_SQUARE;
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 70 "psy.l"
+#line 64 "psy.l"
 return DOT;
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 71 "psy.l"
+#line 65 "psy.l"
 return COLON;
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 72 "psy.l"
+#line 66 "psy.l"
 return SEMI_COLON;
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 74 "psy.l"
+#line 68 "psy.l"
 {
     yylval.sval = strdup(yytext);
     return IDENTIFIER;
@@ -1079,7 +1073,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 79 "psy.l"
+#line 73 "psy.l"
 {
     yylval.ival = atoi(yytext);
     return INT_CONSTANT;
@@ -1087,7 +1081,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 84 "psy.l"
+#line 78 "psy.l"
 {
     yylval.fval = atof(yytext);
     return FLOAT_CONSTANT;
@@ -1095,7 +1089,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 89 "psy.l"
+#line 83 "psy.l"
 {
     yylval.sval = strdup(yytext);
     return STRING_CONSTANT;
@@ -1103,7 +1097,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 94 "psy.l"
+#line 88 "psy.l"
 {
     yylval.sval = strdup(yytext);
     return STRING_CONSTANT;
@@ -1112,20 +1106,20 @@ YY_RULE_SETUP
 case 54:
 /* rule 54 can match eol */
 YY_RULE_SETUP
-#line 99 "psy.l"
+#line 93 "psy.l"
 {}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 101 "psy.l"
-{lexerror(); exit(1);}
+#line 95 "psy.l"
+{fprintf(stderr, "Unexpected token %s, at line %d\n", yytext, yylineno); exit(1);}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 103 "psy.l"
+#line 97 "psy.l"
 ECHO;
 	YY_BREAK
-#line 1129 "lex.yy.c"
+#line 1123 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2142,7 +2136,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 103 "psy.l"
+#line 97 "psy.l"
 
  
 
