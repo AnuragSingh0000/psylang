@@ -36,7 +36,7 @@ void yyerror(char *);
 %token FUN RET ARROW // for functions
 
 %token LEFT_PAREN RIGHT_PAREN LEFT_BRACE RIGHT_BRACE LEFT_SQUARE RIGHT_SQUARE 
-%token DOT COLON SEMI_COLON  
+%token DOT COLON SEMI_COLON COMMA
 
 %%
 
@@ -98,6 +98,11 @@ token:
     | TILDE             { printf("TILDE\n"); }
     | BANG              { printf("BANG\n"); }
 
+    | TYPE              { printf("TYPE\n");}
+    | FUN               { printf("FUN\n");}
+    | RET               { printf("RET\n");}
+    | ARROW             { printf("ARROW\n");}
+
     | LEFT_PAREN        { printf("LEFT_PAREN\n"); }
     | RIGHT_PAREN       { printf("RIGHT_PAREN\n"); }
     | LEFT_BRACE        { printf("LEFT_BRACE\n"); }
@@ -108,6 +113,8 @@ token:
     | DOT               { printf("DOT\n"); }
     | COLON             { printf("COLON\n"); }
     | SEMI_COLON        { printf("SEMI_COLON\n"); }
+    | QUESTION_MARK     { printf("QUESTION_MARK\n"); }
+    | COMMA             { printf("COMMA\n"); }
     ;
 
 %%

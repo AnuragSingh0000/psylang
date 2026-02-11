@@ -1,6 +1,7 @@
 %{
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "psy.tab.h"
 %}
 
@@ -62,9 +63,11 @@
 "]"            return RIGHT_SQUARE;
 
 "."            return DOT;
+","            return COMMA;
 ":"            return COLON;
 ";"            return SEMI_COLON;
-
+"?"            return QUESTION_MARK;
+       
 [_A-Za-z][_A-Za-z0-9]* {
     yylval.sval = strdup(yytext);
     return IDENTIFIER;
@@ -90,15 +93,19 @@
     return STRING_CONSTANT;
 }    
 
+[0-9][_A-Za-z0-9]* {
+    fprintf(stderr, "[Error at Line %d]: Identifier cannot begin with a digit: %s\n", yylineno, yytext);
+    exit(1);
+}
 
-\$\$[^\n]*        {}  // ignore rest of the line after $$ (but do not consume the newline). For comments
+
+\$\$[^\n]*      {}  /* ignore rest of the line after $$ (but do not consume the newline). For comments */
   
 [ \t\r\n]+      {}
 
-.               {fprintf(stderr, "Unexpected token %s, at line %d\n", yytext, yylineno); exit(1);}
+.               { fprintf(stderr, "[Error at Line %d]: Unexpected token: %s\n", yylineno, yytext); exit(1); }
 
-%%
- 
+%% 
 
 int yywrap(void) {
     return 1;

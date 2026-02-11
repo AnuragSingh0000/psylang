@@ -1,0 +1,5 @@
+$$ This is a comment
+var int x = 10;
+var int foo = 10;
+var dyn bar = " dynamic ";
+bar = 100;

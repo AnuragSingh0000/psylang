@@ -110,7 +110,8 @@ extern int yydebug;
     RIGHT_SQUARE = 311,            /* RIGHT_SQUARE  */
     DOT = 312,                     /* DOT  */
     COLON = 313,                   /* COLON  */
-    SEMI_COLON = 314               /* SEMI_COLON  */
+    SEMI_COLON = 314,              /* SEMI_COLON  */
+    COMMA = 315                    /* COMMA  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -125,7 +126,7 @@ union YYSTYPE
     float fval;
     char* sval;
 
-#line 129 "psy.tab.h"
+#line 130 "psy.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
