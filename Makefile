@@ -5,7 +5,10 @@ YACC_SRC = src/psy.y
 
 GEN_SRCS = src/psy.tab.c src/lex.yy.c
 
-.PHONY: all run clean
+TEST_DIR = tests
+OUT_DIR = lexer_results
+
+.PHONY: all run clean run-tests
 
 all: $(TARGET)
 
@@ -20,6 +23,15 @@ src/lex.yy.c: $(LEX_SRC) src/psy.tab.h
 
 run: $(TARGET)
 	./$(TARGET)
+
+run-tests: $(TARGET)
+	@mkdir -p $(OUT_DIR)
+	@for f in $(TEST_DIR)/*; do \
+		if [ -f "$$f" ]; then \
+			echo "Running $$f..."; \
+			./$(TARGET) < "$$f" > "$(OUT_DIR)/$$(basename $$f).out" 2>&1; \
+		fi; \
+	done
 
 clean:
 	rm -f $(TARGET) $(GEN_SRCS) src/psy.tab.h

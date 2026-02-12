@@ -1,0 +1,14 @@
+fun add(a: int, b: int) -> int {
+    ret a + b;
+}
+
+fun factorial(n: int) -> int {
+    if (n <= 1) {
+        ret 1;
+    }
+    ret n * factorial(n - 1);
+}
+
+var dyn f = lambda(a: int, b: int) -> int {
+    ret a * b;
+};
