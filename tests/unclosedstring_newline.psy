@@ -1,3 +1,0 @@
-var temp = "Unclosed string (newline);
-"
-echo temp;

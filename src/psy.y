@@ -30,6 +30,8 @@ void yyerror(char *);
 %token QUESTION_MARK // for ternary operator
 %token BANG // for unary
 
+%token SINGLE_QUOTE DOUBLE_QUOTE // double quotes for string
+
 %token ECH // for print statemnts
 %token IF ELSE // conditionals
 %token FOR DO WHILE BREAK CONTINUE// loops
