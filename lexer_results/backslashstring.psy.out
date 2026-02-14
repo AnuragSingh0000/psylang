@@ -1,0 +1,6 @@
+VAR
+IDENTIFIER: temp
+EQ
+\STRING_CONSTANT: Newline: 
+ Tab: 	 Quotes: " ' should be supported.
+
