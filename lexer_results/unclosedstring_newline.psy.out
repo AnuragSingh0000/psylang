@@ -1,0 +1,4 @@
+[Error at Line 2]: Unterminated string literal (found newline).
+VAR
+IDENTIFIER: temp
+EQ

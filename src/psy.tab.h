@@ -92,30 +92,28 @@ extern int yydebug;
     MINUS_MINUS = 293,             /* MINUS_MINUS  */
     QUESTION_MARK = 294,           /* QUESTION_MARK  */
     BANG = 295,                    /* BANG  */
-    SINGLE_QUOTE = 296,            /* SINGLE_QUOTE  */
-    DOUBLE_QUOTE = 297,            /* DOUBLE_QUOTE  */
-    ECH = 298,                     /* ECH  */
-    IF = 299,                      /* IF  */
-    ELSE = 300,                    /* ELSE  */
-    FOR = 301,                     /* FOR  */
-    DO = 302,                      /* DO  */
-    WHILE = 303,                   /* WHILE  */
-    BREAK = 304,                   /* BREAK  */
-    CONTINUE = 305,                /* CONTINUE  */
-    TYPE = 306,                    /* TYPE  */
-    FUN = 307,                     /* FUN  */
-    RET = 308,                     /* RET  */
-    ARROW = 309,                   /* ARROW  */
-    LEFT_PAREN = 310,              /* LEFT_PAREN  */
-    RIGHT_PAREN = 311,             /* RIGHT_PAREN  */
-    LEFT_BRACE = 312,              /* LEFT_BRACE  */
-    RIGHT_BRACE = 313,             /* RIGHT_BRACE  */
-    LEFT_SQUARE = 314,             /* LEFT_SQUARE  */
-    RIGHT_SQUARE = 315,            /* RIGHT_SQUARE  */
-    DOT = 316,                     /* DOT  */
-    COLON = 317,                   /* COLON  */
-    SEMI_COLON = 318,              /* SEMI_COLON  */
-    COMMA = 319                    /* COMMA  */
+    ECH = 296,                     /* ECH  */
+    IF = 297,                      /* IF  */
+    ELSE = 298,                    /* ELSE  */
+    FOR = 299,                     /* FOR  */
+    DO = 300,                      /* DO  */
+    WHILE = 301,                   /* WHILE  */
+    BREAK = 302,                   /* BREAK  */
+    CONTINUE = 303,                /* CONTINUE  */
+    TYPE = 304,                    /* TYPE  */
+    FUN = 305,                     /* FUN  */
+    RET = 306,                     /* RET  */
+    ARROW = 307,                   /* ARROW  */
+    LEFT_PAREN = 308,              /* LEFT_PAREN  */
+    RIGHT_PAREN = 309,             /* RIGHT_PAREN  */
+    LEFT_BRACE = 310,              /* LEFT_BRACE  */
+    RIGHT_BRACE = 311,             /* RIGHT_BRACE  */
+    LEFT_SQUARE = 312,             /* LEFT_SQUARE  */
+    RIGHT_SQUARE = 313,            /* RIGHT_SQUARE  */
+    DOT = 314,                     /* DOT  */
+    COLON = 315,                   /* COLON  */
+    SEMI_COLON = 316,              /* SEMI_COLON  */
+    COMMA = 317                    /* COMMA  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -131,7 +129,7 @@ union YYSTYPE
     char* sval;
     bool bval;
 
-#line 135 "psy.tab.h"
+#line 133 "psy.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
