@@ -82,8 +82,8 @@ void yyerror(char *);
 ";"            return SEMI_COLON;
 "?"            return QUESTION_MARK;
 
-"true"         {yylval.bval = true; return BOOL_CONSTANT;}
-"false"        {yylval.bval = false; return BOOL_CONSTANT;}
+"true"         { yylval.bval = true; return BOOL_CONSTANT; }
+"false"        { yylval.bval = false; return BOOL_CONSTANT; }
 
 \"      {
     BEGIN(STR_DOUBLE);
