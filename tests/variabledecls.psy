@@ -3,3 +3,10 @@ var int x = 10;
 var int foo = 10;
 var dyn bar = " dynamic ";
 bar = 100;
+var bool z = false;
+var bool k = true;
+var float r = 1.232;
+var string x = "dkjfalsd";
+var dyn h = null;
+var int h = 2 << 3 >> 4;
+

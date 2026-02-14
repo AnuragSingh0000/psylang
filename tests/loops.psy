@@ -4,8 +4,10 @@ for (var int i = 0; i < n; i++) {
 
 while (i < n) {
     i++;
+    break;
 }
 
 do {
     i *= 2;
+    continue;
 } while (i < 8);

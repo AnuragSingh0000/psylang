@@ -58,60 +58,64 @@ extern int yydebug;
     FLOAT_CONSTANT = 259,          /* FLOAT_CONSTANT  */
     IDENTIFIER = 260,              /* IDENTIFIER  */
     STRING_CONSTANT = 261,         /* STRING_CONSTANT  */
-    VAR = 262,                     /* VAR  */
-    INT = 263,                     /* INT  */
-    FLOAT = 264,                   /* FLOAT  */
-    STRING = 265,                  /* STRING  */
-    DYN = 266,                     /* DYN  */
-    PLUS = 267,                    /* PLUS  */
-    MINUS = 268,                   /* MINUS  */
-    STAR = 269,                    /* STAR  */
-    SLASH = 270,                   /* SLASH  */
-    PERC = 271,                    /* PERC  */
-    LESS = 272,                    /* LESS  */
-    GREATER = 273,                 /* GREATER  */
-    LESS_EQ = 274,                 /* LESS_EQ  */
-    GREATER_EQ = 275,              /* GREATER_EQ  */
-    BANG_EQ = 276,                 /* BANG_EQ  */
-    EQ_EQ = 277,                   /* EQ_EQ  */
-    AND = 278,                     /* AND  */
-    DOUBLE_AND = 279,              /* DOUBLE_AND  */
-    PIPE = 280,                    /* PIPE  */
-    DOUBLE_PIPE = 281,             /* DOUBLE_PIPE  */
-    TILDE = 282,                   /* TILDE  */
-    LESS_LESS = 283,               /* LESS_LESS  */
-    GREATER_GREATER = 284,         /* GREATER_GREATER  */
-    EQ = 285,                      /* EQ  */
-    PLUS_EQ = 286,                 /* PLUS_EQ  */
-    MINUS_EQ = 287,                /* MINUS_EQ  */
-    PLUS_PLUS = 288,               /* PLUS_PLUS  */
-    MINUS_MINUS = 289,             /* MINUS_MINUS  */
-    QUESTION_MARK = 290,           /* QUESTION_MARK  */
-    BANG = 291,                    /* BANG  */
-    SINGLE_QUOTE = 292,            /* SINGLE_QUOTE  */
-    DOUBLE_QUOTE = 293,            /* DOUBLE_QUOTE  */
-    ECH = 294,                     /* ECH  */
-    IF = 295,                      /* IF  */
-    ELSE = 296,                    /* ELSE  */
-    FOR = 297,                     /* FOR  */
-    DO = 298,                      /* DO  */
-    WHILE = 299,                   /* WHILE  */
-    BREAK = 300,                   /* BREAK  */
-    CONTINUE = 301,                /* CONTINUE  */
-    TYPE = 302,                    /* TYPE  */
-    FUN = 303,                     /* FUN  */
-    RET = 304,                     /* RET  */
-    ARROW = 305,                   /* ARROW  */
-    LEFT_PAREN = 306,              /* LEFT_PAREN  */
-    RIGHT_PAREN = 307,             /* RIGHT_PAREN  */
-    LEFT_BRACE = 308,              /* LEFT_BRACE  */
-    RIGHT_BRACE = 309,             /* RIGHT_BRACE  */
-    LEFT_SQUARE = 310,             /* LEFT_SQUARE  */
-    RIGHT_SQUARE = 311,            /* RIGHT_SQUARE  */
-    DOT = 312,                     /* DOT  */
-    COLON = 313,                   /* COLON  */
-    SEMI_COLON = 314,              /* SEMI_COLON  */
-    COMMA = 315                    /* COMMA  */
+    BOOL_CONSTANT = 262,           /* BOOL_CONSTANT  */
+    T_NULL = 263,                  /* T_NULL  */
+    VAR = 264,                     /* VAR  */
+    INT = 265,                     /* INT  */
+    FLOAT = 266,                   /* FLOAT  */
+    STRING = 267,                  /* STRING  */
+    BOOL = 268,                    /* BOOL  */
+    LIST = 269,                    /* LIST  */
+    DYN = 270,                     /* DYN  */
+    PLUS = 271,                    /* PLUS  */
+    MINUS = 272,                   /* MINUS  */
+    STAR = 273,                    /* STAR  */
+    SLASH = 274,                   /* SLASH  */
+    PERC = 275,                    /* PERC  */
+    LESS = 276,                    /* LESS  */
+    GREATER = 277,                 /* GREATER  */
+    LESS_EQ = 278,                 /* LESS_EQ  */
+    GREATER_EQ = 279,              /* GREATER_EQ  */
+    BANG_EQ = 280,                 /* BANG_EQ  */
+    EQ_EQ = 281,                   /* EQ_EQ  */
+    AND = 282,                     /* AND  */
+    DOUBLE_AND = 283,              /* DOUBLE_AND  */
+    PIPE = 284,                    /* PIPE  */
+    DOUBLE_PIPE = 285,             /* DOUBLE_PIPE  */
+    TILDE = 286,                   /* TILDE  */
+    SHIFT_LEFT = 287,              /* SHIFT_LEFT  */
+    SHIFT_RIGHT = 288,             /* SHIFT_RIGHT  */
+    EQ = 289,                      /* EQ  */
+    PLUS_EQ = 290,                 /* PLUS_EQ  */
+    MINUS_EQ = 291,                /* MINUS_EQ  */
+    PLUS_PLUS = 292,               /* PLUS_PLUS  */
+    MINUS_MINUS = 293,             /* MINUS_MINUS  */
+    QUESTION_MARK = 294,           /* QUESTION_MARK  */
+    BANG = 295,                    /* BANG  */
+    SINGLE_QUOTE = 296,            /* SINGLE_QUOTE  */
+    DOUBLE_QUOTE = 297,            /* DOUBLE_QUOTE  */
+    ECH = 298,                     /* ECH  */
+    IF = 299,                      /* IF  */
+    ELSE = 300,                    /* ELSE  */
+    FOR = 301,                     /* FOR  */
+    DO = 302,                      /* DO  */
+    WHILE = 303,                   /* WHILE  */
+    BREAK = 304,                   /* BREAK  */
+    CONTINUE = 305,                /* CONTINUE  */
+    TYPE = 306,                    /* TYPE  */
+    FUN = 307,                     /* FUN  */
+    RET = 308,                     /* RET  */
+    ARROW = 309,                   /* ARROW  */
+    LEFT_PAREN = 310,              /* LEFT_PAREN  */
+    RIGHT_PAREN = 311,             /* RIGHT_PAREN  */
+    LEFT_BRACE = 312,              /* LEFT_BRACE  */
+    RIGHT_BRACE = 313,             /* RIGHT_BRACE  */
+    LEFT_SQUARE = 314,             /* LEFT_SQUARE  */
+    RIGHT_SQUARE = 315,            /* RIGHT_SQUARE  */
+    DOT = 316,                     /* DOT  */
+    COLON = 317,                   /* COLON  */
+    SEMI_COLON = 318,              /* SEMI_COLON  */
+    COMMA = 319                    /* COMMA  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -120,13 +124,14 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 9 "psy.y"
+#line 10 "psy.y"
 
     int ival;
     float fval;
     char* sval;
+    bool bval;
 
-#line 130 "psy.tab.h"
+#line 135 "psy.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

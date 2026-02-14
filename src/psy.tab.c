@@ -70,10 +70,11 @@
 #line 1 "psy.y"
 
 #include <stdio.h>
+#include <stdbool.h>
 int yylex(void);
 void yyerror(char *);
 
-#line 77 "psy.tab.c"
+#line 78 "psy.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -108,65 +109,69 @@ enum yysymbol_kind_t
   YYSYMBOL_FLOAT_CONSTANT = 4,             /* FLOAT_CONSTANT  */
   YYSYMBOL_IDENTIFIER = 5,                 /* IDENTIFIER  */
   YYSYMBOL_STRING_CONSTANT = 6,            /* STRING_CONSTANT  */
-  YYSYMBOL_VAR = 7,                        /* VAR  */
-  YYSYMBOL_INT = 8,                        /* INT  */
-  YYSYMBOL_FLOAT = 9,                      /* FLOAT  */
-  YYSYMBOL_STRING = 10,                    /* STRING  */
-  YYSYMBOL_DYN = 11,                       /* DYN  */
-  YYSYMBOL_PLUS = 12,                      /* PLUS  */
-  YYSYMBOL_MINUS = 13,                     /* MINUS  */
-  YYSYMBOL_STAR = 14,                      /* STAR  */
-  YYSYMBOL_SLASH = 15,                     /* SLASH  */
-  YYSYMBOL_PERC = 16,                      /* PERC  */
-  YYSYMBOL_LESS = 17,                      /* LESS  */
-  YYSYMBOL_GREATER = 18,                   /* GREATER  */
-  YYSYMBOL_LESS_EQ = 19,                   /* LESS_EQ  */
-  YYSYMBOL_GREATER_EQ = 20,                /* GREATER_EQ  */
-  YYSYMBOL_BANG_EQ = 21,                   /* BANG_EQ  */
-  YYSYMBOL_EQ_EQ = 22,                     /* EQ_EQ  */
-  YYSYMBOL_AND = 23,                       /* AND  */
-  YYSYMBOL_DOUBLE_AND = 24,                /* DOUBLE_AND  */
-  YYSYMBOL_PIPE = 25,                      /* PIPE  */
-  YYSYMBOL_DOUBLE_PIPE = 26,               /* DOUBLE_PIPE  */
-  YYSYMBOL_TILDE = 27,                     /* TILDE  */
-  YYSYMBOL_LESS_LESS = 28,                 /* LESS_LESS  */
-  YYSYMBOL_GREATER_GREATER = 29,           /* GREATER_GREATER  */
-  YYSYMBOL_EQ = 30,                        /* EQ  */
-  YYSYMBOL_PLUS_EQ = 31,                   /* PLUS_EQ  */
-  YYSYMBOL_MINUS_EQ = 32,                  /* MINUS_EQ  */
-  YYSYMBOL_PLUS_PLUS = 33,                 /* PLUS_PLUS  */
-  YYSYMBOL_MINUS_MINUS = 34,               /* MINUS_MINUS  */
-  YYSYMBOL_QUESTION_MARK = 35,             /* QUESTION_MARK  */
-  YYSYMBOL_BANG = 36,                      /* BANG  */
-  YYSYMBOL_SINGLE_QUOTE = 37,              /* SINGLE_QUOTE  */
-  YYSYMBOL_DOUBLE_QUOTE = 38,              /* DOUBLE_QUOTE  */
-  YYSYMBOL_ECH = 39,                       /* ECH  */
-  YYSYMBOL_IF = 40,                        /* IF  */
-  YYSYMBOL_ELSE = 41,                      /* ELSE  */
-  YYSYMBOL_FOR = 42,                       /* FOR  */
-  YYSYMBOL_DO = 43,                        /* DO  */
-  YYSYMBOL_WHILE = 44,                     /* WHILE  */
-  YYSYMBOL_BREAK = 45,                     /* BREAK  */
-  YYSYMBOL_CONTINUE = 46,                  /* CONTINUE  */
-  YYSYMBOL_TYPE = 47,                      /* TYPE  */
-  YYSYMBOL_FUN = 48,                       /* FUN  */
-  YYSYMBOL_RET = 49,                       /* RET  */
-  YYSYMBOL_ARROW = 50,                     /* ARROW  */
-  YYSYMBOL_LEFT_PAREN = 51,                /* LEFT_PAREN  */
-  YYSYMBOL_RIGHT_PAREN = 52,               /* RIGHT_PAREN  */
-  YYSYMBOL_LEFT_BRACE = 53,                /* LEFT_BRACE  */
-  YYSYMBOL_RIGHT_BRACE = 54,               /* RIGHT_BRACE  */
-  YYSYMBOL_LEFT_SQUARE = 55,               /* LEFT_SQUARE  */
-  YYSYMBOL_RIGHT_SQUARE = 56,              /* RIGHT_SQUARE  */
-  YYSYMBOL_DOT = 57,                       /* DOT  */
-  YYSYMBOL_COLON = 58,                     /* COLON  */
-  YYSYMBOL_SEMI_COLON = 59,                /* SEMI_COLON  */
-  YYSYMBOL_COMMA = 60,                     /* COMMA  */
-  YYSYMBOL_61_n_ = 61,                     /* '\n'  */
-  YYSYMBOL_YYACCEPT = 62,                  /* $accept  */
-  YYSYMBOL_input = 63,                     /* input  */
-  YYSYMBOL_line = 64,                      /* line  */
-  YYSYMBOL_token = 65                      /* token  */
+  YYSYMBOL_BOOL_CONSTANT = 7,              /* BOOL_CONSTANT  */
+  YYSYMBOL_T_NULL = 8,                     /* T_NULL  */
+  YYSYMBOL_VAR = 9,                        /* VAR  */
+  YYSYMBOL_INT = 10,                       /* INT  */
+  YYSYMBOL_FLOAT = 11,                     /* FLOAT  */
+  YYSYMBOL_STRING = 12,                    /* STRING  */
+  YYSYMBOL_BOOL = 13,                      /* BOOL  */
+  YYSYMBOL_LIST = 14,                      /* LIST  */
+  YYSYMBOL_DYN = 15,                       /* DYN  */
+  YYSYMBOL_PLUS = 16,                      /* PLUS  */
+  YYSYMBOL_MINUS = 17,                     /* MINUS  */
+  YYSYMBOL_STAR = 18,                      /* STAR  */
+  YYSYMBOL_SLASH = 19,                     /* SLASH  */
+  YYSYMBOL_PERC = 20,                      /* PERC  */
+  YYSYMBOL_LESS = 21,                      /* LESS  */
+  YYSYMBOL_GREATER = 22,                   /* GREATER  */
+  YYSYMBOL_LESS_EQ = 23,                   /* LESS_EQ  */
+  YYSYMBOL_GREATER_EQ = 24,                /* GREATER_EQ  */
+  YYSYMBOL_BANG_EQ = 25,                   /* BANG_EQ  */
+  YYSYMBOL_EQ_EQ = 26,                     /* EQ_EQ  */
+  YYSYMBOL_AND = 27,                       /* AND  */
+  YYSYMBOL_DOUBLE_AND = 28,                /* DOUBLE_AND  */
+  YYSYMBOL_PIPE = 29,                      /* PIPE  */
+  YYSYMBOL_DOUBLE_PIPE = 30,               /* DOUBLE_PIPE  */
+  YYSYMBOL_TILDE = 31,                     /* TILDE  */
+  YYSYMBOL_SHIFT_LEFT = 32,                /* SHIFT_LEFT  */
+  YYSYMBOL_SHIFT_RIGHT = 33,               /* SHIFT_RIGHT  */
+  YYSYMBOL_EQ = 34,                        /* EQ  */
+  YYSYMBOL_PLUS_EQ = 35,                   /* PLUS_EQ  */
+  YYSYMBOL_MINUS_EQ = 36,                  /* MINUS_EQ  */
+  YYSYMBOL_PLUS_PLUS = 37,                 /* PLUS_PLUS  */
+  YYSYMBOL_MINUS_MINUS = 38,               /* MINUS_MINUS  */
+  YYSYMBOL_QUESTION_MARK = 39,             /* QUESTION_MARK  */
+  YYSYMBOL_BANG = 40,                      /* BANG  */
+  YYSYMBOL_SINGLE_QUOTE = 41,              /* SINGLE_QUOTE  */
+  YYSYMBOL_DOUBLE_QUOTE = 42,              /* DOUBLE_QUOTE  */
+  YYSYMBOL_ECH = 43,                       /* ECH  */
+  YYSYMBOL_IF = 44,                        /* IF  */
+  YYSYMBOL_ELSE = 45,                      /* ELSE  */
+  YYSYMBOL_FOR = 46,                       /* FOR  */
+  YYSYMBOL_DO = 47,                        /* DO  */
+  YYSYMBOL_WHILE = 48,                     /* WHILE  */
+  YYSYMBOL_BREAK = 49,                     /* BREAK  */
+  YYSYMBOL_CONTINUE = 50,                  /* CONTINUE  */
+  YYSYMBOL_TYPE = 51,                      /* TYPE  */
+  YYSYMBOL_FUN = 52,                       /* FUN  */
+  YYSYMBOL_RET = 53,                       /* RET  */
+  YYSYMBOL_ARROW = 54,                     /* ARROW  */
+  YYSYMBOL_LEFT_PAREN = 55,                /* LEFT_PAREN  */
+  YYSYMBOL_RIGHT_PAREN = 56,               /* RIGHT_PAREN  */
+  YYSYMBOL_LEFT_BRACE = 57,                /* LEFT_BRACE  */
+  YYSYMBOL_RIGHT_BRACE = 58,               /* RIGHT_BRACE  */
+  YYSYMBOL_LEFT_SQUARE = 59,               /* LEFT_SQUARE  */
+  YYSYMBOL_RIGHT_SQUARE = 60,              /* RIGHT_SQUARE  */
+  YYSYMBOL_DOT = 61,                       /* DOT  */
+  YYSYMBOL_COLON = 62,                     /* COLON  */
+  YYSYMBOL_SEMI_COLON = 63,                /* SEMI_COLON  */
+  YYSYMBOL_COMMA = 64,                     /* COMMA  */
+  YYSYMBOL_65_n_ = 65,                     /* '\n'  */
+  YYSYMBOL_YYACCEPT = 66,                  /* $accept  */
+  YYSYMBOL_input = 67,                     /* input  */
+  YYSYMBOL_line = 68,                      /* line  */
+  YYSYMBOL_token = 69                      /* token  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -494,19 +499,19 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   61
+#define YYLAST   65
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  62
+#define YYNTOKENS  66
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  57
+#define YYNRULES  65
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  58
+#define YYNSTATES  66
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   315
+#define YYMAXUTOK   319
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -521,7 +526,7 @@ union yyalloc
 static const yytype_int8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      61,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      65,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -551,19 +556,20 @@ static const yytype_int8 yytranslate[] =
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
       35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
       45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
-      55,    56,    57,    58,    59,    60
+      55,    56,    57,    58,    59,    60,    61,    62,    63,    64
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_int8 yyrline[] =
+static const yytype_uint8 yyrline[] =
 {
-       0,    45,    45,    47,    51,    52,    56,    57,    58,    59,
-      61,    62,    63,    64,    65,    67,    68,    69,    70,    71,
-      73,    74,    75,    76,    77,    79,    81,    82,    83,    84,
-      85,    87,    88,    89,    90,    91,    92,    94,    95,    96,
-      97,    98,    99,   101,   102,   103,   104,   106,   107,   108,
-     109,   110,   111,   113,   114,   115,   116,   117
+       0,    49,    49,    51,    55,    56,    60,    61,    62,    63,
+      64,    65,    67,    68,    69,    70,    71,    73,    74,    75,
+      76,    77,    78,    79,    81,    82,    83,    84,    85,    86,
+      87,    89,    91,    92,    93,    94,    95,    97,    98,    99,
+     100,   101,   102,   104,   105,   106,   107,   108,   109,   110,
+     111,   113,   114,   115,   116,   118,   119,   120,   121,   122,
+     123,   125,   126,   127,   128,   129
 };
 #endif
 
@@ -580,16 +586,17 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "INT_CONSTANT",
-  "FLOAT_CONSTANT", "IDENTIFIER", "STRING_CONSTANT", "VAR", "INT", "FLOAT",
-  "STRING", "DYN", "PLUS", "MINUS", "STAR", "SLASH", "PERC", "LESS",
-  "GREATER", "LESS_EQ", "GREATER_EQ", "BANG_EQ", "EQ_EQ", "AND",
-  "DOUBLE_AND", "PIPE", "DOUBLE_PIPE", "TILDE", "LESS_LESS",
-  "GREATER_GREATER", "EQ", "PLUS_EQ", "MINUS_EQ", "PLUS_PLUS",
-  "MINUS_MINUS", "QUESTION_MARK", "BANG", "SINGLE_QUOTE", "DOUBLE_QUOTE",
-  "ECH", "IF", "ELSE", "FOR", "DO", "WHILE", "BREAK", "CONTINUE", "TYPE",
-  "FUN", "RET", "ARROW", "LEFT_PAREN", "RIGHT_PAREN", "LEFT_BRACE",
-  "RIGHT_BRACE", "LEFT_SQUARE", "RIGHT_SQUARE", "DOT", "COLON",
-  "SEMI_COLON", "COMMA", "'\\n'", "$accept", "input", "line", "token", YY_NULLPTR
+  "FLOAT_CONSTANT", "IDENTIFIER", "STRING_CONSTANT", "BOOL_CONSTANT",
+  "T_NULL", "VAR", "INT", "FLOAT", "STRING", "BOOL", "LIST", "DYN", "PLUS",
+  "MINUS", "STAR", "SLASH", "PERC", "LESS", "GREATER", "LESS_EQ",
+  "GREATER_EQ", "BANG_EQ", "EQ_EQ", "AND", "DOUBLE_AND", "PIPE",
+  "DOUBLE_PIPE", "TILDE", "SHIFT_LEFT", "SHIFT_RIGHT", "EQ", "PLUS_EQ",
+  "MINUS_EQ", "PLUS_PLUS", "MINUS_MINUS", "QUESTION_MARK", "BANG",
+  "SINGLE_QUOTE", "DOUBLE_QUOTE", "ECH", "IF", "ELSE", "FOR", "DO",
+  "WHILE", "BREAK", "CONTINUE", "TYPE", "FUN", "RET", "ARROW",
+  "LEFT_PAREN", "RIGHT_PAREN", "LEFT_BRACE", "RIGHT_BRACE", "LEFT_SQUARE",
+  "RIGHT_SQUARE", "DOT", "COLON", "SEMI_COLON", "COMMA", "'\\n'",
+  "$accept", "input", "line", "token", YY_NULLPTR
 };
 
 static const char *
@@ -618,7 +625,8 @@ static const yytype_int8 yypact[] =
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -626,12 +634,13 @@ static const yytype_int8 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       2,     0,     1,     6,     7,     9,     8,    15,    16,    17,
-      18,    19,    10,    11,    12,    13,    14,    31,    32,    33,
-      34,    36,    35,    37,    38,    39,    40,    41,    26,    27,
-      28,    29,    30,    56,    42,    25,    20,    21,    22,    24,
-      23,    43,    44,    45,    46,    47,    48,    49,    50,    51,
-      52,    53,    54,    55,    57,     5,     3,     4
+       2,     0,     1,     6,     7,     9,     8,    10,    11,    17,
+      18,    19,    20,    21,    23,    22,    12,    13,    14,    15,
+      16,    37,    38,    39,    40,    42,    41,    43,    44,    45,
+      46,    47,    49,    50,    32,    33,    34,    35,    36,    64,
+      48,    31,    24,    25,    26,    28,    27,    29,    30,    51,
+      52,    53,    54,    55,    56,    57,    58,    59,    60,    61,
+      62,    63,    65,     5,     3,     4
 };
 
 /* YYPGOTO[NTERM-NUM].  */
@@ -643,7 +652,7 @@ static const yytype_int8 yypgoto[] =
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-       0,     1,    56,    57
+       0,     1,    64,    65
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -653,45 +662,47 @@ static const yytype_int8 yytable[] =
 {
        2,     0,     0,     3,     4,     5,     6,     7,     8,     9,
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
-      20,    21,    22,    23,    24,    25,    26,    27,     0,     0,
-      28,    29,    30,    31,    32,    33,    34,     0,     0,    35,
-      36,    37,    38,    39,    40,     0,     0,    41,    42,    43,
-      44,    45,    46,    47,    48,    49,    50,    51,    52,    53,
-      54,    55
+      20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      30,    31,    32,    33,    34,    35,    36,    37,    38,    39,
+      40,     0,     0,    41,    42,    43,    44,    45,    46,    47,
+      48,    49,    50,    51,    52,    53,    54,    55,    56,    57,
+      58,    59,    60,    61,    62,    63
 };
 
 static const yytype_int8 yycheck[] =
 {
        0,    -1,    -1,     3,     4,     5,     6,     7,     8,     9,
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
-      20,    21,    22,    23,    24,    25,    26,    27,    -1,    -1,
-      30,    31,    32,    33,    34,    35,    36,    -1,    -1,    39,
-      40,    41,    42,    43,    44,    -1,    -1,    47,    48,    49,
+      20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      30,    31,    32,    33,    34,    35,    36,    37,    38,    39,
+      40,    -1,    -1,    43,    44,    45,    46,    47,    48,    49,
       50,    51,    52,    53,    54,    55,    56,    57,    58,    59,
-      60,    61
+      60,    61,    62,    63,    64,    65
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    63,     0,     3,     4,     5,     6,     7,     8,     9,
+       0,    67,     0,     3,     4,     5,     6,     7,     8,     9,
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
-      20,    21,    22,    23,    24,    25,    26,    27,    30,    31,
-      32,    33,    34,    35,    36,    39,    40,    41,    42,    43,
-      44,    47,    48,    49,    50,    51,    52,    53,    54,    55,
-      56,    57,    58,    59,    60,    61,    64,    65
+      20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      30,    31,    32,    33,    34,    35,    36,    37,    38,    39,
+      40,    43,    44,    45,    46,    47,    48,    49,    50,    51,
+      52,    53,    54,    55,    56,    57,    58,    59,    60,    61,
+      62,    63,    64,    65,    68,    69
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    62,    63,    63,    64,    64,    65,    65,    65,    65,
-      65,    65,    65,    65,    65,    65,    65,    65,    65,    65,
-      65,    65,    65,    65,    65,    65,    65,    65,    65,    65,
-      65,    65,    65,    65,    65,    65,    65,    65,    65,    65,
-      65,    65,    65,    65,    65,    65,    65,    65,    65,    65,
-      65,    65,    65,    65,    65,    65,    65,    65
+       0,    66,    67,    67,    68,    68,    69,    69,    69,    69,
+      69,    69,    69,    69,    69,    69,    69,    69,    69,    69,
+      69,    69,    69,    69,    69,    69,    69,    69,    69,    69,
+      69,    69,    69,    69,    69,    69,    69,    69,    69,    69,
+      69,    69,    69,    69,    69,    69,    69,    69,    69,    69,
+      69,    69,    69,    69,    69,    69,    69,    69,    69,    69,
+      69,    69,    69,    69,    69,    69
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -702,7 +713,8 @@ static const yytype_int8 yyr2[] =
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     1
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1
 };
 
 
@@ -1166,319 +1178,367 @@ yyreduce:
   switch (yyn)
     {
   case 6: /* token: INT_CONSTANT  */
-#line 56 "psy.y"
+#line 60 "psy.y"
                         { printf("INT_CONSTANT: %d\n", (yyvsp[0].ival)); }
-#line 1172 "psy.tab.c"
-    break;
-
-  case 7: /* token: FLOAT_CONSTANT  */
-#line 57 "psy.y"
-                        { printf("FLOAT_CONSTANT: %f\n", (yyvsp[0].fval)); }
-#line 1178 "psy.tab.c"
-    break;
-
-  case 8: /* token: STRING_CONSTANT  */
-#line 58 "psy.y"
-                        { printf("STRING_CONSTANT: %s\n", (yyvsp[0].sval)); }
 #line 1184 "psy.tab.c"
     break;
 
-  case 9: /* token: IDENTIFIER  */
-#line 59 "psy.y"
-                        { printf("IDENTIFIER: %s\n", (yyvsp[0].sval)); }
+  case 7: /* token: FLOAT_CONSTANT  */
+#line 61 "psy.y"
+                        { printf("FLOAT_CONSTANT: %f\n", (yyvsp[0].fval)); }
 #line 1190 "psy.tab.c"
     break;
 
-  case 10: /* token: PLUS  */
-#line 61 "psy.y"
-                        { printf("PLUS\n"); }
+  case 8: /* token: STRING_CONSTANT  */
+#line 62 "psy.y"
+                        { printf("STRING_CONSTANT: %s\n", (yyvsp[0].sval)); }
 #line 1196 "psy.tab.c"
     break;
 
-  case 11: /* token: MINUS  */
-#line 62 "psy.y"
-                        { printf("MINUS\n"); }
+  case 9: /* token: IDENTIFIER  */
+#line 63 "psy.y"
+                        { printf("IDENTIFIER: %s\n", (yyvsp[0].sval)); }
 #line 1202 "psy.tab.c"
     break;
 
-  case 12: /* token: STAR  */
-#line 63 "psy.y"
-                        { printf("STAR\n"); }
+  case 10: /* token: BOOL_CONSTANT  */
+#line 64 "psy.y"
+                        { printf("BOOL_CONSTANT: %d\n", (yyvsp[0].bval)); }
 #line 1208 "psy.tab.c"
     break;
 
-  case 13: /* token: SLASH  */
-#line 64 "psy.y"
-                        { printf("SLASH\n"); }
+  case 11: /* token: T_NULL  */
+#line 65 "psy.y"
+                        { printf("NULL\n"); }
 #line 1214 "psy.tab.c"
     break;
 
-  case 14: /* token: PERC  */
-#line 65 "psy.y"
-                        { printf("PERC\n"); }
+  case 12: /* token: PLUS  */
+#line 67 "psy.y"
+                        { printf("PLUS\n"); }
 #line 1220 "psy.tab.c"
     break;
 
-  case 15: /* token: VAR  */
-#line 67 "psy.y"
-                        { printf("VAR\n"); }
+  case 13: /* token: MINUS  */
+#line 68 "psy.y"
+                        { printf("MINUS\n"); }
 #line 1226 "psy.tab.c"
     break;
 
-  case 16: /* token: INT  */
-#line 68 "psy.y"
-                        { printf("INT\n"); }
+  case 14: /* token: STAR  */
+#line 69 "psy.y"
+                        { printf("STAR\n"); }
 #line 1232 "psy.tab.c"
     break;
 
-  case 17: /* token: FLOAT  */
-#line 69 "psy.y"
-                        { printf("FLOAT\n"); }
+  case 15: /* token: SLASH  */
+#line 70 "psy.y"
+                        { printf("SLASH\n"); }
 #line 1238 "psy.tab.c"
     break;
 
-  case 18: /* token: STRING  */
-#line 70 "psy.y"
-                        { printf("STRING\n"); }
+  case 16: /* token: PERC  */
+#line 71 "psy.y"
+                        { printf("PERC\n"); }
 #line 1244 "psy.tab.c"
     break;
 
-  case 19: /* token: DYN  */
-#line 71 "psy.y"
-                        { printf("DYN\n"); }
+  case 17: /* token: VAR  */
+#line 73 "psy.y"
+                        { printf("VAR\n"); }
 #line 1250 "psy.tab.c"
     break;
 
-  case 20: /* token: IF  */
-#line 73 "psy.y"
-                        { printf("IF\n"); }
+  case 18: /* token: INT  */
+#line 74 "psy.y"
+                        { printf("INT\n"); }
 #line 1256 "psy.tab.c"
     break;
 
-  case 21: /* token: ELSE  */
-#line 74 "psy.y"
-                        { printf("ELSE\n"); }
+  case 19: /* token: FLOAT  */
+#line 75 "psy.y"
+                        { printf("FLOAT\n"); }
 #line 1262 "psy.tab.c"
     break;
 
-  case 22: /* token: FOR  */
-#line 75 "psy.y"
-                        { printf("FOR\n"); }
+  case 20: /* token: STRING  */
+#line 76 "psy.y"
+                        { printf("STRING\n"); }
 #line 1268 "psy.tab.c"
     break;
 
-  case 23: /* token: WHILE  */
-#line 76 "psy.y"
-                        { printf("WHILE\n"); }
+  case 21: /* token: BOOL  */
+#line 77 "psy.y"
+                        { printf("BOOLEAN\n"); }
 #line 1274 "psy.tab.c"
     break;
 
-  case 24: /* token: DO  */
-#line 77 "psy.y"
-                        { printf("DO\n"); }
+  case 22: /* token: DYN  */
+#line 78 "psy.y"
+                        { printf("DYN\n"); }
 #line 1280 "psy.tab.c"
     break;
 
-  case 25: /* token: ECH  */
+  case 23: /* token: LIST  */
 #line 79 "psy.y"
-                        { printf("ECHO\n"); }
+                        { printf("LIST\n"); }
 #line 1286 "psy.tab.c"
     break;
 
-  case 26: /* token: EQ  */
+  case 24: /* token: IF  */
 #line 81 "psy.y"
-                        { printf("EQ\n"); }
+                        { printf("IF\n"); }
 #line 1292 "psy.tab.c"
     break;
 
-  case 27: /* token: PLUS_EQ  */
+  case 25: /* token: ELSE  */
 #line 82 "psy.y"
-                        { printf("PLUS_EQ\n"); }
+                        { printf("ELSE\n"); }
 #line 1298 "psy.tab.c"
     break;
 
-  case 28: /* token: MINUS_EQ  */
+  case 26: /* token: FOR  */
 #line 83 "psy.y"
-                        { printf("MINUS_EQ\n"); }
+                        { printf("FOR\n"); }
 #line 1304 "psy.tab.c"
     break;
 
-  case 29: /* token: PLUS_PLUS  */
+  case 27: /* token: WHILE  */
 #line 84 "psy.y"
-                        { printf("PLUS_PLUS\n"); }
+                        { printf("WHILE\n"); }
 #line 1310 "psy.tab.c"
     break;
 
-  case 30: /* token: MINUS_MINUS  */
+  case 28: /* token: DO  */
 #line 85 "psy.y"
-                        { printf("MINUS_MINUS\n"); }
+                        { printf("DO\n"); }
 #line 1316 "psy.tab.c"
     break;
 
-  case 31: /* token: LESS  */
-#line 87 "psy.y"
-                        { printf("LESS\n"); }
+  case 29: /* token: BREAK  */
+#line 86 "psy.y"
+                        { printf("BREAK\n"); }
 #line 1322 "psy.tab.c"
     break;
 
-  case 32: /* token: GREATER  */
-#line 88 "psy.y"
-                        { printf("GREATER\n"); }
+  case 30: /* token: CONTINUE  */
+#line 87 "psy.y"
+                        { printf("CONTINUE\n"); }
 #line 1328 "psy.tab.c"
     break;
 
-  case 33: /* token: LESS_EQ  */
+  case 31: /* token: ECH  */
 #line 89 "psy.y"
-                        { printf("LESS_EQ\n"); }
+                        { printf("ECHO\n"); }
 #line 1334 "psy.tab.c"
     break;
 
-  case 34: /* token: GREATER_EQ  */
-#line 90 "psy.y"
-                        { printf("GREATER_EQ\n"); }
+  case 32: /* token: EQ  */
+#line 91 "psy.y"
+                        { printf("EQ\n"); }
 #line 1340 "psy.tab.c"
     break;
 
-  case 35: /* token: EQ_EQ  */
-#line 91 "psy.y"
-                        { printf("EQ_EQ\n"); }
+  case 33: /* token: PLUS_EQ  */
+#line 92 "psy.y"
+                        { printf("PLUS_EQ\n"); }
 #line 1346 "psy.tab.c"
     break;
 
-  case 36: /* token: BANG_EQ  */
-#line 92 "psy.y"
-                        { printf("BANG_EQ\n"); }
+  case 34: /* token: MINUS_EQ  */
+#line 93 "psy.y"
+                        { printf("MINUS_EQ\n"); }
 #line 1352 "psy.tab.c"
     break;
 
-  case 37: /* token: AND  */
+  case 35: /* token: PLUS_PLUS  */
 #line 94 "psy.y"
-                        { printf("AND\n"); }
+                        { printf("PLUS_PLUS\n"); }
 #line 1358 "psy.tab.c"
     break;
 
-  case 38: /* token: DOUBLE_AND  */
+  case 36: /* token: MINUS_MINUS  */
 #line 95 "psy.y"
-                        { printf("DOUBLE_AND\n"); }
+                        { printf("MINUS_MINUS\n"); }
 #line 1364 "psy.tab.c"
     break;
 
-  case 39: /* token: PIPE  */
-#line 96 "psy.y"
-                        { printf("PIPE\n"); }
+  case 37: /* token: LESS  */
+#line 97 "psy.y"
+                        { printf("LESS\n"); }
 #line 1370 "psy.tab.c"
     break;
 
-  case 40: /* token: DOUBLE_PIPE  */
-#line 97 "psy.y"
-                        { printf("DOUBLE_PIPE\n"); }
+  case 38: /* token: GREATER  */
+#line 98 "psy.y"
+                        { printf("GREATER\n"); }
 #line 1376 "psy.tab.c"
     break;
 
-  case 41: /* token: TILDE  */
-#line 98 "psy.y"
-                        { printf("TILDE\n"); }
+  case 39: /* token: LESS_EQ  */
+#line 99 "psy.y"
+                        { printf("LESS_EQ\n"); }
 #line 1382 "psy.tab.c"
     break;
 
-  case 42: /* token: BANG  */
-#line 99 "psy.y"
-                        { printf("BANG\n"); }
+  case 40: /* token: GREATER_EQ  */
+#line 100 "psy.y"
+                        { printf("GREATER_EQ\n"); }
 #line 1388 "psy.tab.c"
     break;
 
-  case 43: /* token: TYPE  */
+  case 41: /* token: EQ_EQ  */
 #line 101 "psy.y"
-                        { printf("TYPE\n");}
+                        { printf("EQ_EQ\n"); }
 #line 1394 "psy.tab.c"
     break;
 
-  case 44: /* token: FUN  */
+  case 42: /* token: BANG_EQ  */
 #line 102 "psy.y"
-                        { printf("FUN\n");}
+                        { printf("BANG_EQ\n"); }
 #line 1400 "psy.tab.c"
     break;
 
-  case 45: /* token: RET  */
-#line 103 "psy.y"
-                        { printf("RET\n");}
+  case 43: /* token: AND  */
+#line 104 "psy.y"
+                        { printf("AND\n"); }
 #line 1406 "psy.tab.c"
     break;
 
-  case 46: /* token: ARROW  */
-#line 104 "psy.y"
-                        { printf("ARROW\n");}
+  case 44: /* token: DOUBLE_AND  */
+#line 105 "psy.y"
+                        { printf("DOUBLE_AND\n"); }
 #line 1412 "psy.tab.c"
     break;
 
-  case 47: /* token: LEFT_PAREN  */
+  case 45: /* token: PIPE  */
 #line 106 "psy.y"
-                        { printf("LEFT_PAREN\n"); }
+                        { printf("PIPE\n"); }
 #line 1418 "psy.tab.c"
     break;
 
-  case 48: /* token: RIGHT_PAREN  */
+  case 46: /* token: DOUBLE_PIPE  */
 #line 107 "psy.y"
-                        { printf("RIGHT_PAREN\n"); }
+                        { printf("DOUBLE_PIPE\n"); }
 #line 1424 "psy.tab.c"
     break;
 
-  case 49: /* token: LEFT_BRACE  */
+  case 47: /* token: TILDE  */
 #line 108 "psy.y"
-                        { printf("LEFT_BRACE\n"); }
+                        { printf("TILDE\n"); }
 #line 1430 "psy.tab.c"
     break;
 
-  case 50: /* token: RIGHT_BRACE  */
+  case 48: /* token: BANG  */
 #line 109 "psy.y"
-                        { printf("RIGHT_BRACE\n"); }
+                        { printf("BANG\n"); }
 #line 1436 "psy.tab.c"
     break;
 
-  case 51: /* token: LEFT_SQUARE  */
+  case 49: /* token: SHIFT_LEFT  */
 #line 110 "psy.y"
-                        { printf("LEFT_SQUARE\n"); }
+                        { printf("SHIFT_LEFT\n"); }
 #line 1442 "psy.tab.c"
     break;
 
-  case 52: /* token: RIGHT_SQUARE  */
+  case 50: /* token: SHIFT_RIGHT  */
 #line 111 "psy.y"
-                        { printf("RIGHT_SQUARE\n"); }
+                        { printf("SHIFT_RIGHT\n"); }
 #line 1448 "psy.tab.c"
     break;
 
-  case 53: /* token: DOT  */
+  case 51: /* token: TYPE  */
 #line 113 "psy.y"
-                        { printf("DOT\n"); }
+                        { printf("TYPE\n");}
 #line 1454 "psy.tab.c"
     break;
 
-  case 54: /* token: COLON  */
+  case 52: /* token: FUN  */
 #line 114 "psy.y"
-                        { printf("COLON\n"); }
+                        { printf("FUN\n");}
 #line 1460 "psy.tab.c"
     break;
 
-  case 55: /* token: SEMI_COLON  */
+  case 53: /* token: RET  */
 #line 115 "psy.y"
-                        { printf("SEMI_COLON\n"); }
+                        { printf("RET\n");}
 #line 1466 "psy.tab.c"
     break;
 
-  case 56: /* token: QUESTION_MARK  */
+  case 54: /* token: ARROW  */
 #line 116 "psy.y"
-                        { printf("QUESTION_MARK\n"); }
+                        { printf("ARROW\n");}
 #line 1472 "psy.tab.c"
     break;
 
-  case 57: /* token: COMMA  */
-#line 117 "psy.y"
-                        { printf("COMMA\n"); }
+  case 55: /* token: LEFT_PAREN  */
+#line 118 "psy.y"
+                        { printf("LEFT_PAREN\n"); }
 #line 1478 "psy.tab.c"
     break;
 
+  case 56: /* token: RIGHT_PAREN  */
+#line 119 "psy.y"
+                        { printf("RIGHT_PAREN\n"); }
+#line 1484 "psy.tab.c"
+    break;
 
-#line 1482 "psy.tab.c"
+  case 57: /* token: LEFT_BRACE  */
+#line 120 "psy.y"
+                        { printf("LEFT_BRACE\n"); }
+#line 1490 "psy.tab.c"
+    break;
+
+  case 58: /* token: RIGHT_BRACE  */
+#line 121 "psy.y"
+                        { printf("RIGHT_BRACE\n"); }
+#line 1496 "psy.tab.c"
+    break;
+
+  case 59: /* token: LEFT_SQUARE  */
+#line 122 "psy.y"
+                        { printf("LEFT_SQUARE\n"); }
+#line 1502 "psy.tab.c"
+    break;
+
+  case 60: /* token: RIGHT_SQUARE  */
+#line 123 "psy.y"
+                        { printf("RIGHT_SQUARE\n"); }
+#line 1508 "psy.tab.c"
+    break;
+
+  case 61: /* token: DOT  */
+#line 125 "psy.y"
+                        { printf("DOT\n"); }
+#line 1514 "psy.tab.c"
+    break;
+
+  case 62: /* token: COLON  */
+#line 126 "psy.y"
+                        { printf("COLON\n"); }
+#line 1520 "psy.tab.c"
+    break;
+
+  case 63: /* token: SEMI_COLON  */
+#line 127 "psy.y"
+                        { printf("SEMI_COLON\n"); }
+#line 1526 "psy.tab.c"
+    break;
+
+  case 64: /* token: QUESTION_MARK  */
+#line 128 "psy.y"
+                        { printf("QUESTION_MARK\n"); }
+#line 1532 "psy.tab.c"
+    break;
+
+  case 65: /* token: COMMA  */
+#line 129 "psy.y"
+                        { printf("COMMA\n"); }
+#line 1538 "psy.tab.c"
+    break;
+
+
+#line 1542 "psy.tab.c"
 
       default: break;
     }
@@ -1671,7 +1731,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 120 "psy.y"
+#line 132 "psy.y"
 
 
 int main(void)
