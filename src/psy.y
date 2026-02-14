@@ -1,5 +1,6 @@
 %{
 #include <stdio.h>
+#include <stdbool.h>
 int yylex(void);
 void yyerror(char *);
 %}
@@ -10,18 +11,21 @@ void yyerror(char *);
     int ival;
     float fval;
     char* sval;
+    bool bval;
 }
 
 %token <ival> INT_CONSTANT // tokens for int literals
 %token <fval> FLOAT_CONSTANT // tokens for float literals
 %token <sval> IDENTIFIER STRING_CONSTANT // tokens for identifiers and string literals
+%token <bval> BOOL_CONSTANT
+%token T_NULL
 
-%token VAR INT FLOAT STRING DYN // tokens for mentioning the types
+%token VAR INT FLOAT STRING BOOL LIST DYN // tokens for mentioning the types
 
 %token PLUS MINUS STAR SLASH PERC // tokens for arithmetic ops
 %token LESS GREATER LESS_EQ GREATER_EQ BANG_EQ EQ_EQ // comparision operators
-%token AND DOUBLE_AND PIPE DOUBLE_PIPE TILDE // bitwise operators
-%token LESS_LESS GREATER_GREATER // bitshift operators 
+%token AND DOUBLE_AND PIPE DOUBLE_PIPE TILDE  // bitwise operators
+%token SHIFT_LEFT SHIFT_RIGHT // bitshift operators 
 %token EQ PLUS_EQ MINUS_EQ PLUS_PLUS MINUS_MINUS // assignment operators
 %token QUESTION_MARK // for ternary operator
 %token BANG // for unary
@@ -57,6 +61,8 @@ token:
     | FLOAT_CONSTANT    { printf("FLOAT_CONSTANT: %f\n", $1); }
     | STRING_CONSTANT   { printf("STRING_CONSTANT: %s\n", $1); }
     | IDENTIFIER        { printf("IDENTIFIER: %s\n", $1); }
+    | BOOL_CONSTANT     { printf("BOOL_CONSTANT: %d\n", $1); }
+    | T_NULL            { printf("NULL\n"); }
 
     | PLUS              { printf("PLUS\n"); }
     | MINUS             { printf("MINUS\n"); }
@@ -68,13 +74,17 @@ token:
     | INT               { printf("INT\n"); }
     | FLOAT             { printf("FLOAT\n"); }
     | STRING            { printf("STRING\n"); }
+    | BOOL              { printf("BOOLEAN\n"); }
     | DYN               { printf("DYN\n"); }
+    | LIST              { printf("LIST\n"); } 
 
     | IF                { printf("IF\n"); }
     | ELSE              { printf("ELSE\n"); }
     | FOR               { printf("FOR\n"); }
     | WHILE             { printf("WHILE\n"); }
     | DO                { printf("DO\n"); }
+    | BREAK             { printf("BREAK\n"); }
+    | CONTINUE          { printf("CONTINUE\n"); }
 
     | ECH               { printf("ECHO\n"); }
 
@@ -97,6 +107,8 @@ token:
     | DOUBLE_PIPE       { printf("DOUBLE_PIPE\n"); }
     | TILDE             { printf("TILDE\n"); }
     | BANG              { printf("BANG\n"); }
+    | SHIFT_LEFT        { printf("SHIFT_LEFT\n"); }
+    | SHIFT_RIGHT       { printf("SHIFT_RIGHT\n"); }
 
     | TYPE              { printf("TYPE\n");}
     | FUN               { printf("FUN\n");}

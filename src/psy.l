@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "psy.tab.h"
 %}
 
@@ -19,7 +20,10 @@
 "int"          return INT;
 "float"        return FLOAT;
 "string"       return STRING;
+"bool"         return BOOL;
 "dyn"          return DYN;
+"null"         return T_NULL;
+"list"         return LIST;
 
 "\""           return DOUBLE_QUOTE;
 "'"            return SINGLE_QUOTE;
@@ -29,6 +33,8 @@
 "!"            return BANG;
 "|"            return PIPE;
 "||"           return DOUBLE_PIPE;
+"<<"           return SHIFT_LEFT;
+">>"           return SHIFT_RIGHT;
 
 "<"            return LESS;
 ">"            return GREATER;
@@ -49,6 +55,8 @@
 "while"        return WHILE;
 "for"          return FOR;
 "do"           return DO;
+"break"        return BREAK;
+"continue"     return CONTINUE;
 
 "type"         return TYPE;
 "fun"          return FUN;
@@ -67,7 +75,10 @@
 ":"            return COLON;
 ";"            return SEMI_COLON;
 "?"            return QUESTION_MARK;
-       
+
+"true"         {yylval.bval = true; return BOOL_CONSTANT;}
+"false"        {yylval.bval = false; return BOOL_CONSTANT;}
+
 [_A-Za-z][_A-Za-z0-9]* {
     yylval.sval = strdup(yytext);
     return IDENTIFIER;
@@ -91,7 +102,8 @@
 \'[^\n']*\' {
     yylval.sval = strdup(yytext);
     return STRING_CONSTANT;
-}    
+}
+
 
 [0-9][_A-Za-z0-9]* {
     fprintf(stderr, "[Error at Line %d]: Identifier cannot begin with a digit: %s\n", yylineno, yytext);
