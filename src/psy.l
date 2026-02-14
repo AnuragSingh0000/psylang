@@ -4,9 +4,17 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "psy.tab.h"
+
+#define MAX_STR_CONST 65536
+char string_buf[MAX_STR_CONST];
+char *string_pos;
+
+void yyerror(char *);
 %}
 
 %option yylineno
+
+%x STR_DOUBLE STR_SINGLE
 
 %%
 
@@ -25,8 +33,6 @@
 "null"         return T_NULL;
 "list"         return LIST;
 
-"\""           return DOUBLE_QUOTE;
-"'"            return SINGLE_QUOTE;
 "&"            return AND;
 "&&"           return DOUBLE_AND;
 "~"            return TILDE;
@@ -76,8 +82,59 @@
 ";"            return SEMI_COLON;
 "?"            return QUESTION_MARK;
 
-"true"         {yylval.bval = true; return BOOL_CONSTANT;}
-"false"        {yylval.bval = false; return BOOL_CONSTANT;}
+"true"         { yylval.bval = true; return BOOL_CONSTANT; }
+"false"        { yylval.bval = false; return BOOL_CONSTANT; }
+
+\"      {
+    BEGIN(STR_DOUBLE);
+    string_pos = string_buf;
+}
+
+\'      {
+    BEGIN(STR_SINGLE);
+    string_pos = string_buf;
+}
+
+<STR_DOUBLE>\" {
+    BEGIN(INITIAL);
+    *string_pos = '\0';
+    yylval.sval = strdup(string_buf);
+    return STRING_CONSTANT;
+}
+
+<STR_SINGLE>\' {
+    BEGIN(INITIAL);
+    *string_pos = '\0';
+    yylval.sval = strdup(string_buf);
+    return STRING_CONSTANT;
+}
+
+<STR_DOUBLE>\\\"   { *string_pos++ = '"';  }
+<STR_SINGLE>\\\'   { *string_pos++ = '\''; }
+
+<STR_DOUBLE,STR_SINGLE>\\n    { *string_pos++ = '\n'; }
+<STR_DOUBLE,STR_SINGLE>\\t    { *string_pos++ = '\t'; }
+<STR_DOUBLE,STR_SINGLE>\\\\   { *string_pos++ = '\\'; }
+
+<STR_DOUBLE,STR_SINGLE>\n     {
+    fprintf(stderr, "[Error at Line %d]: Unterminated string literal (found newline).\n", yylineno);
+    exit(1);
+}
+
+<STR_DOUBLE,STR_SINGLE><<EOF>> {
+    fprintf(stderr, "[Error at Line %d]: Unterminated string literal (end of file).\n", yylineno);
+    exit(1);
+}
+
+<STR_DOUBLE>[^\\\n"]+ {
+    char *yptr = yytext;
+    while ( *yptr ) *string_pos++ = *yptr++;
+}
+
+<STR_SINGLE>[^\\\n']+ {
+    char *yptr = yytext;
+    while ( *yptr ) *string_pos++ = *yptr++;
+}
 
 [_A-Za-z][_A-Za-z0-9]* {
     yylval.sval = strdup(yytext);
@@ -93,23 +150,11 @@
     yylval.fval = atof(yytext);
     return FLOAT_CONSTANT;
 }
-                        
-\"[^\n"]*\" {
-    yylval.sval = strdup(yytext);
-    return STRING_CONSTANT;
-}    
-
-\'[^\n']*\' {
-    yylval.sval = strdup(yytext);
-    return STRING_CONSTANT;
-}
-
 
 [0-9][_A-Za-z0-9]* {
     fprintf(stderr, "[Error at Line %d]: Identifier cannot begin with a digit: %s\n", yylineno, yytext);
     exit(1);
 }
-
 
 \$\$[^\n]*      {}  /* ignore rest of the line after $$ (but do not consume the newline). For comments */
   
