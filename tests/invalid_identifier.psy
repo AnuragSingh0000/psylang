@@ -1,0 +1,2 @@
+var 9abcd = 10;
+echo 9abcd;

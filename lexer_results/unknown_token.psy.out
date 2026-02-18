@@ -1,0 +1,9 @@
+[Error at Line 2]: Unexpected token: @
+VAR
+IDENTIFIER: a
+EQ
+INT_CONSTANT: 10
+SEMI_COLON
+IDENTIFIER: a
+EQ
+IDENTIFIER: a
