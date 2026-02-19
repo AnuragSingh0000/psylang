@@ -5,8 +5,7 @@ int yylex(void);
 void yyerror(char *);
 %}
 
-// Define the union for the possible token values
-
+// Union for the possible token values (This specifies YYSTYPE)
 %union {
     int ival;
     float fval;

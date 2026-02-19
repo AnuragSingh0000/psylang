@@ -561,13 +561,13 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    47,    47,    49,    53,    54,    58,    59,    60,    61,
-      62,    63,    65,    66,    67,    68,    69,    71,    72,    73,
-      74,    75,    76,    77,    79,    80,    81,    82,    83,    84,
-      85,    87,    89,    90,    91,    92,    93,    95,    96,    97,
-      98,    99,   100,   102,   103,   104,   105,   106,   107,   108,
-     109,   111,   112,   113,   114,   116,   117,   118,   119,   120,
-     121,   123,   124,   125,   126,   127
+       0,    46,    46,    48,    52,    53,    57,    58,    59,    60,
+      61,    62,    64,    65,    66,    67,    68,    70,    71,    72,
+      73,    74,    75,    76,    78,    79,    80,    81,    82,    83,
+      84,    86,    88,    89,    90,    91,    92,    94,    95,    96,
+      97,    98,    99,   101,   102,   103,   104,   105,   106,   107,
+     108,   110,   111,   112,   113,   115,   116,   117,   118,   119,
+     120,   122,   123,   124,   125,   126
 };
 #endif
 
@@ -1175,361 +1175,361 @@ yyreduce:
   switch (yyn)
     {
   case 6: /* token: INT_CONSTANT  */
-#line 58 "psy.y"
+#line 57 "psy.y"
                         { printf("INT_CONSTANT: %d\n", (yyvsp[0].ival)); }
 #line 1181 "psy.tab.c"
     break;
 
   case 7: /* token: FLOAT_CONSTANT  */
-#line 59 "psy.y"
+#line 58 "psy.y"
                         { printf("FLOAT_CONSTANT: %f\n", (yyvsp[0].fval)); }
 #line 1187 "psy.tab.c"
     break;
 
   case 8: /* token: STRING_CONSTANT  */
-#line 60 "psy.y"
+#line 59 "psy.y"
                         { printf("STRING_CONSTANT: %s\n", (yyvsp[0].sval)); }
 #line 1193 "psy.tab.c"
     break;
 
   case 9: /* token: IDENTIFIER  */
-#line 61 "psy.y"
+#line 60 "psy.y"
                         { printf("IDENTIFIER: %s\n", (yyvsp[0].sval)); }
 #line 1199 "psy.tab.c"
     break;
 
   case 10: /* token: BOOL_CONSTANT  */
-#line 62 "psy.y"
+#line 61 "psy.y"
                         { printf("BOOL_CONSTANT: %d\n", (yyvsp[0].bval)); }
 #line 1205 "psy.tab.c"
     break;
 
   case 11: /* token: T_NULL  */
-#line 63 "psy.y"
+#line 62 "psy.y"
                         { printf("NULL\n"); }
 #line 1211 "psy.tab.c"
     break;
 
   case 12: /* token: PLUS  */
-#line 65 "psy.y"
+#line 64 "psy.y"
                         { printf("PLUS\n"); }
 #line 1217 "psy.tab.c"
     break;
 
   case 13: /* token: MINUS  */
-#line 66 "psy.y"
+#line 65 "psy.y"
                         { printf("MINUS\n"); }
 #line 1223 "psy.tab.c"
     break;
 
   case 14: /* token: STAR  */
-#line 67 "psy.y"
+#line 66 "psy.y"
                         { printf("STAR\n"); }
 #line 1229 "psy.tab.c"
     break;
 
   case 15: /* token: SLASH  */
-#line 68 "psy.y"
+#line 67 "psy.y"
                         { printf("SLASH\n"); }
 #line 1235 "psy.tab.c"
     break;
 
   case 16: /* token: PERC  */
-#line 69 "psy.y"
+#line 68 "psy.y"
                         { printf("PERC\n"); }
 #line 1241 "psy.tab.c"
     break;
 
   case 17: /* token: VAR  */
-#line 71 "psy.y"
+#line 70 "psy.y"
                         { printf("VAR\n"); }
 #line 1247 "psy.tab.c"
     break;
 
   case 18: /* token: INT  */
-#line 72 "psy.y"
+#line 71 "psy.y"
                         { printf("INT\n"); }
 #line 1253 "psy.tab.c"
     break;
 
   case 19: /* token: FLOAT  */
-#line 73 "psy.y"
+#line 72 "psy.y"
                         { printf("FLOAT\n"); }
 #line 1259 "psy.tab.c"
     break;
 
   case 20: /* token: STRING  */
-#line 74 "psy.y"
+#line 73 "psy.y"
                         { printf("STRING\n"); }
 #line 1265 "psy.tab.c"
     break;
 
   case 21: /* token: BOOL  */
-#line 75 "psy.y"
+#line 74 "psy.y"
                         { printf("BOOLEAN\n"); }
 #line 1271 "psy.tab.c"
     break;
 
   case 22: /* token: DYN  */
-#line 76 "psy.y"
+#line 75 "psy.y"
                         { printf("DYN\n"); }
 #line 1277 "psy.tab.c"
     break;
 
   case 23: /* token: LIST  */
-#line 77 "psy.y"
+#line 76 "psy.y"
                         { printf("LIST\n"); }
 #line 1283 "psy.tab.c"
     break;
 
   case 24: /* token: IF  */
-#line 79 "psy.y"
+#line 78 "psy.y"
                         { printf("IF\n"); }
 #line 1289 "psy.tab.c"
     break;
 
   case 25: /* token: ELSE  */
-#line 80 "psy.y"
+#line 79 "psy.y"
                         { printf("ELSE\n"); }
 #line 1295 "psy.tab.c"
     break;
 
   case 26: /* token: FOR  */
-#line 81 "psy.y"
+#line 80 "psy.y"
                         { printf("FOR\n"); }
 #line 1301 "psy.tab.c"
     break;
 
   case 27: /* token: WHILE  */
-#line 82 "psy.y"
+#line 81 "psy.y"
                         { printf("WHILE\n"); }
 #line 1307 "psy.tab.c"
     break;
 
   case 28: /* token: DO  */
-#line 83 "psy.y"
+#line 82 "psy.y"
                         { printf("DO\n"); }
 #line 1313 "psy.tab.c"
     break;
 
   case 29: /* token: BREAK  */
-#line 84 "psy.y"
+#line 83 "psy.y"
                         { printf("BREAK\n"); }
 #line 1319 "psy.tab.c"
     break;
 
   case 30: /* token: CONTINUE  */
-#line 85 "psy.y"
+#line 84 "psy.y"
                         { printf("CONTINUE\n"); }
 #line 1325 "psy.tab.c"
     break;
 
   case 31: /* token: ECH  */
-#line 87 "psy.y"
+#line 86 "psy.y"
                         { printf("ECHO\n"); }
 #line 1331 "psy.tab.c"
     break;
 
   case 32: /* token: EQ  */
-#line 89 "psy.y"
+#line 88 "psy.y"
                         { printf("EQ\n"); }
 #line 1337 "psy.tab.c"
     break;
 
   case 33: /* token: PLUS_EQ  */
-#line 90 "psy.y"
+#line 89 "psy.y"
                         { printf("PLUS_EQ\n"); }
 #line 1343 "psy.tab.c"
     break;
 
   case 34: /* token: MINUS_EQ  */
-#line 91 "psy.y"
+#line 90 "psy.y"
                         { printf("MINUS_EQ\n"); }
 #line 1349 "psy.tab.c"
     break;
 
   case 35: /* token: PLUS_PLUS  */
-#line 92 "psy.y"
+#line 91 "psy.y"
                         { printf("PLUS_PLUS\n"); }
 #line 1355 "psy.tab.c"
     break;
 
   case 36: /* token: MINUS_MINUS  */
-#line 93 "psy.y"
+#line 92 "psy.y"
                         { printf("MINUS_MINUS\n"); }
 #line 1361 "psy.tab.c"
     break;
 
   case 37: /* token: LESS  */
-#line 95 "psy.y"
+#line 94 "psy.y"
                         { printf("LESS\n"); }
 #line 1367 "psy.tab.c"
     break;
 
   case 38: /* token: GREATER  */
-#line 96 "psy.y"
+#line 95 "psy.y"
                         { printf("GREATER\n"); }
 #line 1373 "psy.tab.c"
     break;
 
   case 39: /* token: LESS_EQ  */
-#line 97 "psy.y"
+#line 96 "psy.y"
                         { printf("LESS_EQ\n"); }
 #line 1379 "psy.tab.c"
     break;
 
   case 40: /* token: GREATER_EQ  */
-#line 98 "psy.y"
+#line 97 "psy.y"
                         { printf("GREATER_EQ\n"); }
 #line 1385 "psy.tab.c"
     break;
 
   case 41: /* token: EQ_EQ  */
-#line 99 "psy.y"
+#line 98 "psy.y"
                         { printf("EQ_EQ\n"); }
 #line 1391 "psy.tab.c"
     break;
 
   case 42: /* token: BANG_EQ  */
-#line 100 "psy.y"
+#line 99 "psy.y"
                         { printf("BANG_EQ\n"); }
 #line 1397 "psy.tab.c"
     break;
 
   case 43: /* token: AND  */
-#line 102 "psy.y"
+#line 101 "psy.y"
                         { printf("AND\n"); }
 #line 1403 "psy.tab.c"
     break;
 
   case 44: /* token: DOUBLE_AND  */
-#line 103 "psy.y"
+#line 102 "psy.y"
                         { printf("DOUBLE_AND\n"); }
 #line 1409 "psy.tab.c"
     break;
 
   case 45: /* token: PIPE  */
-#line 104 "psy.y"
+#line 103 "psy.y"
                         { printf("PIPE\n"); }
 #line 1415 "psy.tab.c"
     break;
 
   case 46: /* token: DOUBLE_PIPE  */
-#line 105 "psy.y"
+#line 104 "psy.y"
                         { printf("DOUBLE_PIPE\n"); }
 #line 1421 "psy.tab.c"
     break;
 
   case 47: /* token: TILDE  */
-#line 106 "psy.y"
+#line 105 "psy.y"
                         { printf("TILDE\n"); }
 #line 1427 "psy.tab.c"
     break;
 
   case 48: /* token: BANG  */
-#line 107 "psy.y"
+#line 106 "psy.y"
                         { printf("BANG\n"); }
 #line 1433 "psy.tab.c"
     break;
 
   case 49: /* token: SHIFT_LEFT  */
-#line 108 "psy.y"
+#line 107 "psy.y"
                         { printf("SHIFT_LEFT\n"); }
 #line 1439 "psy.tab.c"
     break;
 
   case 50: /* token: SHIFT_RIGHT  */
-#line 109 "psy.y"
+#line 108 "psy.y"
                         { printf("SHIFT_RIGHT\n"); }
 #line 1445 "psy.tab.c"
     break;
 
   case 51: /* token: TYPE  */
-#line 111 "psy.y"
+#line 110 "psy.y"
                         { printf("TYPE\n");}
 #line 1451 "psy.tab.c"
     break;
 
   case 52: /* token: FUN  */
-#line 112 "psy.y"
+#line 111 "psy.y"
                         { printf("FUN\n");}
 #line 1457 "psy.tab.c"
     break;
 
   case 53: /* token: RET  */
-#line 113 "psy.y"
+#line 112 "psy.y"
                         { printf("RET\n");}
 #line 1463 "psy.tab.c"
     break;
 
   case 54: /* token: ARROW  */
-#line 114 "psy.y"
+#line 113 "psy.y"
                         { printf("ARROW\n");}
 #line 1469 "psy.tab.c"
     break;
 
   case 55: /* token: LEFT_PAREN  */
-#line 116 "psy.y"
+#line 115 "psy.y"
                         { printf("LEFT_PAREN\n"); }
 #line 1475 "psy.tab.c"
     break;
 
   case 56: /* token: RIGHT_PAREN  */
-#line 117 "psy.y"
+#line 116 "psy.y"
                         { printf("RIGHT_PAREN\n"); }
 #line 1481 "psy.tab.c"
     break;
 
   case 57: /* token: LEFT_BRACE  */
-#line 118 "psy.y"
+#line 117 "psy.y"
                         { printf("LEFT_BRACE\n"); }
 #line 1487 "psy.tab.c"
     break;
 
   case 58: /* token: RIGHT_BRACE  */
-#line 119 "psy.y"
+#line 118 "psy.y"
                         { printf("RIGHT_BRACE\n"); }
 #line 1493 "psy.tab.c"
     break;
 
   case 59: /* token: LEFT_SQUARE  */
-#line 120 "psy.y"
+#line 119 "psy.y"
                         { printf("LEFT_SQUARE\n"); }
 #line 1499 "psy.tab.c"
     break;
 
   case 60: /* token: RIGHT_SQUARE  */
-#line 121 "psy.y"
+#line 120 "psy.y"
                         { printf("RIGHT_SQUARE\n"); }
 #line 1505 "psy.tab.c"
     break;
 
   case 61: /* token: DOT  */
-#line 123 "psy.y"
+#line 122 "psy.y"
                         { printf("DOT\n"); }
 #line 1511 "psy.tab.c"
     break;
 
   case 62: /* token: COLON  */
-#line 124 "psy.y"
+#line 123 "psy.y"
                         { printf("COLON\n"); }
 #line 1517 "psy.tab.c"
     break;
 
   case 63: /* token: SEMI_COLON  */
-#line 125 "psy.y"
+#line 124 "psy.y"
                         { printf("SEMI_COLON\n"); }
 #line 1523 "psy.tab.c"
     break;
 
   case 64: /* token: QUESTION_MARK  */
-#line 126 "psy.y"
+#line 125 "psy.y"
                         { printf("QUESTION_MARK\n"); }
 #line 1529 "psy.tab.c"
     break;
 
   case 65: /* token: COMMA  */
-#line 127 "psy.y"
+#line 126 "psy.y"
                         { printf("COMMA\n"); }
 #line 1535 "psy.tab.c"
     break;
@@ -1728,7 +1728,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 130 "psy.y"
+#line 129 "psy.y"
 
 
 int main(void)
