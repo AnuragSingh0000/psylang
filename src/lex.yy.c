@@ -1,5 +1,5 @@
 
-#line 2 "lex.yy.c"
+#line 3 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -580,9 +580,9 @@ char string_buf[MAX_STR_CONST];
 char *string_pos;
 
 void yyerror(char *);
-#line 583 "lex.yy.c"
+#line 584 "lex.yy.c"
 
-#line 585 "lex.yy.c"
+#line 586 "lex.yy.c"
 
 #define INITIAL 0
 #define STR_DOUBLE 1
@@ -804,7 +804,7 @@ YY_DECL
 #line 19 "psy.l"
 
 
-#line 807 "lex.yy.c"
+#line 808 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1149,12 +1149,12 @@ return QUESTION_MARK;
 case 56:
 YY_RULE_SETUP
 #line 85 "psy.l"
-{yylval.bval = true; return BOOL_CONSTANT;}
+{ yylval.bval = true; return BOOL_CONSTANT; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
 #line 86 "psy.l"
-{yylval.bval = false; return BOOL_CONSTANT;}
+{ yylval.bval = false; return BOOL_CONSTANT; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
@@ -1303,7 +1303,7 @@ YY_RULE_SETUP
 #line 165 "psy.l"
 ECHO;
 	YY_BREAK
-#line 1306 "lex.yy.c"
+#line 1307 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
