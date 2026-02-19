@@ -8,7 +8,7 @@ GEN_SRCS = src/psy.tab.c src/lex.yy.c
 TEST_DIR = tests
 OUT_DIR = lexer_results
 
-.PHONY: all run clean run-tests
+.PHONY: all run clean run-lexer-tests
 
 all: $(TARGET)
 
