@@ -7,6 +7,8 @@ psylang is a custom programming language. Currently the lexical analyzer has bee
 - `src` - Lexer (psy.l) and parser (psy.y) specifications along with generated C code.
 - `tests` - Sample .psy files for testing language features.
 - `lexer_results` - Output and Expected output from running the lexer on test files.
+- `LangSpec.pdf` - Language Specification Document.
+
 
 ## Build and Usage
 
