@@ -1,0 +1,22 @@
+ primary -> BOOL_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+error: syntax error, unexpected IDENTIFIER, expecting ]
+  --> tests/failure/parser/unclosed_list_type.psy:2:18
+   |
+  2|     var list[3 ls = [1, 2, 3];
+   |                 ^--- Here
+

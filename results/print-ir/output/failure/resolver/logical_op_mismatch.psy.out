@@ -1,0 +1,9 @@
+Parsed OK
+error: Right operand of logical operator must be a boolean.
+  --> tests/failure/resolver/logical_op_mismatch.psy:1:14
+   |
+  1| var bool b = true && 10;
+   |              ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

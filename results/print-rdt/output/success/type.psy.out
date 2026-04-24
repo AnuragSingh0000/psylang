@@ -1,0 +1,590 @@
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> varDecl
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> inTypeDeclList varDecl
+ var_type -> STRING
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> inTypeDeclList varDecl
+ typeDecl -> TYPE IDENTIFIER LEFT_BRACE inTypeDeclList RIGHT_BRACE
+ declaration -> typeDecl
+ decList -> declaration
+ var_type -> STRING
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> varDecl
+ var_type -> IDENTIFIER
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> inTypeDeclList varDecl
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> inTypeDeclList varDecl
+ typeDecl -> TYPE IDENTIFIER LEFT_BRACE inTypeDeclList RIGHT_BRACE
+ declaration -> typeDecl
+ decList -> decList declaration
+ var_type -> STRING
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> varDecl
+ var_type -> IDENTIFIER
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> inTypeDeclList varDecl
+ typeDecl -> TYPE IDENTIFIER LEFT_BRACE inTypeDeclList RIGHT_BRACE
+ declaration -> typeDecl
+ decList -> declaration
+ var_type -> IDENTIFIER
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ declaration -> varDecl
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ statement -> block
+ declaration -> statement
+ decList -> decList declaration
+ var_type -> IDENTIFIER
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ declaration -> varDecl
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ call_access -> call_access DOT IDENTIFIER
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ call_access -> call_access DOT IDENTIFIER
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ call_access -> call_access DOT IDENTIFIER
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ var_type -> IDENTIFIER
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ call_access -> call_access DOT IDENTIFIER
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    decList
+      decList
+        decList
+          decList
+            decList
+              decList
+                decList
+                  decList
+                    decList
+                      decList
+                        declaration
+                          typeDecl
+                            TYPE (type)
+                            IDENTIFIER (Point)
+                            LEFT_BRACE ({)
+                            inTypeDeclList
+                              inTypeDeclList
+                                inTypeDeclList
+                                  varDecl
+                                    VAR (var)
+                                    var_type
+                                      INT (int)
+                                    IDENTIFIER (x)
+                                    SEMI_COLON (;)
+                                varDecl
+                                  VAR (var)
+                                  var_type
+                                    INT (int)
+                                  IDENTIFIER (y)
+                                  SEMI_COLON (;)
+                              varDecl
+                                VAR (var)
+                                var_type
+                                  STRING (string)
+                                IDENTIFIER (label)
+                                SEMI_COLON (;)
+                            RIGHT_BRACE (})
+                      declaration
+                        typeDecl
+                          TYPE (type)
+                          IDENTIFIER (Student)
+                          LEFT_BRACE ({)
+                          inTypeDeclList
+                            inTypeDeclList
+                              inTypeDeclList
+                                varDecl
+                                  VAR (var)
+                                  var_type
+                                    STRING (string)
+                                  IDENTIFIER (name)
+                                  SEMI_COLON (;)
+                              varDecl
+                                VAR (var)
+                                var_type
+                                  IDENTIFIER (Point)
+                                IDENTIFIER (coords)
+                                SEMI_COLON (;)
+                            varDecl
+                              VAR (var)
+                              var_type
+                                INT (int)
+                              IDENTIFIER (roll)
+                              SEMI_COLON (;)
+                          RIGHT_BRACE (})
+                    declaration
+                      statement
+                        block
+                          LEFT_BRACE ({)
+                          decList
+                            decList
+                              decList
+                                declaration
+                                  typeDecl
+                                    TYPE (type)
+                                    IDENTIFIER (Student)
+                                    LEFT_BRACE ({)
+                                    inTypeDeclList
+                                      inTypeDeclList
+                                        varDecl
+                                          VAR (var)
+                                          var_type
+                                            STRING (string)
+                                          IDENTIFIER (name)
+                                          SEMI_COLON (;)
+                                      varDecl
+                                        VAR (var)
+                                        var_type
+                                          IDENTIFIER (Point)
+                                        IDENTIFIER (coords)
+                                        SEMI_COLON (;)
+                                    RIGHT_BRACE (})
+                              declaration
+                                varDecl
+                                  VAR (var)
+                                  var_type
+                                    IDENTIFIER (Student)
+                                  IDENTIFIER (s1)
+                                  SEMI_COLON (;)
+                            declaration
+                              statement
+                                exprStmt
+                                  expression
+                                    assignment
+                                      call_access
+                                        call_access
+                                          primary
+                                            IDENTIFIER (s1)
+                                        DOT (.)
+                                        IDENTIFIER (name)
+                                      EQ (=)
+                                      assignment
+                                        ternary
+                                          logic_or
+                                            logic_and
+                                              bitwise_or
+                                                bitwise_xor
+                                                  bitwise_and
+                                                    equality
+                                                      comparison
+                                                        shift
+                                                          term
+                                                            factor
+                                                              unary
+                                                                call_access
+                                                                  primary
+                                                                    STRING_CONSTANT (Eren Yeager)
+                                  SEMI_COLON (;)
+                          RIGHT_BRACE (})
+                  declaration
+                    varDecl
+                      VAR (var)
+                      var_type
+                        IDENTIFIER (Student)
+                      IDENTIFIER (s1)
+                      SEMI_COLON (;)
+                declaration
+                  statement
+                    exprStmt
+                      expression
+                        assignment
+                          call_access
+                            call_access
+                              primary
+                                IDENTIFIER (s1)
+                            DOT (.)
+                            IDENTIFIER (name)
+                          EQ (=)
+                          assignment
+                            ternary
+                              logic_or
+                                logic_and
+                                  bitwise_or
+                                    bitwise_xor
+                                      bitwise_and
+                                        equality
+                                          comparison
+                                            shift
+                                              term
+                                                factor
+                                                  unary
+                                                    call_access
+                                                      primary
+                                                        STRING_CONSTANT (Eren Yeager)
+                      SEMI_COLON (;)
+              declaration
+                statement
+                  exprStmt
+                    expression
+                      assignment
+                        call_access
+                          call_access
+                            primary
+                              IDENTIFIER (s1)
+                          DOT (.)
+                          IDENTIFIER (roll)
+                        EQ (=)
+                        assignment
+                          ternary
+                            logic_or
+                              logic_and
+                                bitwise_or
+                                  bitwise_xor
+                                    bitwise_and
+                                      equality
+                                        comparison
+                                          shift
+                                            term
+                                              factor
+                                                unary
+                                                  call_access
+                                                    primary
+                                                      INT_CONSTANT (139)
+                    SEMI_COLON (;)
+            declaration
+              statement
+                exprStmt
+                  expression
+                    assignment
+                      call_access
+                        call_access
+                          call_access
+                            primary
+                              IDENTIFIER (s1)
+                          DOT (.)
+                          IDENTIFIER (coords)
+                        DOT (.)
+                        IDENTIFIER (x)
+                      EQ (=)
+                      assignment
+                        ternary
+                          logic_or
+                            logic_and
+                              bitwise_or
+                                bitwise_xor
+                                  bitwise_and
+                                    equality
+                                      comparison
+                                        shift
+                                          term
+                                            factor
+                                              unary
+                                                call_access
+                                                  primary
+                                                    INT_CONSTANT (13)
+                  SEMI_COLON (;)
+          declaration
+            statement
+              exprStmt
+                expression
+                  assignment
+                    call_access
+                      call_access
+                        call_access
+                          primary
+                            IDENTIFIER (s1)
+                        DOT (.)
+                        IDENTIFIER (coords)
+                      DOT (.)
+                      IDENTIFIER (y)
+                    EQ (=)
+                    assignment
+                      ternary
+                        logic_or
+                          logic_and
+                            bitwise_or
+                              bitwise_xor
+                                bitwise_and
+                                  equality
+                                    comparison
+                                      shift
+                                        term
+                                          factor
+                                            unary
+                                              call_access
+                                                primary
+                                                  INT_CONSTANT (9)
+                SEMI_COLON (;)
+        declaration
+          statement
+            exprStmt
+              expression
+                assignment
+                  call_access
+                    call_access
+                      call_access
+                        primary
+                          IDENTIFIER (s1)
+                      DOT (.)
+                      IDENTIFIER (coords)
+                    DOT (.)
+                    IDENTIFIER (label)
+                  EQ (=)
+                  assignment
+                    ternary
+                      logic_or
+                        logic_and
+                          bitwise_or
+                            bitwise_xor
+                              bitwise_and
+                                equality
+                                  comparison
+                                    shift
+                                      term
+                                        factor
+                                          unary
+                                            call_access
+                                              primary
+                                                STRING_CONSTANT (Paradis)
+              SEMI_COLON (;)
+      declaration
+        varDecl
+          VAR (var)
+          var_type
+            IDENTIFIER (Student)
+          IDENTIFIER (s2)
+          EQ (=)
+          expression
+            assignment
+              ternary
+                logic_or
+                  logic_and
+                    bitwise_or
+                      bitwise_xor
+                        bitwise_and
+                          equality
+                            comparison
+                              shift
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          IDENTIFIER (s1)
+          SEMI_COLON (;)
+    declaration
+      statement
+        exprStmt
+          expression
+            assignment
+              call_access
+                call_access
+                  call_access
+                    primary
+                      IDENTIFIER (s2)
+                  DOT (.)
+                  IDENTIFIER (coords)
+                DOT (.)
+                IDENTIFIER (x)
+              EQ (=)
+              assignment
+                ternary
+                  logic_or
+                    logic_and
+                      bitwise_or
+                        bitwise_xor
+                          bitwise_and
+                            equality
+                              comparison
+                                shift
+                                  term
+                                    factor
+                                      unary
+                                        call_access
+                                          primary
+                                            INT_CONSTANT (100)
+          SEMI_COLON (;)

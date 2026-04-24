@@ -1,0 +1,8 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Student)
+    VAR_DECL (id)
+      VAR_TYPE (int)
+  VAR_DECL (Student)
+    VAR_TYPE (int)
+    PRIMARY (5)

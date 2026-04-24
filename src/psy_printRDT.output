@@ -1,0 +1,3857 @@
+State 199 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: decList
+
+    2 decList: decList declaration
+    3        | declaration
+
+    4 declaration: typeDecl
+    5            | funDecl
+    6            | varDecl
+    7            | statement
+
+    8 typeDecl: TYPE IDENTIFIER LEFT_BRACE varDeclList RIGHT_BRACE
+
+    9 funDecl: FUN IDENTIFIER function
+
+   10 function: LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+   11         | LEFT_PAREN RIGHT_PAREN ARROW var_type block
+
+   12 parameters: parameters COMMA typedVar
+   13           | typedVar
+
+   14 typedVar: IDENTIFIER COLON var_type
+
+   15 var_type: INT
+   16         | FLOAT
+   17         | STRING
+   18         | BOOL
+   19         | DYN
+   20         | LIST LEFT_SQUARE INT_CONSTANT RIGHT_SQUARE
+   21         | IDENTIFIER
+
+   22 varDeclList: varDeclList varDecl
+   23            | varDecl
+
+   24 varDecl: VAR var_type IDENTIFIER EQ expression SEMI_COLON
+   25        | VAR var_type IDENTIFIER SEMI_COLON
+
+   26 statement: exprStmt
+   27          | forStmt
+   28          | ifStmt
+   29          | echoStmt
+   30          | returnStmt
+   31          | whileStmt
+   32          | dowhileStmt
+   33          | breakStmt
+   34          | continueStmt
+   35          | block
+
+   36 exprStmt: expression SEMI_COLON
+
+   37 forStmt: FOR LEFT_PAREN forInit optExpr SEMI_COLON optExpr RIGHT_PAREN statement
+
+   38 forInit: varDecl
+   39        | exprStmt
+   40        | SEMI_COLON
+
+   41 optExpr: expression
+   42        | ε
+
+   43 ifStmt: IF LEFT_PAREN expression RIGHT_PAREN statement ELSE statement
+   44       | IF LEFT_PAREN expression RIGHT_PAREN statement
+
+   45 echoStmt: ECH expression SEMI_COLON
+
+   46 returnStmt: RET expression SEMI_COLON
+   47           | RET SEMI_COLON
+
+   48 whileStmt: WHILE LEFT_PAREN expression RIGHT_PAREN statement
+
+   49 dowhileStmt: DO statement WHILE LEFT_PAREN expression RIGHT_PAREN SEMI_COLON
+
+   50 breakStmt: BREAK SEMI_COLON
+
+   51 continueStmt: CONTINUE SEMI_COLON
+
+   52 block: LEFT_BRACE decList RIGHT_BRACE
+   53      | LEFT_BRACE RIGHT_BRACE
+
+   54 expression: assignment
+
+   55 assignment: call_access EQ assignment
+   56           | call_access PLUS_EQ assignment
+   57           | call_access MINUS_EQ assignment
+   58           | call_access STAR_EQ assignment
+   59           | call_access SLASH_EQ assignment
+   60           | call_access PERC_EQ assignment
+   61           | ternary
+
+   62 ternary: logic_or QUESTION_MARK ternary COLON ternary
+   63        | logic_or
+
+   64 logic_or: logic_or DOUBLE_PIPE logic_and
+   65         | logic_and
+
+   66 logic_and: logic_and DOUBLE_AND bitwise_or
+   67          | bitwise_or
+
+   68 bitwise_or: bitwise_or PIPE bitwise_xor
+   69           | bitwise_xor
+
+   70 bitwise_xor: bitwise_xor XOR bitwise_and
+   71            | bitwise_and
+
+   72 bitwise_and: bitwise_and AND equality
+   73            | equality
+
+   74 equality: equality BANG_EQ comparison
+   75         | equality EQ_EQ comparison
+   76         | comparison
+
+   77 comparison: comparison GREATER shift
+   78           | comparison LESS shift
+   79           | comparison GREATER_EQ shift
+   80           | comparison LESS_EQ shift
+   81           | shift
+
+   82 shift: shift SHIFT_LEFT term
+   83      | shift SHIFT_RIGHT term
+   84      | term
+
+   85 term: term PLUS factor
+   86     | term MINUS factor
+   87     | factor
+
+   88 factor: factor SLASH unary
+   89       | factor STAR unary
+   90       | factor PERC unary
+   91       | unary
+
+   92 unary: BANG unary
+   93      | TILDE unary
+   94      | MINUS unary
+   95      | PLUS_PLUS unary
+   96      | MINUS_MINUS unary
+   97      | call_access
+
+   98 call_access: call_access LEFT_PAREN arguments RIGHT_PAREN
+   99            | call_access LEFT_PAREN RIGHT_PAREN
+  100            | call_access DOT IDENTIFIER
+  101            | call_access LEFT_SQUARE expression RIGHT_SQUARE
+  102            | call_access PLUS_PLUS
+  103            | call_access MINUS_MINUS
+  104            | primary
+
+  105 primary: BOOL_CONSTANT
+  106        | T_NULL
+  107        | INT_CONSTANT
+  108        | FLOAT_CONSTANT
+  109        | STRING_CONSTANT
+  110        | IDENTIFIER
+  111        | anonFunc
+  112        | LEFT_PAREN expression RIGHT_PAREN
+  113        | LEFT_SQUARE elements RIGHT_SQUARE
+  114        | LEFT_SQUARE RIGHT_SQUARE
+
+  115 anonFunc: LAMBDA function
+
+  116 arguments: arguments COMMA expression
+  117          | expression
+
+  118 elements: elements COMMA expression
+  119         | expression
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    INT_CONSTANT <ival> (258) 20 107
+    FLOAT_CONSTANT <fval> (259) 108
+    IDENTIFIER <sval> (260) 8 9 14 21 24 25 100 110
+    STRING_CONSTANT <sval> (261) 109
+    BOOL_CONSTANT <bval> (262) 105
+    T_NULL (263) 106
+    VAR (264) 24 25
+    INT (265) 15
+    FLOAT (266) 16
+    STRING (267) 17
+    BOOL (268) 18
+    LIST (269) 20
+    DYN (270) 19
+    PLUS (271) 85
+    MINUS (272) 86 94
+    STAR (273) 89
+    SLASH (274) 88
+    PERC (275) 90
+    LESS (276) 78
+    GREATER (277) 77
+    LESS_EQ (278) 80
+    GREATER_EQ (279) 79
+    BANG_EQ (280) 74
+    EQ_EQ (281) 75
+    AND (282) 72
+    DOUBLE_AND (283) 66
+    PIPE (284) 68
+    DOUBLE_PIPE (285) 64
+    TILDE (286) 93
+    XOR (287) 70
+    SHIFT_LEFT (288) 82
+    SHIFT_RIGHT (289) 83
+    EQ (290) 24 55
+    PLUS_EQ (291) 56
+    MINUS_EQ (292) 57
+    STAR_EQ (293) 58
+    SLASH_EQ (294) 59
+    PERC_EQ (295) 60
+    PLUS_PLUS (296) 95 102
+    MINUS_MINUS (297) 96 103
+    QUESTION_MARK (298) 62
+    BANG (299) 92
+    ECH (300) 45
+    IF (301) 43 44
+    ELSE (302) 43
+    FOR (303) 37
+    DO (304) 49
+    WHILE (305) 48 49
+    BREAK (306) 50
+    CONTINUE (307) 51
+    TYPE (308) 8
+    FUN (309) 9
+    RET (310) 46 47
+    ARROW (311) 10 11
+    LAMBDA (312) 115
+    LEFT_PAREN (313) 10 11 37 43 44 48 49 98 99 112
+    RIGHT_PAREN (314) 10 11 37 43 44 48 49 98 99 112
+    LEFT_BRACE (315) 8 52 53
+    RIGHT_BRACE (316) 8 52 53
+    LEFT_SQUARE (317) 20 101 113 114
+    RIGHT_SQUARE (318) 20 101 113 114
+    DOT (319) 100
+    COLON (320) 14 62
+    SEMI_COLON (321) 24 25 36 37 40 45 46 47 49 50 51
+    COMMA (322) 12 116 118
+
+
+Nonterminals, with rules where they appear
+
+    $accept (68)
+        on left: 0
+    program <node> (69)
+        on left: 1
+        on right: 0
+    decList <node> (70)
+        on left: 2 3
+        on right: 1 2 52
+    declaration <node> (71)
+        on left: 4 5 6 7
+        on right: 2 3
+    typeDecl <node> (72)
+        on left: 8
+        on right: 4
+    funDecl <node> (73)
+        on left: 9
+        on right: 5
+    function <node> (74)
+        on left: 10 11
+        on right: 9 115
+    parameters <node> (75)
+        on left: 12 13
+        on right: 10 12
+    typedVar <node> (76)
+        on left: 14
+        on right: 12 13
+    var_type <node> (77)
+        on left: 15 16 17 18 19 20 21
+        on right: 10 11 14 24 25
+    varDeclList <node> (78)
+        on left: 22 23
+        on right: 8 22
+    varDecl <node> (79)
+        on left: 24 25
+        on right: 6 22 23 38
+    statement <node> (80)
+        on left: 26 27 28 29 30 31 32 33 34 35
+        on right: 7 37 43 44 48 49
+    exprStmt <node> (81)
+        on left: 36
+        on right: 26 39
+    forStmt <node> (82)
+        on left: 37
+        on right: 27
+    forInit <node> (83)
+        on left: 38 39 40
+        on right: 37
+    optExpr <node> (84)
+        on left: 41 42
+        on right: 37
+    ifStmt <node> (85)
+        on left: 43 44
+        on right: 28
+    echoStmt <node> (86)
+        on left: 45
+        on right: 29
+    returnStmt <node> (87)
+        on left: 46 47
+        on right: 30
+    whileStmt <node> (88)
+        on left: 48
+        on right: 31
+    dowhileStmt <node> (89)
+        on left: 49
+        on right: 32
+    breakStmt <node> (90)
+        on left: 50
+        on right: 33
+    continueStmt <node> (91)
+        on left: 51
+        on right: 34
+    block <node> (92)
+        on left: 52 53
+        on right: 10 11 35
+    expression <node> (93)
+        on left: 54
+        on right: 24 36 41 43 44 45 46 48 49 101 112 116 117 118 119
+    assignment <node> (94)
+        on left: 55 56 57 58 59 60 61
+        on right: 54 55 56 57 58 59 60
+    ternary <node> (95)
+        on left: 62 63
+        on right: 61 62
+    logic_or <node> (96)
+        on left: 64 65
+        on right: 62 63 64
+    logic_and <node> (97)
+        on left: 66 67
+        on right: 64 65 66
+    bitwise_or <node> (98)
+        on left: 68 69
+        on right: 66 67 68
+    bitwise_xor <node> (99)
+        on left: 70 71
+        on right: 68 69 70
+    bitwise_and <node> (100)
+        on left: 72 73
+        on right: 70 71 72
+    equality <node> (101)
+        on left: 74 75 76
+        on right: 72 73 74 75
+    comparison <node> (102)
+        on left: 77 78 79 80 81
+        on right: 74 75 76 77 78 79 80
+    shift <node> (103)
+        on left: 82 83 84
+        on right: 77 78 79 80 81 82 83
+    term <node> (104)
+        on left: 85 86 87
+        on right: 82 83 84 85 86
+    factor <node> (105)
+        on left: 88 89 90 91
+        on right: 85 86 87 88 89 90
+    unary <node> (106)
+        on left: 92 93 94 95 96 97
+        on right: 88 89 90 91 92 93 94 95 96
+    call_access <node> (107)
+        on left: 98 99 100 101 102 103 104
+        on right: 55 56 57 58 59 60 97 98 99 100 101 102 103
+    primary <node> (108)
+        on left: 105 106 107 108 109 110 111 112 113 114
+        on right: 104
+    anonFunc <node> (109)
+        on left: 115
+        on right: 111
+    arguments <node> (110)
+        on left: 116 117
+        on right: 98 116
+    elements <node> (111)
+        on left: 118 119
+        on right: 113 118
+
+
+State 0
+
+    0 $accept: • program $end
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    VAR              shift, and go to state 7
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    TYPE             shift, and go to state 20
+    FUN              shift, and go to state 21
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    LEFT_SQUARE      shift, and go to state 26
+
+    program       go to state 27
+    decList       go to state 28
+    declaration   go to state 29
+    typeDecl      go to state 30
+    funDecl       go to state 31
+    varDecl       go to state 32
+    statement     go to state 33
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 1
+
+  107 primary: INT_CONSTANT •
+
+    $default  reduce using rule 107 (primary)
+
+
+State 2
+
+  108 primary: FLOAT_CONSTANT •
+
+    $default  reduce using rule 108 (primary)
+
+
+State 3
+
+  110 primary: IDENTIFIER •
+
+    $default  reduce using rule 110 (primary)
+
+
+State 4
+
+  109 primary: STRING_CONSTANT •
+
+    $default  reduce using rule 109 (primary)
+
+
+State 5
+
+  105 primary: BOOL_CONSTANT •
+
+    $default  reduce using rule 105 (primary)
+
+
+State 6
+
+  106 primary: T_NULL •
+
+    $default  reduce using rule 106 (primary)
+
+
+State 7
+
+   24 varDecl: VAR • var_type IDENTIFIER EQ expression SEMI_COLON
+   25        | VAR • var_type IDENTIFIER SEMI_COLON
+
+    IDENTIFIER  shift, and go to state 61
+    INT         shift, and go to state 62
+    FLOAT       shift, and go to state 63
+    STRING      shift, and go to state 64
+    BOOL        shift, and go to state 65
+    LIST        shift, and go to state 66
+    DYN         shift, and go to state 67
+
+    var_type  go to state 68
+
+
+State 8
+
+   94 unary: MINUS • unary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    unary        go to state 69
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 9
+
+   93 unary: TILDE • unary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    unary        go to state 71
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 10
+
+   95 unary: PLUS_PLUS • unary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    unary        go to state 72
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 11
+
+   96 unary: MINUS_MINUS • unary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    unary        go to state 73
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 12
+
+   92 unary: BANG • unary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    unary        go to state 74
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 13
+
+   45 echoStmt: ECH • expression SEMI_COLON
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 75
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 14
+
+   43 ifStmt: IF • LEFT_PAREN expression RIGHT_PAREN statement ELSE statement
+   44       | IF • LEFT_PAREN expression RIGHT_PAREN statement
+
+    LEFT_PAREN  shift, and go to state 76
+
+
+State 15
+
+   37 forStmt: FOR • LEFT_PAREN forInit optExpr SEMI_COLON optExpr RIGHT_PAREN statement
+
+    LEFT_PAREN  shift, and go to state 77
+
+
+State 16
+
+   49 dowhileStmt: DO • statement WHILE LEFT_PAREN expression RIGHT_PAREN SEMI_COLON
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    LEFT_SQUARE      shift, and go to state 26
+
+    statement     go to state 78
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 17
+
+   48 whileStmt: WHILE • LEFT_PAREN expression RIGHT_PAREN statement
+
+    LEFT_PAREN  shift, and go to state 79
+
+
+State 18
+
+   50 breakStmt: BREAK • SEMI_COLON
+
+    SEMI_COLON  shift, and go to state 80
+
+
+State 19
+
+   51 continueStmt: CONTINUE • SEMI_COLON
+
+    SEMI_COLON  shift, and go to state 81
+
+
+State 20
+
+    8 typeDecl: TYPE • IDENTIFIER LEFT_BRACE varDeclList RIGHT_BRACE
+
+    IDENTIFIER  shift, and go to state 82
+
+
+State 21
+
+    9 funDecl: FUN • IDENTIFIER function
+
+    IDENTIFIER  shift, and go to state 83
+
+
+State 22
+
+   46 returnStmt: RET • expression SEMI_COLON
+   47           | RET • SEMI_COLON
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+    SEMI_COLON       shift, and go to state 84
+
+    expression   go to state 85
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 23
+
+  115 anonFunc: LAMBDA • function
+
+    LEFT_PAREN  shift, and go to state 86
+
+    function  go to state 87
+
+
+State 24
+
+  112 primary: LEFT_PAREN • expression RIGHT_PAREN
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 88
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 25
+
+   52 block: LEFT_BRACE • decList RIGHT_BRACE
+   53      | LEFT_BRACE • RIGHT_BRACE
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    VAR              shift, and go to state 7
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    TYPE             shift, and go to state 20
+    FUN              shift, and go to state 21
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    RIGHT_BRACE      shift, and go to state 89
+    LEFT_SQUARE      shift, and go to state 26
+
+    decList       go to state 90
+    declaration   go to state 29
+    typeDecl      go to state 30
+    funDecl       go to state 31
+    varDecl       go to state 32
+    statement     go to state 33
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 26
+
+  113 primary: LEFT_SQUARE • elements RIGHT_SQUARE
+  114        | LEFT_SQUARE • RIGHT_SQUARE
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+    RIGHT_SQUARE     shift, and go to state 91
+
+    expression   go to state 92
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+    elements     go to state 93
+
+
+State 27
+
+    0 $accept: program • $end
+
+    $end  shift, and go to state 94
+
+
+State 28
+
+    1 program: decList •
+    2 decList: decList • declaration
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    VAR              shift, and go to state 7
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    TYPE             shift, and go to state 20
+    FUN              shift, and go to state 21
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    LEFT_SQUARE      shift, and go to state 26
+
+    $default  reduce using rule 1 (program)
+
+    declaration   go to state 95
+    typeDecl      go to state 30
+    funDecl       go to state 31
+    varDecl       go to state 32
+    statement     go to state 33
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 29
+
+    3 decList: declaration •
+
+    $default  reduce using rule 3 (decList)
+
+
+State 30
+
+    4 declaration: typeDecl •
+
+    $default  reduce using rule 4 (declaration)
+
+
+State 31
+
+    5 declaration: funDecl •
+
+    $default  reduce using rule 5 (declaration)
+
+
+State 32
+
+    6 declaration: varDecl •
+
+    $default  reduce using rule 6 (declaration)
+
+
+State 33
+
+    7 declaration: statement •
+
+    $default  reduce using rule 7 (declaration)
+
+
+State 34
+
+   26 statement: exprStmt •
+
+    $default  reduce using rule 26 (statement)
+
+
+State 35
+
+   27 statement: forStmt •
+
+    $default  reduce using rule 27 (statement)
+
+
+State 36
+
+   28 statement: ifStmt •
+
+    $default  reduce using rule 28 (statement)
+
+
+State 37
+
+   29 statement: echoStmt •
+
+    $default  reduce using rule 29 (statement)
+
+
+State 38
+
+   30 statement: returnStmt •
+
+    $default  reduce using rule 30 (statement)
+
+
+State 39
+
+   31 statement: whileStmt •
+
+    $default  reduce using rule 31 (statement)
+
+
+State 40
+
+   32 statement: dowhileStmt •
+
+    $default  reduce using rule 32 (statement)
+
+
+State 41
+
+   33 statement: breakStmt •
+
+    $default  reduce using rule 33 (statement)
+
+
+State 42
+
+   34 statement: continueStmt •
+
+    $default  reduce using rule 34 (statement)
+
+
+State 43
+
+   35 statement: block •
+
+    $default  reduce using rule 35 (statement)
+
+
+State 44
+
+   36 exprStmt: expression • SEMI_COLON
+
+    SEMI_COLON  shift, and go to state 96
+
+
+State 45
+
+   54 expression: assignment •
+
+    $default  reduce using rule 54 (expression)
+
+
+State 46
+
+   61 assignment: ternary •
+
+    $default  reduce using rule 61 (assignment)
+
+
+State 47
+
+   62 ternary: logic_or • QUESTION_MARK ternary COLON ternary
+   63        | logic_or •
+   64 logic_or: logic_or • DOUBLE_PIPE logic_and
+
+    DOUBLE_PIPE    shift, and go to state 97
+    QUESTION_MARK  shift, and go to state 98
+
+    $default  reduce using rule 63 (ternary)
+
+
+State 48
+
+   65 logic_or: logic_and •
+   66 logic_and: logic_and • DOUBLE_AND bitwise_or
+
+    DOUBLE_AND  shift, and go to state 99
+
+    $default  reduce using rule 65 (logic_or)
+
+
+State 49
+
+   67 logic_and: bitwise_or •
+   68 bitwise_or: bitwise_or • PIPE bitwise_xor
+
+    PIPE  shift, and go to state 100
+
+    $default  reduce using rule 67 (logic_and)
+
+
+State 50
+
+   69 bitwise_or: bitwise_xor •
+   70 bitwise_xor: bitwise_xor • XOR bitwise_and
+
+    XOR  shift, and go to state 101
+
+    $default  reduce using rule 69 (bitwise_or)
+
+
+State 51
+
+   71 bitwise_xor: bitwise_and •
+   72 bitwise_and: bitwise_and • AND equality
+
+    AND  shift, and go to state 102
+
+    $default  reduce using rule 71 (bitwise_xor)
+
+
+State 52
+
+   73 bitwise_and: equality •
+   74 equality: equality • BANG_EQ comparison
+   75         | equality • EQ_EQ comparison
+
+    BANG_EQ  shift, and go to state 103
+    EQ_EQ    shift, and go to state 104
+
+    $default  reduce using rule 73 (bitwise_and)
+
+
+State 53
+
+   76 equality: comparison •
+   77 comparison: comparison • GREATER shift
+   78           | comparison • LESS shift
+   79           | comparison • GREATER_EQ shift
+   80           | comparison • LESS_EQ shift
+
+    LESS        shift, and go to state 105
+    GREATER     shift, and go to state 106
+    LESS_EQ     shift, and go to state 107
+    GREATER_EQ  shift, and go to state 108
+
+    $default  reduce using rule 76 (equality)
+
+
+State 54
+
+   81 comparison: shift •
+   82 shift: shift • SHIFT_LEFT term
+   83      | shift • SHIFT_RIGHT term
+
+    SHIFT_LEFT   shift, and go to state 109
+    SHIFT_RIGHT  shift, and go to state 110
+
+    $default  reduce using rule 81 (comparison)
+
+
+State 55
+
+   84 shift: term •
+   85 term: term • PLUS factor
+   86     | term • MINUS factor
+
+    PLUS   shift, and go to state 111
+    MINUS  shift, and go to state 112
+
+    $default  reduce using rule 84 (shift)
+
+
+State 56
+
+   87 term: factor •
+   88 factor: factor • SLASH unary
+   89       | factor • STAR unary
+   90       | factor • PERC unary
+
+    STAR   shift, and go to state 113
+    SLASH  shift, and go to state 114
+    PERC   shift, and go to state 115
+
+    $default  reduce using rule 87 (term)
+
+
+State 57
+
+   91 factor: unary •
+
+    $default  reduce using rule 91 (factor)
+
+
+State 58
+
+   55 assignment: call_access • EQ assignment
+   56           | call_access • PLUS_EQ assignment
+   57           | call_access • MINUS_EQ assignment
+   58           | call_access • STAR_EQ assignment
+   59           | call_access • SLASH_EQ assignment
+   60           | call_access • PERC_EQ assignment
+   97 unary: call_access •
+   98 call_access: call_access • LEFT_PAREN arguments RIGHT_PAREN
+   99            | call_access • LEFT_PAREN RIGHT_PAREN
+  100            | call_access • DOT IDENTIFIER
+  101            | call_access • LEFT_SQUARE expression RIGHT_SQUARE
+  102            | call_access • PLUS_PLUS
+  103            | call_access • MINUS_MINUS
+
+    EQ           shift, and go to state 116
+    PLUS_EQ      shift, and go to state 117
+    MINUS_EQ     shift, and go to state 118
+    STAR_EQ      shift, and go to state 119
+    SLASH_EQ     shift, and go to state 120
+    PERC_EQ      shift, and go to state 121
+    PLUS_PLUS    shift, and go to state 122
+    MINUS_MINUS  shift, and go to state 123
+    LEFT_PAREN   shift, and go to state 124
+    LEFT_SQUARE  shift, and go to state 125
+    DOT          shift, and go to state 126
+
+    $default  reduce using rule 97 (unary)
+
+
+State 59
+
+  104 call_access: primary •
+
+    $default  reduce using rule 104 (call_access)
+
+
+State 60
+
+  111 primary: anonFunc •
+
+    $default  reduce using rule 111 (primary)
+
+
+State 61
+
+   21 var_type: IDENTIFIER •
+
+    $default  reduce using rule 21 (var_type)
+
+
+State 62
+
+   15 var_type: INT •
+
+    $default  reduce using rule 15 (var_type)
+
+
+State 63
+
+   16 var_type: FLOAT •
+
+    $default  reduce using rule 16 (var_type)
+
+
+State 64
+
+   17 var_type: STRING •
+
+    $default  reduce using rule 17 (var_type)
+
+
+State 65
+
+   18 var_type: BOOL •
+
+    $default  reduce using rule 18 (var_type)
+
+
+State 66
+
+   20 var_type: LIST • LEFT_SQUARE INT_CONSTANT RIGHT_SQUARE
+
+    LEFT_SQUARE  shift, and go to state 127
+
+
+State 67
+
+   19 var_type: DYN •
+
+    $default  reduce using rule 19 (var_type)
+
+
+State 68
+
+   24 varDecl: VAR var_type • IDENTIFIER EQ expression SEMI_COLON
+   25        | VAR var_type • IDENTIFIER SEMI_COLON
+
+    IDENTIFIER  shift, and go to state 128
+
+
+State 69
+
+   94 unary: MINUS unary •
+
+    $default  reduce using rule 94 (unary)
+
+
+State 70
+
+   97 unary: call_access •
+   98 call_access: call_access • LEFT_PAREN arguments RIGHT_PAREN
+   99            | call_access • LEFT_PAREN RIGHT_PAREN
+  100            | call_access • DOT IDENTIFIER
+  101            | call_access • LEFT_SQUARE expression RIGHT_SQUARE
+  102            | call_access • PLUS_PLUS
+  103            | call_access • MINUS_MINUS
+
+    PLUS_PLUS    shift, and go to state 122
+    MINUS_MINUS  shift, and go to state 123
+    LEFT_PAREN   shift, and go to state 124
+    LEFT_SQUARE  shift, and go to state 125
+    DOT          shift, and go to state 126
+
+    $default  reduce using rule 97 (unary)
+
+
+State 71
+
+   93 unary: TILDE unary •
+
+    $default  reduce using rule 93 (unary)
+
+
+State 72
+
+   95 unary: PLUS_PLUS unary •
+
+    $default  reduce using rule 95 (unary)
+
+
+State 73
+
+   96 unary: MINUS_MINUS unary •
+
+    $default  reduce using rule 96 (unary)
+
+
+State 74
+
+   92 unary: BANG unary •
+
+    $default  reduce using rule 92 (unary)
+
+
+State 75
+
+   45 echoStmt: ECH expression • SEMI_COLON
+
+    SEMI_COLON  shift, and go to state 129
+
+
+State 76
+
+   43 ifStmt: IF LEFT_PAREN • expression RIGHT_PAREN statement ELSE statement
+   44       | IF LEFT_PAREN • expression RIGHT_PAREN statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 130
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 77
+
+   37 forStmt: FOR LEFT_PAREN • forInit optExpr SEMI_COLON optExpr RIGHT_PAREN statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    VAR              shift, and go to state 7
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+    SEMI_COLON       shift, and go to state 131
+
+    varDecl      go to state 132
+    exprStmt     go to state 133
+    forInit      go to state 134
+    expression   go to state 44
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 78
+
+   49 dowhileStmt: DO statement • WHILE LEFT_PAREN expression RIGHT_PAREN SEMI_COLON
+
+    WHILE  shift, and go to state 135
+
+
+State 79
+
+   48 whileStmt: WHILE LEFT_PAREN • expression RIGHT_PAREN statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 136
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 80
+
+   50 breakStmt: BREAK SEMI_COLON •
+
+    $default  reduce using rule 50 (breakStmt)
+
+
+State 81
+
+   51 continueStmt: CONTINUE SEMI_COLON •
+
+    $default  reduce using rule 51 (continueStmt)
+
+
+State 82
+
+    8 typeDecl: TYPE IDENTIFIER • LEFT_BRACE varDeclList RIGHT_BRACE
+
+    LEFT_BRACE  shift, and go to state 137
+
+
+State 83
+
+    9 funDecl: FUN IDENTIFIER • function
+
+    LEFT_PAREN  shift, and go to state 86
+
+    function  go to state 138
+
+
+State 84
+
+   47 returnStmt: RET SEMI_COLON •
+
+    $default  reduce using rule 47 (returnStmt)
+
+
+State 85
+
+   46 returnStmt: RET expression • SEMI_COLON
+
+    SEMI_COLON  shift, and go to state 139
+
+
+State 86
+
+   10 function: LEFT_PAREN • parameters RIGHT_PAREN ARROW var_type block
+   11         | LEFT_PAREN • RIGHT_PAREN ARROW var_type block
+
+    IDENTIFIER   shift, and go to state 140
+    RIGHT_PAREN  shift, and go to state 141
+
+    parameters  go to state 142
+    typedVar    go to state 143
+
+
+State 87
+
+  115 anonFunc: LAMBDA function •
+
+    $default  reduce using rule 115 (anonFunc)
+
+
+State 88
+
+  112 primary: LEFT_PAREN expression • RIGHT_PAREN
+
+    RIGHT_PAREN  shift, and go to state 144
+
+
+State 89
+
+   53 block: LEFT_BRACE RIGHT_BRACE •
+
+    $default  reduce using rule 53 (block)
+
+
+State 90
+
+    2 decList: decList • declaration
+   52 block: LEFT_BRACE decList • RIGHT_BRACE
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    VAR              shift, and go to state 7
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    TYPE             shift, and go to state 20
+    FUN              shift, and go to state 21
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    RIGHT_BRACE      shift, and go to state 145
+    LEFT_SQUARE      shift, and go to state 26
+
+    declaration   go to state 95
+    typeDecl      go to state 30
+    funDecl       go to state 31
+    varDecl       go to state 32
+    statement     go to state 33
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 91
+
+  114 primary: LEFT_SQUARE RIGHT_SQUARE •
+
+    $default  reduce using rule 114 (primary)
+
+
+State 92
+
+  119 elements: expression •
+
+    $default  reduce using rule 119 (elements)
+
+
+State 93
+
+  113 primary: LEFT_SQUARE elements • RIGHT_SQUARE
+  118 elements: elements • COMMA expression
+
+    RIGHT_SQUARE  shift, and go to state 146
+    COMMA         shift, and go to state 147
+
+
+State 94
+
+    0 $accept: program $end •
+
+    $default  accept
+
+
+State 95
+
+    2 decList: decList declaration •
+
+    $default  reduce using rule 2 (decList)
+
+
+State 96
+
+   36 exprStmt: expression SEMI_COLON •
+
+    $default  reduce using rule 36 (exprStmt)
+
+
+State 97
+
+   64 logic_or: logic_or DOUBLE_PIPE • logic_and
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    logic_and    go to state 148
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 98
+
+   62 ternary: logic_or QUESTION_MARK • ternary COLON ternary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    ternary      go to state 149
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 99
+
+   66 logic_and: logic_and DOUBLE_AND • bitwise_or
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    bitwise_or   go to state 150
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 100
+
+   68 bitwise_or: bitwise_or PIPE • bitwise_xor
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    bitwise_xor  go to state 151
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 101
+
+   70 bitwise_xor: bitwise_xor XOR • bitwise_and
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    bitwise_and  go to state 152
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 102
+
+   72 bitwise_and: bitwise_and AND • equality
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    equality     go to state 153
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 103
+
+   74 equality: equality BANG_EQ • comparison
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    comparison   go to state 154
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 104
+
+   75 equality: equality EQ_EQ • comparison
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    comparison   go to state 155
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 105
+
+   78 comparison: comparison LESS • shift
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    shift        go to state 156
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 106
+
+   77 comparison: comparison GREATER • shift
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    shift        go to state 157
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 107
+
+   80 comparison: comparison LESS_EQ • shift
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    shift        go to state 158
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 108
+
+   79 comparison: comparison GREATER_EQ • shift
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    shift        go to state 159
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 109
+
+   82 shift: shift SHIFT_LEFT • term
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    term         go to state 160
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 110
+
+   83 shift: shift SHIFT_RIGHT • term
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    term         go to state 161
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 111
+
+   85 term: term PLUS • factor
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    factor       go to state 162
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 112
+
+   86 term: term MINUS • factor
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    factor       go to state 163
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 113
+
+   89 factor: factor STAR • unary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    unary        go to state 164
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 114
+
+   88 factor: factor SLASH • unary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    unary        go to state 165
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 115
+
+   90 factor: factor PERC • unary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    unary        go to state 166
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 116
+
+   55 assignment: call_access EQ • assignment
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    assignment   go to state 167
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 117
+
+   56 assignment: call_access PLUS_EQ • assignment
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    assignment   go to state 168
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 118
+
+   57 assignment: call_access MINUS_EQ • assignment
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    assignment   go to state 169
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 119
+
+   58 assignment: call_access STAR_EQ • assignment
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    assignment   go to state 170
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 120
+
+   59 assignment: call_access SLASH_EQ • assignment
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    assignment   go to state 171
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 121
+
+   60 assignment: call_access PERC_EQ • assignment
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    assignment   go to state 172
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 122
+
+  102 call_access: call_access PLUS_PLUS •
+
+    $default  reduce using rule 102 (call_access)
+
+
+State 123
+
+  103 call_access: call_access MINUS_MINUS •
+
+    $default  reduce using rule 103 (call_access)
+
+
+State 124
+
+   98 call_access: call_access LEFT_PAREN • arguments RIGHT_PAREN
+   99            | call_access LEFT_PAREN • RIGHT_PAREN
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    RIGHT_PAREN      shift, and go to state 173
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 174
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+    arguments    go to state 175
+
+
+State 125
+
+  101 call_access: call_access LEFT_SQUARE • expression RIGHT_SQUARE
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 176
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 126
+
+  100 call_access: call_access DOT • IDENTIFIER
+
+    IDENTIFIER  shift, and go to state 177
+
+
+State 127
+
+   20 var_type: LIST LEFT_SQUARE • INT_CONSTANT RIGHT_SQUARE
+
+    INT_CONSTANT  shift, and go to state 178
+
+
+State 128
+
+   24 varDecl: VAR var_type IDENTIFIER • EQ expression SEMI_COLON
+   25        | VAR var_type IDENTIFIER • SEMI_COLON
+
+    EQ          shift, and go to state 179
+    SEMI_COLON  shift, and go to state 180
+
+
+State 129
+
+   45 echoStmt: ECH expression SEMI_COLON •
+
+    $default  reduce using rule 45 (echoStmt)
+
+
+State 130
+
+   43 ifStmt: IF LEFT_PAREN expression • RIGHT_PAREN statement ELSE statement
+   44       | IF LEFT_PAREN expression • RIGHT_PAREN statement
+
+    RIGHT_PAREN  shift, and go to state 181
+
+
+State 131
+
+   40 forInit: SEMI_COLON •
+
+    $default  reduce using rule 40 (forInit)
+
+
+State 132
+
+   38 forInit: varDecl •
+
+    $default  reduce using rule 38 (forInit)
+
+
+State 133
+
+   39 forInit: exprStmt •
+
+    $default  reduce using rule 39 (forInit)
+
+
+State 134
+
+   37 forStmt: FOR LEFT_PAREN forInit • optExpr SEMI_COLON optExpr RIGHT_PAREN statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    $default  reduce using rule 42 (optExpr)
+
+    optExpr      go to state 182
+    expression   go to state 183
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 135
+
+   49 dowhileStmt: DO statement WHILE • LEFT_PAREN expression RIGHT_PAREN SEMI_COLON
+
+    LEFT_PAREN  shift, and go to state 184
+
+
+State 136
+
+   48 whileStmt: WHILE LEFT_PAREN expression • RIGHT_PAREN statement
+
+    RIGHT_PAREN  shift, and go to state 185
+
+
+State 137
+
+    8 typeDecl: TYPE IDENTIFIER LEFT_BRACE • varDeclList RIGHT_BRACE
+
+    VAR  shift, and go to state 7
+
+    varDeclList  go to state 186
+    varDecl      go to state 187
+
+
+State 138
+
+    9 funDecl: FUN IDENTIFIER function •
+
+    $default  reduce using rule 9 (funDecl)
+
+
+State 139
+
+   46 returnStmt: RET expression SEMI_COLON •
+
+    $default  reduce using rule 46 (returnStmt)
+
+
+State 140
+
+   14 typedVar: IDENTIFIER • COLON var_type
+
+    COLON  shift, and go to state 188
+
+
+State 141
+
+   11 function: LEFT_PAREN RIGHT_PAREN • ARROW var_type block
+
+    ARROW  shift, and go to state 189
+
+
+State 142
+
+   10 function: LEFT_PAREN parameters • RIGHT_PAREN ARROW var_type block
+   12 parameters: parameters • COMMA typedVar
+
+    RIGHT_PAREN  shift, and go to state 190
+    COMMA        shift, and go to state 191
+
+
+State 143
+
+   13 parameters: typedVar •
+
+    $default  reduce using rule 13 (parameters)
+
+
+State 144
+
+  112 primary: LEFT_PAREN expression RIGHT_PAREN •
+
+    $default  reduce using rule 112 (primary)
+
+
+State 145
+
+   52 block: LEFT_BRACE decList RIGHT_BRACE •
+
+    $default  reduce using rule 52 (block)
+
+
+State 146
+
+  113 primary: LEFT_SQUARE elements RIGHT_SQUARE •
+
+    $default  reduce using rule 113 (primary)
+
+
+State 147
+
+  118 elements: elements COMMA • expression
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 192
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 148
+
+   64 logic_or: logic_or DOUBLE_PIPE logic_and •
+   66 logic_and: logic_and • DOUBLE_AND bitwise_or
+
+    DOUBLE_AND  shift, and go to state 99
+
+    $default  reduce using rule 64 (logic_or)
+
+
+State 149
+
+   62 ternary: logic_or QUESTION_MARK ternary • COLON ternary
+
+    COLON  shift, and go to state 193
+
+
+State 150
+
+   66 logic_and: logic_and DOUBLE_AND bitwise_or •
+   68 bitwise_or: bitwise_or • PIPE bitwise_xor
+
+    PIPE  shift, and go to state 100
+
+    $default  reduce using rule 66 (logic_and)
+
+
+State 151
+
+   68 bitwise_or: bitwise_or PIPE bitwise_xor •
+   70 bitwise_xor: bitwise_xor • XOR bitwise_and
+
+    XOR  shift, and go to state 101
+
+    $default  reduce using rule 68 (bitwise_or)
+
+
+State 152
+
+   70 bitwise_xor: bitwise_xor XOR bitwise_and •
+   72 bitwise_and: bitwise_and • AND equality
+
+    AND  shift, and go to state 102
+
+    $default  reduce using rule 70 (bitwise_xor)
+
+
+State 153
+
+   72 bitwise_and: bitwise_and AND equality •
+   74 equality: equality • BANG_EQ comparison
+   75         | equality • EQ_EQ comparison
+
+    BANG_EQ  shift, and go to state 103
+    EQ_EQ    shift, and go to state 104
+
+    $default  reduce using rule 72 (bitwise_and)
+
+
+State 154
+
+   74 equality: equality BANG_EQ comparison •
+   77 comparison: comparison • GREATER shift
+   78           | comparison • LESS shift
+   79           | comparison • GREATER_EQ shift
+   80           | comparison • LESS_EQ shift
+
+    LESS        shift, and go to state 105
+    GREATER     shift, and go to state 106
+    LESS_EQ     shift, and go to state 107
+    GREATER_EQ  shift, and go to state 108
+
+    $default  reduce using rule 74 (equality)
+
+
+State 155
+
+   75 equality: equality EQ_EQ comparison •
+   77 comparison: comparison • GREATER shift
+   78           | comparison • LESS shift
+   79           | comparison • GREATER_EQ shift
+   80           | comparison • LESS_EQ shift
+
+    LESS        shift, and go to state 105
+    GREATER     shift, and go to state 106
+    LESS_EQ     shift, and go to state 107
+    GREATER_EQ  shift, and go to state 108
+
+    $default  reduce using rule 75 (equality)
+
+
+State 156
+
+   78 comparison: comparison LESS shift •
+   82 shift: shift • SHIFT_LEFT term
+   83      | shift • SHIFT_RIGHT term
+
+    SHIFT_LEFT   shift, and go to state 109
+    SHIFT_RIGHT  shift, and go to state 110
+
+    $default  reduce using rule 78 (comparison)
+
+
+State 157
+
+   77 comparison: comparison GREATER shift •
+   82 shift: shift • SHIFT_LEFT term
+   83      | shift • SHIFT_RIGHT term
+
+    SHIFT_LEFT   shift, and go to state 109
+    SHIFT_RIGHT  shift, and go to state 110
+
+    $default  reduce using rule 77 (comparison)
+
+
+State 158
+
+   80 comparison: comparison LESS_EQ shift •
+   82 shift: shift • SHIFT_LEFT term
+   83      | shift • SHIFT_RIGHT term
+
+    SHIFT_LEFT   shift, and go to state 109
+    SHIFT_RIGHT  shift, and go to state 110
+
+    $default  reduce using rule 80 (comparison)
+
+
+State 159
+
+   79 comparison: comparison GREATER_EQ shift •
+   82 shift: shift • SHIFT_LEFT term
+   83      | shift • SHIFT_RIGHT term
+
+    SHIFT_LEFT   shift, and go to state 109
+    SHIFT_RIGHT  shift, and go to state 110
+
+    $default  reduce using rule 79 (comparison)
+
+
+State 160
+
+   82 shift: shift SHIFT_LEFT term •
+   85 term: term • PLUS factor
+   86     | term • MINUS factor
+
+    PLUS   shift, and go to state 111
+    MINUS  shift, and go to state 112
+
+    $default  reduce using rule 82 (shift)
+
+
+State 161
+
+   83 shift: shift SHIFT_RIGHT term •
+   85 term: term • PLUS factor
+   86     | term • MINUS factor
+
+    PLUS   shift, and go to state 111
+    MINUS  shift, and go to state 112
+
+    $default  reduce using rule 83 (shift)
+
+
+State 162
+
+   85 term: term PLUS factor •
+   88 factor: factor • SLASH unary
+   89       | factor • STAR unary
+   90       | factor • PERC unary
+
+    STAR   shift, and go to state 113
+    SLASH  shift, and go to state 114
+    PERC   shift, and go to state 115
+
+    $default  reduce using rule 85 (term)
+
+
+State 163
+
+   86 term: term MINUS factor •
+   88 factor: factor • SLASH unary
+   89       | factor • STAR unary
+   90       | factor • PERC unary
+
+    STAR   shift, and go to state 113
+    SLASH  shift, and go to state 114
+    PERC   shift, and go to state 115
+
+    $default  reduce using rule 86 (term)
+
+
+State 164
+
+   89 factor: factor STAR unary •
+
+    $default  reduce using rule 89 (factor)
+
+
+State 165
+
+   88 factor: factor SLASH unary •
+
+    $default  reduce using rule 88 (factor)
+
+
+State 166
+
+   90 factor: factor PERC unary •
+
+    $default  reduce using rule 90 (factor)
+
+
+State 167
+
+   55 assignment: call_access EQ assignment •
+
+    $default  reduce using rule 55 (assignment)
+
+
+State 168
+
+   56 assignment: call_access PLUS_EQ assignment •
+
+    $default  reduce using rule 56 (assignment)
+
+
+State 169
+
+   57 assignment: call_access MINUS_EQ assignment •
+
+    $default  reduce using rule 57 (assignment)
+
+
+State 170
+
+   58 assignment: call_access STAR_EQ assignment •
+
+    $default  reduce using rule 58 (assignment)
+
+
+State 171
+
+   59 assignment: call_access SLASH_EQ assignment •
+
+    $default  reduce using rule 59 (assignment)
+
+
+State 172
+
+   60 assignment: call_access PERC_EQ assignment •
+
+    $default  reduce using rule 60 (assignment)
+
+
+State 173
+
+   99 call_access: call_access LEFT_PAREN RIGHT_PAREN •
+
+    $default  reduce using rule 99 (call_access)
+
+
+State 174
+
+  117 arguments: expression •
+
+    $default  reduce using rule 117 (arguments)
+
+
+State 175
+
+   98 call_access: call_access LEFT_PAREN arguments • RIGHT_PAREN
+  116 arguments: arguments • COMMA expression
+
+    RIGHT_PAREN  shift, and go to state 194
+    COMMA        shift, and go to state 195
+
+
+State 176
+
+  101 call_access: call_access LEFT_SQUARE expression • RIGHT_SQUARE
+
+    RIGHT_SQUARE  shift, and go to state 196
+
+
+State 177
+
+  100 call_access: call_access DOT IDENTIFIER •
+
+    $default  reduce using rule 100 (call_access)
+
+
+State 178
+
+   20 var_type: LIST LEFT_SQUARE INT_CONSTANT • RIGHT_SQUARE
+
+    RIGHT_SQUARE  shift, and go to state 197
+
+
+State 179
+
+   24 varDecl: VAR var_type IDENTIFIER EQ • expression SEMI_COLON
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 198
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 180
+
+   25 varDecl: VAR var_type IDENTIFIER SEMI_COLON •
+
+    $default  reduce using rule 25 (varDecl)
+
+
+State 181
+
+   43 ifStmt: IF LEFT_PAREN expression RIGHT_PAREN • statement ELSE statement
+   44       | IF LEFT_PAREN expression RIGHT_PAREN • statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    LEFT_SQUARE      shift, and go to state 26
+
+    statement     go to state 199
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 182
+
+   37 forStmt: FOR LEFT_PAREN forInit optExpr • SEMI_COLON optExpr RIGHT_PAREN statement
+
+    SEMI_COLON  shift, and go to state 200
+
+
+State 183
+
+   41 optExpr: expression •
+
+    $default  reduce using rule 41 (optExpr)
+
+
+State 184
+
+   49 dowhileStmt: DO statement WHILE LEFT_PAREN • expression RIGHT_PAREN SEMI_COLON
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 201
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 185
+
+   48 whileStmt: WHILE LEFT_PAREN expression RIGHT_PAREN • statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    LEFT_SQUARE      shift, and go to state 26
+
+    statement     go to state 202
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 186
+
+    8 typeDecl: TYPE IDENTIFIER LEFT_BRACE varDeclList • RIGHT_BRACE
+   22 varDeclList: varDeclList • varDecl
+
+    VAR          shift, and go to state 7
+    RIGHT_BRACE  shift, and go to state 203
+
+    varDecl  go to state 204
+
+
+State 187
+
+   23 varDeclList: varDecl •
+
+    $default  reduce using rule 23 (varDeclList)
+
+
+State 188
+
+   14 typedVar: IDENTIFIER COLON • var_type
+
+    IDENTIFIER  shift, and go to state 61
+    INT         shift, and go to state 62
+    FLOAT       shift, and go to state 63
+    STRING      shift, and go to state 64
+    BOOL        shift, and go to state 65
+    LIST        shift, and go to state 66
+    DYN         shift, and go to state 67
+
+    var_type  go to state 205
+
+
+State 189
+
+   11 function: LEFT_PAREN RIGHT_PAREN ARROW • var_type block
+
+    IDENTIFIER  shift, and go to state 61
+    INT         shift, and go to state 62
+    FLOAT       shift, and go to state 63
+    STRING      shift, and go to state 64
+    BOOL        shift, and go to state 65
+    LIST        shift, and go to state 66
+    DYN         shift, and go to state 67
+
+    var_type  go to state 206
+
+
+State 190
+
+   10 function: LEFT_PAREN parameters RIGHT_PAREN • ARROW var_type block
+
+    ARROW  shift, and go to state 207
+
+
+State 191
+
+   12 parameters: parameters COMMA • typedVar
+
+    IDENTIFIER  shift, and go to state 140
+
+    typedVar  go to state 208
+
+
+State 192
+
+  118 elements: elements COMMA expression •
+
+    $default  reduce using rule 118 (elements)
+
+
+State 193
+
+   62 ternary: logic_or QUESTION_MARK ternary COLON • ternary
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    ternary      go to state 209
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 70
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 194
+
+   98 call_access: call_access LEFT_PAREN arguments RIGHT_PAREN •
+
+    $default  reduce using rule 98 (call_access)
+
+
+State 195
+
+  116 arguments: arguments COMMA • expression
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    expression   go to state 210
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 196
+
+  101 call_access: call_access LEFT_SQUARE expression RIGHT_SQUARE •
+
+    $default  reduce using rule 101 (call_access)
+
+
+State 197
+
+   20 var_type: LIST LEFT_SQUARE INT_CONSTANT RIGHT_SQUARE •
+
+    $default  reduce using rule 20 (var_type)
+
+
+State 198
+
+   24 varDecl: VAR var_type IDENTIFIER EQ expression • SEMI_COLON
+
+    SEMI_COLON  shift, and go to state 211
+
+
+State 199
+
+   43 ifStmt: IF LEFT_PAREN expression RIGHT_PAREN statement • ELSE statement
+   44       | IF LEFT_PAREN expression RIGHT_PAREN statement •
+
+    ELSE  shift, and go to state 212
+
+    ELSE      [reduce using rule 44 (ifStmt)]
+    $default  reduce using rule 44 (ifStmt)
+
+
+State 200
+
+   37 forStmt: FOR LEFT_PAREN forInit optExpr SEMI_COLON • optExpr RIGHT_PAREN statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_SQUARE      shift, and go to state 26
+
+    $default  reduce using rule 42 (optExpr)
+
+    optExpr      go to state 213
+    expression   go to state 183
+    assignment   go to state 45
+    ternary      go to state 46
+    logic_or     go to state 47
+    logic_and    go to state 48
+    bitwise_or   go to state 49
+    bitwise_xor  go to state 50
+    bitwise_and  go to state 51
+    equality     go to state 52
+    comparison   go to state 53
+    shift        go to state 54
+    term         go to state 55
+    factor       go to state 56
+    unary        go to state 57
+    call_access  go to state 58
+    primary      go to state 59
+    anonFunc     go to state 60
+
+
+State 201
+
+   49 dowhileStmt: DO statement WHILE LEFT_PAREN expression • RIGHT_PAREN SEMI_COLON
+
+    RIGHT_PAREN  shift, and go to state 214
+
+
+State 202
+
+   48 whileStmt: WHILE LEFT_PAREN expression RIGHT_PAREN statement •
+
+    $default  reduce using rule 48 (whileStmt)
+
+
+State 203
+
+    8 typeDecl: TYPE IDENTIFIER LEFT_BRACE varDeclList RIGHT_BRACE •
+
+    $default  reduce using rule 8 (typeDecl)
+
+
+State 204
+
+   22 varDeclList: varDeclList varDecl •
+
+    $default  reduce using rule 22 (varDeclList)
+
+
+State 205
+
+   14 typedVar: IDENTIFIER COLON var_type •
+
+    $default  reduce using rule 14 (typedVar)
+
+
+State 206
+
+   11 function: LEFT_PAREN RIGHT_PAREN ARROW var_type • block
+
+    LEFT_BRACE  shift, and go to state 25
+
+    block  go to state 215
+
+
+State 207
+
+   10 function: LEFT_PAREN parameters RIGHT_PAREN ARROW • var_type block
+
+    IDENTIFIER  shift, and go to state 61
+    INT         shift, and go to state 62
+    FLOAT       shift, and go to state 63
+    STRING      shift, and go to state 64
+    BOOL        shift, and go to state 65
+    LIST        shift, and go to state 66
+    DYN         shift, and go to state 67
+
+    var_type  go to state 216
+
+
+State 208
+
+   12 parameters: parameters COMMA typedVar •
+
+    $default  reduce using rule 12 (parameters)
+
+
+State 209
+
+   62 ternary: logic_or QUESTION_MARK ternary COLON ternary •
+
+    $default  reduce using rule 62 (ternary)
+
+
+State 210
+
+  116 arguments: arguments COMMA expression •
+
+    $default  reduce using rule 116 (arguments)
+
+
+State 211
+
+   24 varDecl: VAR var_type IDENTIFIER EQ expression SEMI_COLON •
+
+    $default  reduce using rule 24 (varDecl)
+
+
+State 212
+
+   43 ifStmt: IF LEFT_PAREN expression RIGHT_PAREN statement ELSE • statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    LEFT_SQUARE      shift, and go to state 26
+
+    statement     go to state 217
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 213
+
+   37 forStmt: FOR LEFT_PAREN forInit optExpr SEMI_COLON optExpr • RIGHT_PAREN statement
+
+    RIGHT_PAREN  shift, and go to state 218
+
+
+State 214
+
+   49 dowhileStmt: DO statement WHILE LEFT_PAREN expression RIGHT_PAREN • SEMI_COLON
+
+    SEMI_COLON  shift, and go to state 219
+
+
+State 215
+
+   11 function: LEFT_PAREN RIGHT_PAREN ARROW var_type block •
+
+    $default  reduce using rule 11 (function)
+
+
+State 216
+
+   10 function: LEFT_PAREN parameters RIGHT_PAREN ARROW var_type • block
+
+    LEFT_BRACE  shift, and go to state 25
+
+    block  go to state 220
+
+
+State 217
+
+   43 ifStmt: IF LEFT_PAREN expression RIGHT_PAREN statement ELSE statement •
+
+    $default  reduce using rule 43 (ifStmt)
+
+
+State 218
+
+   37 forStmt: FOR LEFT_PAREN forInit optExpr SEMI_COLON optExpr RIGHT_PAREN • statement
+
+    INT_CONSTANT     shift, and go to state 1
+    FLOAT_CONSTANT   shift, and go to state 2
+    IDENTIFIER       shift, and go to state 3
+    STRING_CONSTANT  shift, and go to state 4
+    BOOL_CONSTANT    shift, and go to state 5
+    T_NULL           shift, and go to state 6
+    MINUS            shift, and go to state 8
+    TILDE            shift, and go to state 9
+    PLUS_PLUS        shift, and go to state 10
+    MINUS_MINUS      shift, and go to state 11
+    BANG             shift, and go to state 12
+    ECH              shift, and go to state 13
+    IF               shift, and go to state 14
+    FOR              shift, and go to state 15
+    DO               shift, and go to state 16
+    WHILE            shift, and go to state 17
+    BREAK            shift, and go to state 18
+    CONTINUE         shift, and go to state 19
+    RET              shift, and go to state 22
+    LAMBDA           shift, and go to state 23
+    LEFT_PAREN       shift, and go to state 24
+    LEFT_BRACE       shift, and go to state 25
+    LEFT_SQUARE      shift, and go to state 26
+
+    statement     go to state 221
+    exprStmt      go to state 34
+    forStmt       go to state 35
+    ifStmt        go to state 36
+    echoStmt      go to state 37
+    returnStmt    go to state 38
+    whileStmt     go to state 39
+    dowhileStmt   go to state 40
+    breakStmt     go to state 41
+    continueStmt  go to state 42
+    block         go to state 43
+    expression    go to state 44
+    assignment    go to state 45
+    ternary       go to state 46
+    logic_or      go to state 47
+    logic_and     go to state 48
+    bitwise_or    go to state 49
+    bitwise_xor   go to state 50
+    bitwise_and   go to state 51
+    equality      go to state 52
+    comparison    go to state 53
+    shift         go to state 54
+    term          go to state 55
+    factor        go to state 56
+    unary         go to state 57
+    call_access   go to state 58
+    primary       go to state 59
+    anonFunc      go to state 60
+
+
+State 219
+
+   49 dowhileStmt: DO statement WHILE LEFT_PAREN expression RIGHT_PAREN SEMI_COLON •
+
+    $default  reduce using rule 49 (dowhileStmt)
+
+
+State 220
+
+   10 function: LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block •
+
+    $default  reduce using rule 10 (function)
+
+
+State 221
+
+   37 forStmt: FOR LEFT_PAREN forInit optExpr SEMI_COLON optExpr RIGHT_PAREN statement •
+
+    $default  reduce using rule 37 (forStmt)

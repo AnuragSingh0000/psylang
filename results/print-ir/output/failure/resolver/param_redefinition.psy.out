@@ -1,0 +1,9 @@
+Parsed OK
+error: Redeclaration of 'a' in the same scope.
+  --> tests/failure/resolver/param_redefinition.psy:2:5
+   |
+  2|     var int a;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

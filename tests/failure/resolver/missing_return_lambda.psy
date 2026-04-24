@@ -1,0 +1,7 @@
+var dyn foo = lambda(g: int) -> bool {
+    if (g <= 10) {
+        ret true;
+    } else {
+
+    }
+};

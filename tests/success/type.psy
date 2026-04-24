@@ -1,0 +1,33 @@
+$$ Creating a type
+type Point {
+    var int x;
+    var int y;
+    var string label;
+}
+
+type Student {
+    var string name;
+    var Point coords;
+    var int roll;
+}
+
+{  $$ Type in inner scope
+    type Student {
+        var string name;
+        var Point coords;
+    }
+
+    var Student s1;
+    s1.name = "Eren Yeager";
+}
+
+var Student s1;
+s1.name = "Eren Yeager";
+s1.roll = 139;
+
+s1.coords.x = 13;
+s1.coords.y = 9;
+s1.coords.label = "Paradis";
+
+var Student s2 = s1;
+s2.coords.x = 100;

@@ -1,0 +1,9 @@
+Parsed OK
+error: Type mismatch in assignment.
+  --> tests/failure/resolver/mismatched_type_assignment.psy:2:1
+   |
+  2| is_valid = 1;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

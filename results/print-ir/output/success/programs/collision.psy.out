@@ -1,0 +1,100 @@
+Parsed OK
+IR
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+| idx  | opcode         | arg1                             | arg2                             | res                              |
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+| 0000 | TYPE_BEGIN     | Point                            | _                                | _                                |
+| 0001 | TYPE_FIELD     | Point                            | x                                | _                                |
+| 0002 | TYPE_FIELD     | Point                            | y                                | _                                |
+| 0003 | TYPE_END       | Point                            | _                                | _                                |
+| 0004 | TYPE_BEGIN     | Rect                             | _                                | _                                |
+| 0005 | TYPE_FIELD     | Rect                             | origin                           | _                                |
+| 0006 | TYPE_FIELD     | Rect                             | width                            | _                                |
+| 0007 | TYPE_FIELD     | Rect                             | height                           | _                                |
+| 0008 | TYPE_END       | Rect                             | _                                | _                                |
+| 0009 | FUNC           | _sym3                            | 2                                | bool                             |
+| 0010 | FUNC_PARAM     | _sym3                            | 0:_sym4                          | Point                            |
+| 0011 | FUNC_PARAM     | _sym3                            | 1:_sym5                          | Rect                             |
+| 0012 | MEMBER_ACCESS  | _sym4                            | x                                | t3                               |
+| 0013 | MEMBER_ACCESS  | _sym5                            | origin                           | t5                               |
+| 0014 | MEMBER_ACCESS  | t5                               | x                                | t4                               |
+| 0015 | >=             | t3                               | t4                               | t2                               |
+| 0016 | IF_FALSE       | t2                               | _L0                              | _                                |
+| 0017 | MEMBER_ACCESS  | _sym4                            | x                                | t8                               |
+| 0018 | MEMBER_ACCESS  | _sym5                            | origin                           | t11                              |
+| 0019 | MEMBER_ACCESS  | t11                              | x                                | t10                              |
+| 0020 | MEMBER_ACCESS  | _sym5                            | width                            | t12                              |
+| 0021 | +              | t10                              | t12                              | t9                               |
+| 0022 | <=             | t8                               | t9                               | t7                               |
+| 0023 | =              | t7                               | _                                | t6                               |
+| 0024 | GOTO           | _L1                              | _                                | _                                |
+| 0025 | LABEL          | _                                | _                                | _L0                              |
+| 0026 | =              | false                            | _                                | t6                               |
+| 0027 | LABEL          | _                                | _                                | _L1                              |
+| 0028 | =              | t6                               | _                                | _sym6                            |
+| 0029 | MEMBER_ACCESS  | _sym4                            | y                                | t14                              |
+| 0030 | MEMBER_ACCESS  | _sym5                            | origin                           | t16                              |
+| 0031 | MEMBER_ACCESS  | t16                              | y                                | t15                              |
+| 0032 | >=             | t14                              | t15                              | t13                              |
+| 0033 | IF_FALSE       | t13                              | _L2                              | _                                |
+| 0034 | MEMBER_ACCESS  | _sym4                            | y                                | t19                              |
+| 0035 | MEMBER_ACCESS  | _sym5                            | origin                           | t22                              |
+| 0036 | MEMBER_ACCESS  | t22                              | y                                | t21                              |
+| 0037 | MEMBER_ACCESS  | _sym5                            | height                           | t23                              |
+| 0038 | +              | t21                              | t23                              | t20                              |
+| 0039 | <=             | t19                              | t20                              | t18                              |
+| 0040 | =              | t18                              | _                                | t17                              |
+| 0041 | GOTO           | _L3                              | _                                | _                                |
+| 0042 | LABEL          | _                                | _                                | _L2                              |
+| 0043 | =              | false                            | _                                | t17                              |
+| 0044 | LABEL          | _                                | _                                | _L3                              |
+| 0045 | =              | t17                              | _                                | _sym7                            |
+| 0046 | IF_FALSE       | _sym6                            | _L4                              | _                                |
+| 0047 | =              | _sym7                            | _                                | t24                              |
+| 0048 | GOTO           | _L5                              | _                                | _                                |
+| 0049 | LABEL          | _                                | _                                | _L4                              |
+| 0050 | =              | false                            | _                                | t24                              |
+| 0051 | LABEL          | _                                | _                                | _L5                              |
+| 0052 | RETURN         | t24                              | _                                | _                                |
+| 0053 | ENDFUNC        | _                                | _                                | _                                |
+| 0054 | STORE_MEMBER   | _sym8                            | x                                | 5                                |
+| 0055 | STORE_MEMBER   | _sym8                            | y                                | 10                               |
+| 0056 | MEMBER_ACCESS  | _sym9                            | origin                           | t25                              |
+| 0057 | STORE_MEMBER   | t25                              | x                                | 0                                |
+| 0058 | MEMBER_ACCESS  | _sym9                            | origin                           | t26                              |
+| 0059 | STORE_MEMBER   | t26                              | y                                | 0                                |
+| 0060 | STORE_MEMBER   | _sym9                            | width                            | 10                               |
+| 0061 | STORE_MEMBER   | _sym9                            | height                           | 20                               |
+| 0062 | PARAM          | _sym8                            | _                                | _                                |
+| 0063 | PARAM          | _sym9                            | _                                | _                                |
+| 0064 | CALL           | _sym3                            | 2                                | t27                              |
+| 0065 | IF_FALSE       | t27                              | _L6                              | _                                |
+| 0066 | ECHO           | Collision detected               | _                                | _                                |
+| 0067 | GOTO           | _L7                              | _                                | _                                |
+| 0068 | LABEL          | _                                | _                                | _L6                              |
+| 0069 | ECHO           | No collision                     | _                                | _                                |
+| 0070 | LABEL          | _                                | _                                | _L7                              |
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+
+--- Symbol Table (Debug) ---
++-------+----------------------------------+-------+--------------------------+
+| Index | Name                             | Depth | Type                     |
++-------+----------------------------------+-------+--------------------------+
+| _sym1 | Point                            | 0     | type                     |
+| _sym2 | Rect                             | 0     | type                     |
+| _sym3 | isInside                         | 0     | bool                     |
+| _sym4 | p                                | 1     | Point                    |
+| _sym5 | r                                | 1     | Rect                     |
+| _sym6 | withinX                          | 1     | bool                     |
+| _sym7 | withinY                          | 1     | bool                     |
+| _sym8 | myPoint                          | 0     | Point                    |
+| _sym9 | myRect                           | 0     | Rect                     |
++-------+----------------------------------+-------+--------------------------+
+
+--- Type Registry (Debug) ---
++------------------------------+----------------------------------------------------+
+| Index | Type Name            | Members (Name : Type)                              |
++------------------------------+----------------------------------------------------+
+| _sym1 | Point                | x: float, y: float
+| _sym2 | Rect                 | origin: Point, width: float, height: float
++------------------------------+----------------------------------------------------+

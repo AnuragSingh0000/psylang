@@ -1,0 +1,9 @@
+Parsed OK
+error: Type mismatch in declaration of 'name'.
+  --> tests/failure/resolver/mismatched_type_decl.psy:1:1
+   |
+  1| var int name = "Eren";
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

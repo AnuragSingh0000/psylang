@@ -1,0 +1,2 @@
+var int age = 25;
+	var string name;

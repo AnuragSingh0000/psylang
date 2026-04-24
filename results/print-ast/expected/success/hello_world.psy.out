@@ -1,0 +1,4 @@
+Parsed OK
+PROGRAM
+  ECHO
+    PRIMARY ("Hello world!")

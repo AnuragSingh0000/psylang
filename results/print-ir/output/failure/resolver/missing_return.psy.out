@@ -1,0 +1,9 @@
+Parsed OK
+error: Able to reach end of function without 'ret'.
+  --> tests/failure/resolver/missing_return.psy:1:8
+   |
+  1| fun foo(g: int) -> bool {
+   |        ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

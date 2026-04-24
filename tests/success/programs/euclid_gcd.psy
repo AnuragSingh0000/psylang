@@ -1,0 +1,10 @@
+fun gcd(a: int, b: int) -> int {
+    while (b != 0) {
+        var int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    ret a;
+}
+
+echo gcd(12, 20);

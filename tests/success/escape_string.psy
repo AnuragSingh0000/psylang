@@ -1,0 +1,5 @@
+var string t1 = "Newline: \n Tab: \t Quotes: \" \' Backslash: \\ \\n \\\\ should be supported.\n";
+var string t2 = 'Newline: \n Tab: \t Quotes: \" \' Backslash: \\ \\n \\\\ should be supported.\n';
+echo t1;
+echo t2;
+echo t1 == t2;

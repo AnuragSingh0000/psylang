@@ -1,0 +1,15 @@
+fun fizzbuzz(n: int) -> null {
+    for (var int i = 1; i <= n; i++) {
+        if (i % 15 == 0) {
+            echo "FizzBuzz";
+        } else if (i % 3 == 0) {
+            echo "Fizz";
+        } else if (i % 5 == 0) {
+            echo "Buzz";
+        } else {
+            echo i;
+        }
+    }
+}
+
+fizzbuzz(15);

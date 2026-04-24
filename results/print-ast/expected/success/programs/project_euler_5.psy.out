@@ -1,0 +1,80 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (gcd)
+    FUNCTION
+      TYPED_VAR (a)
+        VAR_TYPE (int)
+      TYPED_VAR (b)
+        VAR_TYPE (int)
+      VAR_TYPE (int)
+      BLOCK
+        WHILE
+          BINARY (!=)
+            PRIMARY (b)
+            PRIMARY (0)
+          BLOCK
+            VAR_DECL (temp)
+              VAR_TYPE (int)
+              PRIMARY (b)
+            EXPR_STMT
+              ASSIGN (=)
+                PRIMARY (b)
+                BINARY (%)
+                  PRIMARY (a)
+                  PRIMARY (b)
+            EXPR_STMT
+              ASSIGN (=)
+                PRIMARY (a)
+                PRIMARY (temp)
+        RETURN
+          PRIMARY (a)
+  FUN_DECL (solution)
+    FUNCTION
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      VAR_TYPE (int)
+      BLOCK
+        VAR_DECL (lcm)
+          VAR_TYPE (dyn)
+          LAMBDA
+            FUNCTION
+              TYPED_VAR (a)
+                VAR_TYPE (int)
+              TYPED_VAR (b)
+                VAR_TYPE (int)
+              VAR_TYPE (int)
+              BLOCK
+                RETURN
+                  BINARY (/)
+                    BINARY (*)
+                      PRIMARY (a)
+                      PRIMARY (b)
+                    CALL
+                      PRIMARY (gcd)
+                      PRIMARY (a)
+                      PRIMARY (b)
+        VAR_DECL (result)
+          VAR_TYPE (int)
+          PRIMARY (1)
+        FOR
+          VAR_DECL (i)
+            VAR_TYPE (int)
+            PRIMARY (2)
+          BINARY (<=)
+            PRIMARY (i)
+            PRIMARY (n)
+          POSTFIX (++)
+            PRIMARY (i)
+          EXPR_STMT
+            ASSIGN (=)
+              PRIMARY (result)
+              CALL
+                PRIMARY (lcm)
+                PRIMARY (result)
+                PRIMARY (i)
+        RETURN
+          PRIMARY (result)
+  ECHO
+    CALL
+      PRIMARY (solution)
+      PRIMARY (20)

@@ -1,0 +1,50 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (isPalindrome)
+    FUNCTION
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      VAR_TYPE (bool)
+      BLOCK
+        VAR_DECL (org)
+          VAR_TYPE (int)
+          PRIMARY (n)
+        VAR_DECL (rev)
+          VAR_TYPE (int)
+          PRIMARY (0)
+        WHILE
+          BINARY (>)
+            PRIMARY (n)
+            PRIMARY (0)
+          BLOCK
+            VAR_DECL (d)
+              VAR_TYPE (int)
+              BINARY (%)
+                PRIMARY (n)
+                PRIMARY (10)
+            EXPR_STMT
+              ASSIGN (=)
+                PRIMARY (rev)
+                BINARY (+)
+                  BINARY (*)
+                    PRIMARY (rev)
+                    PRIMARY (10)
+                  PRIMARY (d)
+            EXPR_STMT
+              ASSIGN (=)
+                PRIMARY (n)
+                BINARY (/)
+                  PRIMARY (n)
+                  PRIMARY (10)
+        RETURN
+          BINARY (==)
+            PRIMARY (org)
+            PRIMARY (rev)
+  ECHO
+    CALL
+      PRIMARY (isPalindrome)
+      PRIMARY (121)
+  ECHO
+    CALL
+      PRIMARY (isPalindrome)
+      PRIMARY (123)

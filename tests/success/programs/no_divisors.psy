@@ -1,0 +1,10 @@
+fun countDivisors(n: int) -> int {
+    var int count = 0;
+    for (var int i = 1; i <= n; i++)
+        if (n % i == 0)
+            count++;
+
+    ret count;
+}
+
+echo countDivisors(12);

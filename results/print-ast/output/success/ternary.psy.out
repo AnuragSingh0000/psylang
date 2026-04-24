@@ -1,0 +1,88 @@
+Parsed OK
+PROGRAM
+  EXPR_STMT
+    TERNARY
+      BINARY (!=)
+        PRIMARY (1)
+        PRIMARY (0)
+      PRIMARY (2)
+      TERNARY
+        BINARY (!=)
+          PRIMARY (3)
+          PRIMARY (0)
+        PRIMARY (4)
+        PRIMARY (5)
+  EXPR_STMT
+    TERNARY
+      BINARY (!=)
+        PRIMARY (1)
+        PRIMARY (0)
+      TERNARY
+        BINARY (!=)
+          PRIMARY (2)
+          PRIMARY (0)
+        PRIMARY (3)
+        PRIMARY (4)
+      PRIMARY (5)
+  EXPR_STMT
+    TERNARY
+      BINARY (!=)
+        PRIMARY (1)
+        PRIMARY (0)
+      TERNARY
+        BINARY (!=)
+          PRIMARY (2)
+          PRIMARY (0)
+        PRIMARY (3)
+        TERNARY
+          BINARY (!=)
+            PRIMARY (4)
+            PRIMARY (0)
+          PRIMARY (5)
+          PRIMARY (6)
+      PRIMARY (7)
+  VAR_DECL (a)
+    VAR_TYPE (int)
+  VAR_DECL (b)
+    VAR_TYPE (int)
+  VAR_DECL (c)
+    VAR_TYPE (int)
+  VAR_DECL (d)
+    VAR_TYPE (int)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (a)
+      TERNARY
+        BINARY (!=)
+          PRIMARY (1)
+          PRIMARY (0)
+        PRIMARY (2)
+        PRIMARY (3)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (a)
+      TERNARY
+        BINARY (!=)
+          PRIMARY (1)
+          PRIMARY (0)
+        ASSIGN (=)
+          PRIMARY (b)
+          PRIMARY (2)
+        ASSIGN (=)
+          PRIMARY (c)
+          PRIMARY (3)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (a)
+      ASSIGN (=)
+        PRIMARY (b)
+        TERNARY
+          BINARY (!=)
+            PRIMARY (1)
+            PRIMARY (0)
+          ASSIGN (=)
+            PRIMARY (c)
+            PRIMARY (2)
+          ASSIGN (=)
+            PRIMARY (d)
+            PRIMARY (3)

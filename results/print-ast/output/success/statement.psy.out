@@ -1,0 +1,46 @@
+Parsed OK
+PROGRAM
+  ECHO
+    PRIMARY ("Hello!")
+  EXPR_STMT
+    BINARY (+)
+      PRIMARY (1)
+      PRIMARY (2)
+  IF
+    PRIMARY (false)
+    BLOCK
+  WHILE
+    PRIMARY (false)
+    BLOCK
+      BREAK
+  DO_WHILE
+    BLOCK
+      CONTINUE
+    PRIMARY (false)
+  IF
+    PRIMARY (false)
+    BLOCK
+  IF
+    PRIMARY (true)
+    WHILE
+      PRIMARY (true)
+      BREAK
+    IF
+      PRIMARY (false)
+      BLOCK
+      EXPR_STMT
+        BINARY (+)
+          PRIMARY (1)
+          PRIMARY (2)
+  FUN_DECL (add)
+    FUNCTION
+      TYPED_VAR (a)
+        VAR_TYPE (int)
+      TYPED_VAR (b)
+        VAR_TYPE (int)
+      VAR_TYPE (int)
+      BLOCK
+        RETURN
+          BINARY (+)
+            PRIMARY (a)
+            PRIMARY (b)

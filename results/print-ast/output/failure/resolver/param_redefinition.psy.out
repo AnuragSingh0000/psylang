@@ -1,0 +1,10 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (f)
+    FUNCTION
+      TYPED_VAR (a)
+        VAR_TYPE (int)
+      VAR_TYPE (null)
+      BLOCK
+        VAR_DECL (a)
+          VAR_TYPE (int)

@@ -1,0 +1,7 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (age)
+    VAR_TYPE (int)
+    PRIMARY (25)
+  VAR_DECL (name)
+    VAR_TYPE (string)

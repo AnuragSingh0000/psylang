@@ -1,0 +1,2 @@
+var bool is_valid = true;
+is_valid = 1;

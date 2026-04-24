@@ -1,0 +1,9 @@
+Parsed OK
+error: Left-hand side is not assignable (must be an l-value).
+  --> tests/failure/resolver/lvalue_assginment.psy:1:1
+   |
+  1| 5 = 10;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

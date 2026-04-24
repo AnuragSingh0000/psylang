@@ -1,0 +1,6 @@
+error: syntax error, unexpected fun, expecting var or }
+  --> tests/failure/resolver/function_in_type.psy:5:8
+   |
+  5|     fun isOnline() -> bool {
+   |        ^--- Here
+

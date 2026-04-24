@@ -1,0 +1,9 @@
+Parsed OK
+error: Undeclared variable, function, or type 'x'.
+  --> tests/failure/resolver/undefined_variable.psy:1:1
+   |
+  1| x = 10;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

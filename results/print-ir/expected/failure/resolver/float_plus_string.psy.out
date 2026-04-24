@@ -1,0 +1,9 @@
+Parsed OK
+error: Invalid concatenation of string with another type.
+  --> tests/failure/resolver/float_plus_string.psy:2:18
+   |
+  2| var dyn result = num + "cats";
+   |                  ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

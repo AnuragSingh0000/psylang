@@ -1,0 +1,9 @@
+Parsed OK
+error: 'break' statement outside of a loop.
+  --> tests/failure/resolver/break_nested_function.psy:3:9
+   |
+  3|         break;
+   |         ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

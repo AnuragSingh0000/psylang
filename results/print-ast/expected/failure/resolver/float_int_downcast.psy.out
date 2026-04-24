@@ -1,0 +1,5 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (ival)
+    VAR_TYPE (int)
+    PRIMARY (10.500000)

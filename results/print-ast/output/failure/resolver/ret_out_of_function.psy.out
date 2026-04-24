@@ -1,0 +1,7 @@
+Parsed OK
+PROGRAM
+  WHILE
+    PRIMARY (true)
+    BLOCK
+      RETURN
+        PRIMARY (false)

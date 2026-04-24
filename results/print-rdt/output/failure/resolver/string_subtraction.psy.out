@@ -1,0 +1,156 @@
+ var_type -> STRING
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> declaration
+ var_type -> STRING
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> decList declaration
+ var_type -> STRING
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> term MINUS factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> decList declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    decList
+      decList
+        declaration
+          varDecl
+            VAR (var)
+            var_type
+              STRING (string)
+            IDENTIFIER (s1)
+            EQ (=)
+            expression
+              assignment
+                ternary
+                  logic_or
+                    logic_and
+                      bitwise_or
+                        bitwise_xor
+                          bitwise_and
+                            equality
+                              comparison
+                                shift
+                                  term
+                                    factor
+                                      unary
+                                        call_access
+                                          primary
+                                            STRING_CONSTANT (hello)
+            SEMI_COLON (;)
+      declaration
+        varDecl
+          VAR (var)
+          var_type
+            STRING (string)
+          IDENTIFIER (s2)
+          EQ (=)
+          expression
+            assignment
+              ternary
+                logic_or
+                  logic_and
+                    bitwise_or
+                      bitwise_xor
+                        bitwise_and
+                          equality
+                            comparison
+                              shift
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          STRING_CONSTANT (world)
+          SEMI_COLON (;)
+    declaration
+      varDecl
+        VAR (var)
+        var_type
+          STRING (string)
+        IDENTIFIER (s3)
+        EQ (=)
+        expression
+          assignment
+            ternary
+              logic_or
+                logic_and
+                  bitwise_or
+                    bitwise_xor
+                      bitwise_and
+                        equality
+                          comparison
+                            shift
+                              term
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          IDENTIFIER (s1)
+                                MINUS (-)
+                                factor
+                                  unary
+                                    call_access
+                                      primary
+                                        IDENTIFIER (s2)
+        SEMI_COLON (;)

@@ -1,0 +1,14 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Student)
+    VAR_DECL (name)
+      VAR_TYPE (string)
+    VAR_DECL (roll)
+      VAR_TYPE (int)
+  VAR_DECL (s1)
+    VAR_TYPE (Student)
+  EXPR_STMT
+    ASSIGN (=)
+      MEMBER (.ROLL)
+        PRIMARY (s1)
+      PRIMARY (1)

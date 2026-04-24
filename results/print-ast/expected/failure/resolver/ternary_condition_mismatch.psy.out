@@ -1,0 +1,8 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (x)
+    VAR_TYPE (int)
+    TERNARY
+      PRIMARY (1)
+      PRIMARY (10)
+      PRIMARY (20)

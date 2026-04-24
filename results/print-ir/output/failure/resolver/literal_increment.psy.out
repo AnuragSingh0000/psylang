@@ -1,0 +1,9 @@
+Parsed OK
+error: Operand of postfix increment/decrement must be an l-value.
+  --> tests/failure/resolver/literal_increment.psy:1:1
+   |
+  1| 10++;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

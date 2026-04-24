@@ -1,0 +1,2 @@
+var float num = 10.0;
+var dyn result = num + "cats";

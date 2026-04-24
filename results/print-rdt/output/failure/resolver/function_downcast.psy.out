@@ -1,0 +1,115 @@
+ var_type -> INT
+ var_type -> FLOAT
+ primary -> FLOAT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> decList declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    declaration
+      funDecl
+        FUN (fun)
+        IDENTIFIER (getInt)
+        function
+          LEFT_PAREN (()
+          RIGHT_PAREN ())
+          ARROW (->)
+          var_type
+            INT (int)
+          block
+            LEFT_BRACE ({)
+            decList
+              decList
+                declaration
+                  varDecl
+                    VAR (var)
+                    var_type
+                      FLOAT (float)
+                    IDENTIFIER (val)
+                    EQ (=)
+                    expression
+                      assignment
+                        ternary
+                          logic_or
+                            logic_and
+                              bitwise_or
+                                bitwise_xor
+                                  bitwise_and
+                                    equality
+                                      comparison
+                                        shift
+                                          term
+                                            factor
+                                              unary
+                                                call_access
+                                                  primary
+                                                    FLOAT_CONSTANT (9.990000)
+                    SEMI_COLON (;)
+              declaration
+                statement
+                  returnStmt
+                    RET (ret)
+                    expression
+                      assignment
+                        ternary
+                          logic_or
+                            logic_and
+                              bitwise_or
+                                bitwise_xor
+                                  bitwise_and
+                                    equality
+                                      comparison
+                                        shift
+                                          term
+                                            factor
+                                              unary
+                                                call_access
+                                                  primary
+                                                    IDENTIFIER (val)
+                    SEMI_COLON (;)
+            RIGHT_BRACE (})

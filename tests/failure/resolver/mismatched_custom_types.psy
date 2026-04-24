@@ -1,0 +1,7 @@
+type Point2D { var float x; var float y; }
+type Point3D { var float x; var float y; var float z; }
+
+var Point2D p2;
+var Point3D p3;
+
+p2 = p3;

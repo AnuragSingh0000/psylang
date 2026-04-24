@@ -1,0 +1,9 @@
+Parsed OK
+error: Loop condition must evaluate to a boolean.
+  --> tests/failure/resolver/while_condition_mismatch.psy:1:1
+   |
+  1| while ("true") {
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

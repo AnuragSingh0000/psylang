@@ -1,0 +1,30 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (fib)
+    FUNCTION
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      VAR_TYPE (int)
+      BLOCK
+        IF
+          BINARY (<=)
+            PRIMARY (n)
+            PRIMARY (1)
+          RETURN
+            PRIMARY (n)
+        RETURN
+          BINARY (+)
+            CALL
+              PRIMARY (fib)
+              BINARY (-)
+                PRIMARY (n)
+                PRIMARY (1)
+            CALL
+              PRIMARY (fib)
+              BINARY (-)
+                PRIMARY (n)
+                PRIMARY (2)
+  ECHO
+    CALL
+      PRIMARY (fib)
+      PRIMARY (10)

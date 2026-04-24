@@ -1,0 +1,9 @@
+Parsed OK
+error: Type mismatch in declaration of 'p'.
+  --> tests/failure/resolver/type_invalid_assign.psy:6:1
+   |
+  6| var Point p = 123;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

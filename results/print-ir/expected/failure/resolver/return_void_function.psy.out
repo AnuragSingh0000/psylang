@@ -1,0 +1,9 @@
+Parsed OK
+error: Function returns null (void) but a value was returned.
+  --> tests/failure/resolver/return_void_function.psy:3:5
+   |
+  3|     ret 1;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

@@ -1,0 +1,78 @@
+ var_type -> BOOL
+ primary -> BOOL_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> logic_and DOUBLE_AND bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    declaration
+      varDecl
+        VAR (var)
+        var_type
+          BOOL (bool)
+        IDENTIFIER (b)
+        EQ (=)
+        expression
+          assignment
+            ternary
+              logic_or
+                logic_and
+                  logic_and
+                    bitwise_or
+                      bitwise_xor
+                        bitwise_and
+                          equality
+                            comparison
+                              shift
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          BOOL_CONSTANT (true)
+                  DOUBLE_AND (&&)
+                  bitwise_or
+                    bitwise_xor
+                      bitwise_and
+                        equality
+                          comparison
+                            shift
+                              term
+                                factor
+                                  unary
+                                    call_access
+                                      primary
+                                        INT_CONSTANT (10)
+        SEMI_COLON (;)

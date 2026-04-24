@@ -1,0 +1,6 @@
+error: syntax error, unexpected {, expecting )
+  --> tests/failure/parser/unclosed_paren.psy:1:11
+   |
+  1| if (true {
+   |           ^--- Here
+

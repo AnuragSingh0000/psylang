@@ -1,0 +1,19 @@
+var int x = 5;
+
+if (x > 0)
+    echo "Positive";
+else if (x == 0)
+    echo "Zero";
+else
+    echo "Negative";
+
+if (true) { echo "True is True"; }
+if (false) { echo "False is False"; }
+if (!true) { echo "Not True is False"; }
+if (!false) { echo "Not False is True"; }
+
+var int a = 5;
+var int b = 10;
+
+var int max = (a > b) ? a : b;
+echo max;

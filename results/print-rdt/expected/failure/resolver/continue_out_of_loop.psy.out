@@ -1,0 +1,16 @@
+ continueStmt -> CONTINUE SEMI_COLON
+ statement -> continueStmt
+ declaration -> statement
+ decList -> declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    declaration
+      statement
+        continueStmt
+          CONTINUE (continue)
+          SEMI_COLON (;)

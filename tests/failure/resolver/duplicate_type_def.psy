@@ -1,0 +1,2 @@
+type Box { var int w; }
+type Box { var int h; }

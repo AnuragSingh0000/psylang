@@ -1,0 +1,10 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Student)
+    VAR_DECL (coords)
+      VAR_TYPE (Point)
+  TYPE_DECL (Point)
+    VAR_DECL (x)
+      VAR_TYPE (int)
+    VAR_DECL (y)
+      VAR_TYPE (int)

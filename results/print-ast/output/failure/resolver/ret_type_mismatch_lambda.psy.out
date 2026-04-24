@@ -1,0 +1,14 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (doubleIt)
+    VAR_TYPE (dyn)
+    LAMBDA
+      FUNCTION
+        TYPED_VAR (a)
+          VAR_TYPE (int)
+        VAR_TYPE (bool)
+        BLOCK
+          RETURN
+            BINARY (*)
+              PRIMARY (a)
+              PRIMARY (2)

@@ -1,0 +1,28 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (canDivideWatermelon)
+    FUNCTION
+      TYPED_VAR (weight)
+        VAR_TYPE (int)
+      VAR_TYPE (bool)
+      BLOCK
+        RETURN
+          BINARY (&&)
+            BINARY (>=)
+              PRIMARY (weight)
+              PRIMARY (4)
+            BINARY (==)
+              BINARY (%)
+                PRIMARY (weight)
+                PRIMARY (2)
+              PRIMARY (0)
+  VAR_DECL (w)
+    VAR_TYPE (int)
+    PRIMARY (8)
+  ECHO
+    TERNARY
+      CALL
+        PRIMARY (canDivideWatermelon)
+        PRIMARY (w)
+      PRIMARY ("YES")
+      PRIMARY ("NO")

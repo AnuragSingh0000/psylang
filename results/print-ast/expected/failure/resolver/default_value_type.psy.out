@@ -1,0 +1,8 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Student)
+    VAR_DECL (name)
+      VAR_TYPE (string)
+      PRIMARY ("Placeholder")
+    VAR_DECL (roll)
+      VAR_TYPE (int)

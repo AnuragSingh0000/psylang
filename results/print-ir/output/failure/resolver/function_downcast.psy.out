@@ -1,0 +1,9 @@
+Parsed OK
+error: Return type does not match function signature.
+  --> tests/failure/resolver/function_downcast.psy:3:5
+   |
+  3|     ret val;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

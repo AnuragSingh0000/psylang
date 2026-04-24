@@ -1,0 +1,9 @@
+Parsed OK
+error: Unknown type 'Point' for field 'coords'.
+  --> tests/failure/resolver/forward_decl.psy:2:5
+   |
+  2|     var Point coords;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

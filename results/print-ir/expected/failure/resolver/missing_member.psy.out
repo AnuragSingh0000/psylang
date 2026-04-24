@@ -1,0 +1,9 @@
+Parsed OK
+error: Member 'grade' does not exist in type 'Student'.
+  --> tests/failure/resolver/missing_member.psy:7:1
+   |
+  7| s.grade = "A";
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

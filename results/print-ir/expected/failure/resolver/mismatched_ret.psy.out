@@ -1,0 +1,9 @@
+Parsed OK
+error: Return type does not match function signature.
+  --> tests/failure/resolver/mismatched_ret.psy:2:5
+   |
+  2|     ret 10;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

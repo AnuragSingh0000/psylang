@@ -1,0 +1,6 @@
+error: syntax error, unexpected ;
+  --> tests/failure/parser/missing_value.psy:1:26
+   |
+  1| var int missing_value = ;
+   |                          ^--- Here
+

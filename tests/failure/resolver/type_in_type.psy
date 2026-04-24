@@ -1,0 +1,9 @@
+type Student {
+    type Addr {
+        var string location;
+    }
+
+    var string name;
+    var int roll;
+    var Addr addr;
+}

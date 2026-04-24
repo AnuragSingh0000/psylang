@@ -1,0 +1,13 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (s1)
+    VAR_TYPE (string)
+    PRIMARY ("hello")
+  VAR_DECL (s2)
+    VAR_TYPE (string)
+    PRIMARY ("world")
+  VAR_DECL (s3)
+    VAR_TYPE (string)
+    BINARY (-)
+      PRIMARY (s1)
+      PRIMARY (s2)

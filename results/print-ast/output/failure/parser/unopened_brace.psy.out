@@ -1,0 +1,6 @@
+error: syntax error, unexpected var
+  --> tests/failure/parser/unopened_brace.psy:2:8
+   |
+  2|     var list[3] ls = [1, 2, 3];
+   |        ^--- Here
+

@@ -1,0 +1,8 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Box)
+    VAR_DECL (w)
+      VAR_TYPE (int)
+  TYPE_DECL (Box)
+    VAR_DECL (h)
+      VAR_TYPE (int)

@@ -1,0 +1,9 @@
+Parsed OK
+error: Function expects a return value, but an empty 'ret' was used.
+  --> tests/failure/resolver/empty_return.psy:2:5
+   |
+  2|     ret;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

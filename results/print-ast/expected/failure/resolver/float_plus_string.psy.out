@@ -1,0 +1,10 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (num)
+    VAR_TYPE (float)
+    PRIMARY (10.000000)
+  VAR_DECL (result)
+    VAR_TYPE (dyn)
+    BINARY (+)
+      PRIMARY (num)
+      PRIMARY ("cats")

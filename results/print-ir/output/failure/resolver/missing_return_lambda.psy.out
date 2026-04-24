@@ -1,0 +1,9 @@
+Parsed OK
+error: Able to reach end of function without 'ret'.
+  --> tests/failure/resolver/missing_return_lambda.psy:1:15
+   |
+  1| var dyn foo = lambda(g: int) -> bool {
+   |               ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

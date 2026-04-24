@@ -1,0 +1,8 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (a)
+    VAR_TYPE (int)
+    PRIMARY (5)
+  VAR_DECL (a)
+    VAR_TYPE (string)
+    PRIMARY ("hello")

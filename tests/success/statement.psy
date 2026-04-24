@@ -1,0 +1,20 @@
+echo "Hello!";
+
+1 + 2;
+
+if (false) { }
+while (false) { break; }
+do { continue; } while (false);
+if (false) { }
+
+if (true)
+    while (true)
+        break;
+else if (false) {
+
+} else
+    1 + 2;
+
+fun add(a: int, b: int) -> int {
+    ret a + b;
+}

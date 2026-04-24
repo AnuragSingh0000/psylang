@@ -1,0 +1,5 @@
+Parsed OK
+PROGRAM
+  EXPR_STMT
+    POSTFIX (++)
+      PRIMARY (10)

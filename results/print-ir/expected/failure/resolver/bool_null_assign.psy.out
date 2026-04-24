@@ -1,0 +1,9 @@
+Parsed OK
+error: Type mismatch in declaration of 'flag'.
+  --> tests/failure/resolver/bool_null_assign.psy:1:1
+   |
+  1| var bool flag = null;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

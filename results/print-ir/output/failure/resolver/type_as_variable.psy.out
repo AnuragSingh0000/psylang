@@ -1,0 +1,9 @@
+Parsed OK
+error: Cannot use type name as a variable.
+  --> tests/failure/resolver/type_as_variable.psy:5:6
+   |
+  5| echo Point;
+   |      ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

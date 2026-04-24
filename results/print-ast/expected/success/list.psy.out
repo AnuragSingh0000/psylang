@@ -1,0 +1,95 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (myData)
+    VAR_TYPE (list[3])
+    LIST
+      PRIMARY (1)
+      PRIMARY ("two")
+      PRIMARY (3.140000)
+  ECHO
+    INDEX
+      PRIMARY (myData)
+      PRIMARY (1)
+  EXPR_STMT
+    ASSIGN (=)
+      INDEX
+        PRIMARY (myData)
+        PRIMARY (0)
+      PRIMARY ("hi")
+  VAR_DECL (scores)
+    VAR_TYPE (list[3])
+    LIST
+      PRIMARY (10)
+      PRIMARY (20)
+      PRIMARY (30)
+  EXPR_STMT
+    ASSIGN (=)
+      INDEX
+        PRIMARY (scores)
+        PRIMARY (1)
+      PRIMARY (99)
+  VAR_DECL (matrix)
+    VAR_TYPE (list[2])
+    LIST
+      LIST
+        PRIMARY (1)
+        PRIMARY (2)
+      LIST
+        PRIMARY (3)
+        PRIMARY (4)
+  ECHO
+    INDEX
+      INDEX
+        PRIMARY (matrix)
+        PRIMARY (0)
+      PRIMARY (1)
+  EXPR_STMT
+    ASSIGN (=)
+      INDEX
+        INDEX
+          PRIMARY (matrix)
+          PRIMARY (1)
+        PRIMARY (1)
+      PRIMARY (5)
+  VAR_DECL (mixedList)
+    VAR_TYPE (dyn)
+    LIST
+      PRIMARY (1)
+      PRIMARY ("two")
+      LIST
+        PRIMARY (3)
+        PRIMARY (4)
+  EXPR_STMT
+    ASSIGN (=)
+      INDEX
+        INDEX
+          PRIMARY (mixedList)
+          PRIMARY (2)
+        PRIMARY (0)
+      PRIMARY (9)
+  VAR_DECL (temp)
+    VAR_TYPE (dyn)
+    LIST
+      PRIMARY (1)
+      PRIMARY (2)
+      PRIMARY (3)
+  VAR_DECL (dupList)
+    VAR_TYPE (dyn)
+    LIST
+      PRIMARY (temp)
+      PRIMARY (temp)
+      PRIMARY (temp)
+  EXPR_STMT
+    ASSIGN (=)
+      INDEX
+        INDEX
+          PRIMARY (dupList)
+          PRIMARY (0)
+        PRIMARY (0)
+      PRIMARY (5)
+  ECHO
+    INDEX
+      INDEX
+        PRIMARY (dupList)
+        PRIMARY (1)
+      PRIMARY (0)

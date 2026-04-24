@@ -1,0 +1,14 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Student)
+    VAR_DECL (name)
+      VAR_TYPE (string)
+    VAR_DECL (age)
+      VAR_TYPE (int)
+  VAR_DECL (s)
+    VAR_TYPE (Student)
+  EXPR_STMT
+    ASSIGN (=)
+      MEMBER (.grade)
+        PRIMARY (s)
+      PRIMARY ("A")

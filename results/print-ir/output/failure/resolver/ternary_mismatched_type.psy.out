@@ -1,0 +1,9 @@
+Parsed OK
+error: Ternary branches must have matching types.
+  --> tests/failure/resolver/ternary_mismatched_type.psy:1:1
+   |
+  1| (1 == 2) ? 3 : "4";
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

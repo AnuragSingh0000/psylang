@@ -1,0 +1,13 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (flag)
+    VAR_TYPE (bool)
+    PRIMARY (true)
+  VAR_DECL (val)
+    VAR_TYPE (int)
+    PRIMARY (1)
+  VAR_DECL (res)
+    VAR_TYPE (bool)
+    BINARY (==)
+      PRIMARY (flag)
+      PRIMARY (val)

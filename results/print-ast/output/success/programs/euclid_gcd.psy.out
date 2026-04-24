@@ -1,0 +1,35 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (gcd)
+    FUNCTION
+      TYPED_VAR (a)
+        VAR_TYPE (int)
+      TYPED_VAR (b)
+        VAR_TYPE (int)
+      VAR_TYPE (int)
+      BLOCK
+        WHILE
+          BINARY (!=)
+            PRIMARY (b)
+            PRIMARY (0)
+          BLOCK
+            VAR_DECL (temp)
+              VAR_TYPE (int)
+              PRIMARY (b)
+            EXPR_STMT
+              ASSIGN (=)
+                PRIMARY (b)
+                BINARY (%)
+                  PRIMARY (a)
+                  PRIMARY (b)
+            EXPR_STMT
+              ASSIGN (=)
+                PRIMARY (a)
+                PRIMARY (temp)
+        RETURN
+          PRIMARY (a)
+  ECHO
+    CALL
+      PRIMARY (gcd)
+      PRIMARY (12)
+      PRIMARY (20)

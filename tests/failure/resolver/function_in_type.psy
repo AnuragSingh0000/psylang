@@ -1,0 +1,8 @@
+type SystemState {
+    var int id;
+    var bool online;
+
+    fun isOnline() -> bool {
+        ret online == true;
+    }
+}

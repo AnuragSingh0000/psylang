@@ -1,0 +1,2 @@
+var int counter = 0;
+++++counter;

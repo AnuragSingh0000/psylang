@@ -1,0 +1,9 @@
+Parsed OK
+error: Condition of ternary operator must be a boolean.
+  --> tests/failure/resolver/ternary_condition_mismatch.psy:1:13
+   |
+  1| var int x = (1) ? 10 : 20;
+   |             ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

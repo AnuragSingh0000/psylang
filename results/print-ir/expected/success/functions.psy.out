@@ -1,0 +1,94 @@
+Parsed OK
+IR
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+| idx  | opcode         | arg1                             | arg2                             | res                              |
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+| 0000 | TYPE_BEGIN     | Z                                | _                                | _                                |
+| 0001 | TYPE_FIELD     | Z                                | q                                | _                                |
+| 0002 | TYPE_FIELD     | Z                                | w                                | _                                |
+| 0003 | TYPE_END       | Z                                | _                                | _                                |
+| 0004 | FUNC           | _sym2                            | 2                                | int                              |
+| 0005 | FUNC_PARAM     | _sym2                            | 0:_sym3                          | float                            |
+| 0006 | FUNC_PARAM     | _sym2                            | 1:_sym4                          | bool                             |
+| 0007 | RETURN         | 42                               | _                                | _                                |
+| 0008 | ENDFUNC        | _                                | _                                | _                                |
+| 0009 | FUNC           | _sym5                            | 2                                | float                            |
+| 0010 | FUNC_PARAM     | _sym5                            | 0:_sym6                          | string                           |
+| 0011 | FUNC_PARAM     | _sym5                            | 1:_sym7                          | dyn                              |
+| 0012 | RETURN         | 3.1415                           | _                                | _                                |
+| 0013 | ENDFUNC        | _                                | _                                | _                                |
+| 0014 | FUNC           | _sym8                            | 2                                | string                           |
+| 0015 | FUNC_PARAM     | _sym8                            | 0:_sym9                          | list[2]                          |
+| 0016 | FUNC_PARAM     | _sym8                            | 1:_sym10                         | Z                                |
+| 0017 | RETURN         | random                           | _                                | _                                |
+| 0018 | ENDFUNC        | _                                | _                                | _                                |
+| 0019 | FUNC           | _sym11                           | 1                                | bool                             |
+| 0020 | FUNC_PARAM     | _sym11                           | 0:_sym12                         | int                              |
+| 0021 | RETURN         | true                             | _                                | _                                |
+| 0022 | ENDFUNC        | _                                | _                                | _                                |
+| 0023 | FUNC           | _sym13                           | 3                                | dyn                              |
+| 0024 | FUNC_PARAM     | _sym13                           | 0:_sym14                         | float                            |
+| 0025 | FUNC_PARAM     | _sym13                           | 1:_sym15                         | string                           |
+| 0026 | FUNC_PARAM     | _sym13                           | 2:_sym16                         | bool                             |
+| 0027 | RETURN         | _sym14                           | _                                | _                                |
+| 0028 | ENDFUNC        | _                                | _                                | _                                |
+| 0029 | FUNC           | _sym17                           | 1                                | list[3]                          |
+| 0030 | FUNC_PARAM     | _sym17                           | 0:_sym18                         | Z                                |
+| 0031 | LIST_ELEM      | 1                                | _                                | _                                |
+| 0032 | LIST_ELEM      | false                            | _                                | _                                |
+| 0033 | LIST_ELEM      | three                            | _                                | _                                |
+| 0034 | LIST_LITERAL   | 3                                | _                                | t2                               |
+| 0035 | RETURN         | t2                               | _                                | _                                |
+| 0036 | ENDFUNC        | _                                | _                                | _                                |
+| 0037 | FUNC           | _sym19                           | 1                                | Z                                |
+| 0038 | FUNC_PARAM     | _sym19                           | 0:_sym20                         | dyn                              |
+| 0039 | STORE_MEMBER   | _sym21                           | q                                | 99                               |
+| 0040 | STORE_MEMBER   | _sym21                           | w                                | test                             |
+| 0041 | RETURN         | _sym21                           | _                                | _                                |
+| 0042 | ENDFUNC        | _                                | _                                | _                                |
+| 0043 | FUNC           | _sym22                           | 2                                | null                             |
+| 0044 | FUNC_PARAM     | _sym22                           | 0:_sym23                         | int                              |
+| 0045 | FUNC_PARAM     | _sym22                           | 1:_sym24                         | float                            |
+| 0046 | +              | _sym23                           | 1                                | t3                               |
+| 0047 | =              | t3                               | _                                | _sym25                           |
+| 0048 | RETURN         | null                             | _                                | _                                |
+| 0049 | ENDFUNC        | _                                | _                                | _                                |
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+
+--- Symbol Table (Debug) ---
++-------+----------------------------------+-------+--------------------------+
+| Index | Name                             | Depth | Type                     |
++-------+----------------------------------+-------+--------------------------+
+| _sym1 | Z                                | 0     | type                     |
+| _sym2 | foo                              | 0     | int                      |
+| _sym3 | a                                | 1     | float                    |
+| _sym4 | b                                | 1     | bool                     |
+| _sym5 | bar                              | 0     | float                    |
+| _sym6 | c                                | 1     | string                   |
+| _sym7 | d                                | 1     | dyn                      |
+| _sym8 | baz                              | 0     | string                   |
+| _sym9 | e                                | 1     | list                     |
+| _sym10| f                                | 1     | Z                        |
+| _sym11| qux                              | 0     | bool                     |
+| _sym12| g                                | 1     | int                      |
+| _sym13| zap                              | 0     | dyn                      |
+| _sym14| h                                | 1     | float                    |
+| _sym15| i                                | 1     | string                   |
+| _sym16| j                                | 1     | bool                     |
+| _sym17| zip                              | 0     | list                     |
+| _sym18| k                                | 1     | Z                        |
+| _sym19| bop                              | 0     | Z                        |
+| _sym20| l                                | 1     | dyn                      |
+| _sym21| m                                | 1     | Z                        |
+| _sym22| fnd                              | 0     | null                     |
+| _sym23| n                                | 1     | int                      |
+| _sym24| o                                | 1     | float                    |
+| _sym25| p                                | 1     | int                      |
++-------+----------------------------------+-------+--------------------------+
+
+--- Type Registry (Debug) ---
++------------------------------+----------------------------------------------------+
+| Index | Type Name            | Members (Name : Type)                              |
++------------------------------+----------------------------------------------------+
+| _sym1 | Z                    | q: int, w: string
++------------------------------+----------------------------------------------------+

@@ -1,0 +1,9 @@
+Parsed OK
+error: 'ret' statement outside of a function.
+  --> tests/failure/resolver/ret_out_of_function.psy:2:5
+   |
+  2|     ret false;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

@@ -1,0 +1,4 @@
+if (true) {
+    var int local_var = 100;
+}
+echo local_var;

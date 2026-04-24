@@ -1,0 +1,4 @@
+type Student {
+    var int id;
+    var int id;
+}

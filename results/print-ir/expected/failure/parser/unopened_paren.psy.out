@@ -1,0 +1,6 @@
+error: syntax error, unexpected BOOL_CONSTANT, expecting (
+  --> tests/failure/parser/unopened_paren.psy:1:8
+   |
+  1| if true) {
+   |        ^--- Here
+

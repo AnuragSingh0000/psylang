@@ -1,0 +1,8 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (getStatus)
+    FUNCTION
+      VAR_TYPE (string)
+      BLOCK
+        RETURN
+          PRIMARY (404)

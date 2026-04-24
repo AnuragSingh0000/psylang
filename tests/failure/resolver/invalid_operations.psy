@@ -1,0 +1,22 @@
+$$ Test case demonstrating semantic analysis issues that should fail
+
+$$ Issue 1: NODE_INDEX_ACCESS - indexing non-list types
+var int x = 42;
+var dyn result1 = x[0];  $$ Should fail: cannot index int
+
+var string s = "hello";
+var dyn result2 = s[1];  $$ Should fail: cannot index string
+
+var bool flag = true;
+var dyn result3 = flag[0];  $$ Should fail: cannot index bool
+
+$$ Issue 2: Unary operators - invalid operands
+var dyn result4 = -flag;  $$ Should fail: unary minus on bool
+var dyn result5 = ~s;     $$ Should fail: bitwise NOT on string
+
+$$ Issue 3: Binary operations - invalid type combinations
+var dyn result6 = flag + flag;  $$ Should fail: bool + bool
+var dyn result7 = s * 3;        $$ Should fail: string * int
+var dyn result8 = flag & flag;  $$ Should fail: bitwise AND on bool
+
+$$ These should all be caught by semantic analysis but currently pass through 

@@ -1,0 +1,2 @@
+ var_type -> STRING
+[Error at Line 1]: Unterminated string literal (end of file).

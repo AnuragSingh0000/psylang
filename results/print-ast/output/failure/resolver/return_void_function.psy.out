@@ -1,0 +1,10 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (doNothing)
+    FUNCTION
+      VAR_TYPE (null)
+      BLOCK
+        ECHO
+          PRIMARY ("did nothing")
+        RETURN
+          PRIMARY (1)

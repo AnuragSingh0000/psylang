@@ -1,0 +1,9 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Point)
+    VAR_DECL (x)
+      VAR_TYPE (int)
+    VAR_DECL (y)
+      VAR_TYPE (int)
+  ECHO
+    PRIMARY (Point)

@@ -1,0 +1,20 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (t1)
+    VAR_TYPE (string)
+    PRIMARY ("Newline: 
+ Tab: 	 Quotes: " ' Backslash: \ \n \\ should be supported.
+")
+  VAR_DECL (t2)
+    VAR_TYPE (string)
+    PRIMARY ("Newline: 
+ Tab: 	 Quotes: " ' Backslash: \ \n \\ should be supported.
+")
+  ECHO
+    PRIMARY (t1)
+  ECHO
+    PRIMARY (t2)
+  ECHO
+    BINARY (==)
+      PRIMARY (t1)
+      PRIMARY (t2)

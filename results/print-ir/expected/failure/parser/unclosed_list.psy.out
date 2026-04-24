@@ -1,0 +1,6 @@
+error: syntax error, unexpected ;, expecting ] or ","
+  --> tests/failure/parser/unclosed_list.psy:2:31
+   |
+  2|     var list[3] ls = [1, 2, 3;
+   |                               ^--- Here
+

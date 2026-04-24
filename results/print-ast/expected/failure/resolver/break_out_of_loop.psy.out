@@ -1,0 +1,11 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (x)
+    VAR_TYPE (int)
+    PRIMARY (5)
+  IF
+    BINARY (>)
+      PRIMARY (x)
+      PRIMARY (0)
+    BLOCK
+      BREAK

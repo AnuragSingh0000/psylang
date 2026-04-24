@@ -1,0 +1,10 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (s)
+    VAR_TYPE (string)
+    PRIMARY ("echo")
+  VAR_DECL (repeated)
+    VAR_TYPE (string)
+    BINARY (*)
+      PRIMARY (s)
+      PRIMARY (3)

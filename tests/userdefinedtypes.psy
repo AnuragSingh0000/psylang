@@ -1,8 +1,0 @@
-type Student {
-    string name;
-    int roll;
-}
-
-var Student s1;
-s1.name = "Eren";
-s1.roll = 139;

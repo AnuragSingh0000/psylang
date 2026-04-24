@@ -1,0 +1,7 @@
+type Student {
+    var string name;
+    var int age;
+}
+
+var Student s;
+s.grade = "A";

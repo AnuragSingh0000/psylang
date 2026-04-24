@@ -1,0 +1,9 @@
+Parsed OK
+error: Redeclaration of 'a' in the same scope.
+  --> tests/failure/resolver/redefined_variable.psy:2:1
+   |
+  2| var string a = "hello";
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

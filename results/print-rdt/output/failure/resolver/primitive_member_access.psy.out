@@ -1,0 +1,102 @@
+ var_type -> INT
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> declaration
+ var_type -> DYN
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> decList declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    decList
+      declaration
+        varDecl
+          VAR (var)
+          var_type
+            INT (int)
+          IDENTIFIER (number)
+          EQ (=)
+          expression
+            assignment
+              ternary
+                logic_or
+                  logic_and
+                    bitwise_or
+                      bitwise_xor
+                        bitwise_and
+                          equality
+                            comparison
+                              shift
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          INT_CONSTANT (42)
+          SEMI_COLON (;)
+    declaration
+      varDecl
+        VAR (var)
+        var_type
+          DYN (dyn)
+        IDENTIFIER (val)
+        EQ (=)
+        expression
+          assignment
+            ternary
+              logic_or
+                logic_and
+                  bitwise_or
+                    bitwise_xor
+                      bitwise_and
+                        equality
+                          comparison
+                            shift
+                              term
+                                factor
+                                  unary
+                                    call_access
+                                      call_access
+                                        primary
+                                          IDENTIFIER (number)
+                                      DOT (.)
+                                      IDENTIFIER (toString)
+        SEMI_COLON (;)

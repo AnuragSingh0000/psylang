@@ -1,0 +1,9 @@
+Parsed OK
+error: Default field initializers are not allowed in C-style structs.
+  --> tests/failure/resolver/default_value_type.psy:2:5
+   |
+  2|     var string name = "Placeholder";
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

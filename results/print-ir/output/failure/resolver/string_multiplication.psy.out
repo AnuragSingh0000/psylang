@@ -1,0 +1,9 @@
+Parsed OK
+error: Invalid operation on string.
+  --> tests/failure/resolver/string_multiplication.psy:2:23
+   |
+  2| var string repeated = s * 3;
+   |                       ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

@@ -1,0 +1,9 @@
+Parsed OK
+error: 'continue' statement outside of a loop.
+  --> tests/failure/resolver/continue_nested_function.psy:3:9
+   |
+  3|         continue;
+   |         ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

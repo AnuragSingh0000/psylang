@@ -1,0 +1,3 @@
+var dyn doubleIt = lambda(a: int) -> bool {
+    ret a * 2;
+};

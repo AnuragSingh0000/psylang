@@ -1,0 +1,9 @@
+Parsed OK
+error: Redeclaration of 'Student' in the same scope.
+  --> tests/failure/resolver/type_redefinition_var.psy:4:1
+   |
+  4| var int Student = 5;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

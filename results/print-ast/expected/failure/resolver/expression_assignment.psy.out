@@ -1,0 +1,14 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (a)
+    VAR_TYPE (int)
+    PRIMARY (5)
+  VAR_DECL (b)
+    VAR_TYPE (int)
+    PRIMARY (5)
+  EXPR_STMT
+    ASSIGN (=)
+      BINARY (+)
+        PRIMARY (a)
+        PRIMARY (b)
+      PRIMARY (20)

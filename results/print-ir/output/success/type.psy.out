@@ -1,0 +1,53 @@
+Parsed OK
+IR
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+| idx  | opcode         | arg1                             | arg2                             | res                              |
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+| 0000 | TYPE_BEGIN     | Point                            | _                                | _                                |
+| 0001 | TYPE_FIELD     | Point                            | x                                | _                                |
+| 0002 | TYPE_FIELD     | Point                            | y                                | _                                |
+| 0003 | TYPE_FIELD     | Point                            | label                            | _                                |
+| 0004 | TYPE_END       | Point                            | _                                | _                                |
+| 0005 | TYPE_BEGIN     | Student                          | _                                | _                                |
+| 0006 | TYPE_FIELD     | Student                          | name                             | _                                |
+| 0007 | TYPE_FIELD     | Student                          | coords                           | _                                |
+| 0008 | TYPE_FIELD     | Student                          | roll                             | _                                |
+| 0009 | TYPE_END       | Student                          | _                                | _                                |
+| 0010 | TYPE_BEGIN     | Student                          | _                                | _                                |
+| 0011 | TYPE_FIELD     | Student                          | name                             | _                                |
+| 0012 | TYPE_FIELD     | Student                          | coords                           | _                                |
+| 0013 | TYPE_END       | Student                          | _                                | _                                |
+| 0014 | STORE_MEMBER   | _sym4                            | name                             | Eren Yeager                      |
+| 0015 | STORE_MEMBER   | _sym5                            | name                             | Eren Yeager                      |
+| 0016 | STORE_MEMBER   | _sym5                            | roll                             | 139                              |
+| 0017 | MEMBER_ACCESS  | _sym5                            | coords                           | t2                               |
+| 0018 | STORE_MEMBER   | t2                               | x                                | 13                               |
+| 0019 | MEMBER_ACCESS  | _sym5                            | coords                           | t3                               |
+| 0020 | STORE_MEMBER   | t3                               | y                                | 9                                |
+| 0021 | MEMBER_ACCESS  | _sym5                            | coords                           | t4                               |
+| 0022 | STORE_MEMBER   | t4                               | label                            | Paradis                          |
+| 0023 | =              | _sym5                            | _                                | _sym6                            |
+| 0024 | MEMBER_ACCESS  | _sym6                            | coords                           | t5                               |
+| 0025 | STORE_MEMBER   | t5                               | x                                | 100                              |
++------+----------------+----------------------------------+----------------------------------+----------------------------------+
+
+--- Symbol Table (Debug) ---
++-------+----------------------------------+-------+--------------------------+
+| Index | Name                             | Depth | Type                     |
++-------+----------------------------------+-------+--------------------------+
+| _sym1 | Point                            | 0     | type                     |
+| _sym2 | Student                          | 0     | type                     |
+| _sym3 | Student                          | 1     | type                     |
+| _sym4 | s1                               | 1     | Student                  |
+| _sym5 | s1                               | 0     | Student                  |
+| _sym6 | s2                               | 0     | Student                  |
++-------+----------------------------------+-------+--------------------------+
+
+--- Type Registry (Debug) ---
++------------------------------+----------------------------------------------------+
+| Index | Type Name            | Members (Name : Type)                              |
++------------------------------+----------------------------------------------------+
+| _sym1 | Point                | x: int, y: int, label: string
+| _sym2 | Student              | name: string, coords: Point, roll: int
+| _sym3 | Student              | name: string, coords: Point
++------------------------------+----------------------------------------------------+

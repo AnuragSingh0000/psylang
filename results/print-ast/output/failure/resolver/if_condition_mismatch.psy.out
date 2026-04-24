@@ -1,0 +1,7 @@
+Parsed OK
+PROGRAM
+  IF
+    PRIMARY (5)
+    BLOCK
+      ECHO
+        PRIMARY ("hi")

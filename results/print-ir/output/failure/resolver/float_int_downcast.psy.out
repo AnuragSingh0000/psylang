@@ -1,0 +1,9 @@
+Parsed OK
+error: Type mismatch in declaration of 'ival'.
+  --> tests/failure/resolver/float_int_downcast.psy:1:1
+   |
+  1| var int ival = 10.5;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

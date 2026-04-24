@@ -1,0 +1,3 @@
+var string temp = "Unclosed string (newline);
+"
+echo temp;

@@ -1,0 +1,277 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (v1)
+    VAR_TYPE (dyn)
+  VAR_DECL (v2)
+    VAR_TYPE (int)
+    PRIMARY (123)
+  VAR_DECL (v3)
+    VAR_TYPE (float)
+    UNARY (-)
+      PRIMARY (31.245001)
+  VAR_DECL (v4)
+    VAR_TYPE (bool)
+    BINARY (&&)
+      PRIMARY (true)
+      PRIMARY (false)
+  VAR_DECL (v5)
+    VAR_TYPE (string)
+    PRIMARY ("aBcD123$((*$@#)~~"\''")
+  VAR_DECL (v6)
+    VAR_TYPE (list[5])
+    LIST
+      PRIMARY (false)
+      PRIMARY (1)
+      PRIMARY ("two")
+      PRIMARY (3.140000)
+      PRIMARY (v1)
+  VAR_DECL (v7)
+    VAR_TYPE (dyn)
+    PRIMARY (null)
+  TYPE_DECL (SystemState)
+    VAR_DECL (id)
+      VAR_TYPE (int)
+    VAR_DECL (online)
+      VAR_TYPE (bool)
+    VAR_DECL (reboot)
+      VAR_TYPE (dyn)
+  FUN_DECL (fibo)
+    FUNCTION
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      VAR_TYPE (int)
+      BLOCK
+        IF
+          BINARY (<=)
+            PRIMARY (n)
+            PRIMARY (1)
+          BLOCK
+            RETURN
+              PRIMARY (n)
+        RETURN
+          BINARY (+)
+            CALL
+              PRIMARY (fibo)
+              BINARY (-)
+                PRIMARY (n)
+                PRIMARY (1)
+            CALL
+              PRIMARY (fibo)
+              BINARY (-)
+                PRIMARY (n)
+                PRIMARY (2)
+  FUN_DECL (dynReturn)
+    FUNCTION
+      TYPED_VAR (state)
+        VAR_TYPE (SystemState)
+      VAR_TYPE (dyn)
+      BLOCK
+        RETURN
+          TERNARY
+            BINARY (==)
+              MEMBER (.online)
+                PRIMARY (state)
+              PRIMARY (true)
+            PRIMARY ("OK")
+            PRIMARY (null)
+  VAR_DECL (counter)
+    VAR_TYPE (float)
+    PRIMARY (12.340000)
+  IF
+    BINARY (==)
+      PRIMARY (counter)
+      PRIMARY (0)
+    BLOCK
+      ECHO
+        PRIMARY ("Zero")
+    IF
+      BINARY (>)
+        PRIMARY (counter)
+        PRIMARY (0)
+      BLOCK
+        ECHO
+          PRIMARY ("Positive")
+      BLOCK
+        ECHO
+          PRIMARY ("Negative")
+  FOR
+    VAR_DECL (i)
+      VAR_TYPE (int)
+      PRIMARY (0)
+    BINARY (<)
+      PRIMARY (i)
+      PRIMARY (10)
+    POSTFIX (++)
+      PRIMARY (i)
+    BLOCK
+      IF
+        BINARY (==)
+          BINARY (%)
+            PRIMARY (i)
+            PRIMARY (2)
+          PRIMARY (0)
+        BLOCK
+          CONTINUE
+      IF
+        BINARY (==)
+          PRIMARY (i)
+          PRIMARY (7)
+        BLOCK
+          BREAK
+      ECHO
+        PRIMARY (i)
+  WHILE
+    BINARY (>)
+      PRIMARY (counter)
+      PRIMARY (0)
+    BLOCK
+      EXPR_STMT
+        POSTFIX (--)
+          PRIMARY (counter)
+  DO_WHILE
+    BLOCK
+      EXPR_STMT
+        POSTFIX (++)
+          PRIMARY (counter)
+    BINARY (<)
+      PRIMARY (counter)
+      PRIMARY (5)
+  VAR_DECL (state)
+    VAR_TYPE (SystemState)
+  EXPR_STMT
+    ASSIGN (=)
+      MEMBER (.id)
+        PRIMARY (state)
+      PRIMARY (101)
+  EXPR_STMT
+    ASSIGN (=)
+      MEMBER (.online)
+        PRIMARY (state)
+      PRIMARY (true)
+  EXPR_STMT
+    ASSIGN (=)
+      MEMBER (.reboot)
+        PRIMARY (state)
+      LAMBDA
+        FUNCTION
+          TYPED_VAR (s)
+            VAR_TYPE (SystemState)
+          VAR_TYPE (null)
+          BLOCK
+            ECHO
+              PRIMARY ("Reboot")
+            EXPR_STMT
+              ASSIGN (=)
+                MEMBER (.online)
+                  PRIMARY (s)
+                PRIMARY (false)
+  VAR_DECL (val)
+    VAR_TYPE (int)
+    BINARY (%)
+      BINARY (-)
+        PRIMARY (10)
+        BINARY (/)
+          BINARY (*)
+            PRIMARY (2)
+            PRIMARY (4)
+          PRIMARY (2)
+      PRIMARY (3)
+  VAR_DECL (compare)
+    VAR_TYPE (bool)
+    BINARY (||)
+      BINARY (&&)
+        BINARY (>)
+          PRIMARY (val)
+          PRIMARY (0)
+        BINARY (>=)
+          PRIMARY (val)
+          PRIMARY (1)
+      BINARY (&&)
+        BINARY (&&)
+          BINARY (&&)
+            BINARY (<)
+              PRIMARY (val)
+              PRIMARY (5)
+            BINARY (<=)
+              PRIMARY (val)
+              PRIMARY (4)
+          BINARY (==)
+            PRIMARY (val)
+            PRIMARY (1)
+        BINARY (!=)
+          PRIMARY (val)
+          PRIMARY (2)
+  VAR_DECL (bits)
+    VAR_TYPE (int)
+    BINARY (|)
+      BINARY (&)
+        PRIMARY (5)
+        PRIMARY (3)
+      BINARY (^)
+        PRIMARY (2)
+        PRIMARY (1)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (bits)
+      UNARY (~)
+        PRIMARY (bits)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (bits)
+      BINARY (<<)
+        PRIMARY (bits)
+        PRIMARY (1)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (bits)
+      BINARY (>>)
+        PRIMARY (bits)
+        PRIMARY (1)
+  EXPR_STMT
+    ASSIGN (+)
+      PRIMARY (val)
+      PRIMARY (5)
+  EXPR_STMT
+    ASSIGN (-=)
+      PRIMARY (val)
+      PRIMARY (2)
+  EXPR_STMT
+    ASSIGN (*=)
+      PRIMARY (val)
+      PRIMARY (2)
+  EXPR_STMT
+    ASSIGN (/=)
+      PRIMARY (val)
+      PRIMARY (2)
+  EXPR_STMT
+    ASSIGN (%=)
+      PRIMARY (val)
+      PRIMARY (2)
+  EXPR_STMT
+    POSTFIX (++)
+      PRIMARY (val)
+  EXPR_STMT
+    UNARY (++)
+      PRIMARY (val)
+  EXPR_STMT
+    POSTFIX (--)
+      PRIMARY (val)
+  EXPR_STMT
+    UNARY (--)
+      PRIMARY (val)
+  VAR_DECL (neg)
+    VAR_TYPE (int)
+    UNARY (-)
+      PRIMARY (val)
+  VAR_DECL (flag)
+    VAR_TYPE (bool)
+    PRIMARY (true)
+  VAR_DECL (flipped)
+    VAR_TYPE (bool)
+    UNARY (!)
+      PRIMARY (flag)
+  VAR_DECL (unflipped)
+    VAR_TYPE (bool)
+    UNARY (!)
+      UNARY (!)
+        PRIMARY (flag)

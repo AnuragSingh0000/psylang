@@ -1,0 +1,52 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (fizzbuzz)
+    FUNCTION
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      VAR_TYPE (null)
+      BLOCK
+        FOR
+          VAR_DECL (i)
+            VAR_TYPE (int)
+            PRIMARY (1)
+          BINARY (<=)
+            PRIMARY (i)
+            PRIMARY (n)
+          POSTFIX (++)
+            PRIMARY (i)
+          BLOCK
+            IF
+              BINARY (==)
+                BINARY (%)
+                  PRIMARY (i)
+                  PRIMARY (15)
+                PRIMARY (0)
+              BLOCK
+                ECHO
+                  PRIMARY ("FizzBuzz")
+              IF
+                BINARY (==)
+                  BINARY (%)
+                    PRIMARY (i)
+                    PRIMARY (3)
+                  PRIMARY (0)
+                BLOCK
+                  ECHO
+                    PRIMARY ("Fizz")
+                IF
+                  BINARY (==)
+                    BINARY (%)
+                      PRIMARY (i)
+                      PRIMARY (5)
+                    PRIMARY (0)
+                  BLOCK
+                    ECHO
+                      PRIMARY ("Buzz")
+                  BLOCK
+                    ECHO
+                      PRIMARY (i)
+  EXPR_STMT
+    CALL
+      PRIMARY (fizzbuzz)
+      PRIMARY (15)

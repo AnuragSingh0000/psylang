@@ -1,0 +1,11 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (getInt)
+    FUNCTION
+      VAR_TYPE (int)
+      BLOCK
+        VAR_DECL (val)
+          VAR_TYPE (float)
+          PRIMARY (9.990000)
+        RETURN
+          PRIMARY (val)

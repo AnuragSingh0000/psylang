@@ -1,0 +1,27 @@
+VAR
+STRING
+IDENTIFIER: t1
+EQ
+STRING_CONSTANT: Newline: 
+ Tab: 	 Quotes: " ' Backslash: \ \n \\ should be supported.
+
+SEMI_COLON
+VAR
+STRING
+IDENTIFIER: t2
+EQ
+STRING_CONSTANT: Newline: 
+ Tab: 	 Quotes: " ' Backslash: \ \n \\ should be supported.
+
+SEMI_COLON
+ECHO
+IDENTIFIER: t1
+SEMI_COLON
+ECHO
+IDENTIFIER: t2
+SEMI_COLON
+ECHO
+IDENTIFIER: t1
+EQ_EQ
+IDENTIFIER: t2
+SEMI_COLON

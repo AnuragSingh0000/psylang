@@ -1,0 +1,6 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (coords)
+    VAR_TYPE (list[3])
+    LIST
+      PRIMARY (0)

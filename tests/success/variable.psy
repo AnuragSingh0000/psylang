@@ -1,0 +1,27 @@
+$$ Datatype declaration
+var int v1 = 10;
+var float v2 = 3.14;
+var string v3 = "Hello World!";
+var bool v4 = (3 < 5) && (5 != 10);
+var list[3] v5 = [1, "two", 3.14];
+
+$$ Upcasting is allowed
+var float v6 = v1;
+v2 = v1;
+
+$$ Dyn declaration
+var dyn d1 = 10;
+var dyn d2 = 3.14;
+var dyn d3 = "Hello World!";
+var dyn d4 = true;
+var dyn d5 = [1, "two", 3.14];   $$ automatically assigned list[3]
+
+$$ Assigning dyn to datatype var
+var dyn f1 = v1;
+var dyn f2 = v2;
+var dyn f3 = v3;
+var dyn f4 = v4;
+var dyn f5 = v5;
+
+$$ Assigning dyn to dyn var
+var dyn g = d5;

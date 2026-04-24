@@ -1,0 +1,9 @@
+Parsed OK
+error: 'break' statement outside of a loop.
+  --> tests/failure/resolver/break_out_of_loop.psy:3:5
+   |
+  3|     break;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

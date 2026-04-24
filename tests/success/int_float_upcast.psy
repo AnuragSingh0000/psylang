@@ -1,0 +1,5 @@
+var float x = 10;
+var float y = (x == 10) ? 5 : 10.5;
+
+var int z = 10;
+y = y + z;

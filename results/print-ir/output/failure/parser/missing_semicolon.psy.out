@@ -1,0 +1,6 @@
+error: syntax error, unexpected echo, expecting ;
+  --> tests/failure/parser/missing_semicolon.psy:4:5
+   |
+  4| echo a + b;
+   |     ^--- Here
+

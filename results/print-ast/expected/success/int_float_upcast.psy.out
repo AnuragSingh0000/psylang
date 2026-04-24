@@ -1,0 +1,22 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (x)
+    VAR_TYPE (float)
+    PRIMARY (10)
+  VAR_DECL (y)
+    VAR_TYPE (float)
+    TERNARY
+      BINARY (==)
+        PRIMARY (x)
+        PRIMARY (10)
+      PRIMARY (5)
+      PRIMARY (10.500000)
+  VAR_DECL (z)
+    VAR_TYPE (int)
+    PRIMARY (10)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (y)
+      BINARY (+)
+        PRIMARY (y)
+        PRIMARY (z)

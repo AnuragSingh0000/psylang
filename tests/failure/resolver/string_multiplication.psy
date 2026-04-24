@@ -1,0 +1,2 @@
+var string s = "echo";
+var string repeated = s * 3;

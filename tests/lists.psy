@@ -1,3 +1,0 @@
-var list [3] myData = [1 , "two ", 3.14];
-echo myData [1];
-myData [0] = "hi";

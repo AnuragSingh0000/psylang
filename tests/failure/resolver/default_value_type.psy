@@ -1,0 +1,4 @@
+type Student {
+    var string name = "Placeholder";
+    var int roll;
+}

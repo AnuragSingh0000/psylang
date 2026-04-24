@@ -1,0 +1,5 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (x)
+    VAR_TYPE (int)
+    PRIMARY (null)

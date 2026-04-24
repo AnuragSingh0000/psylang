@@ -1,0 +1,43 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (isPrime)
+    FUNCTION
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      VAR_TYPE (bool)
+      BLOCK
+        IF
+          BINARY (<=)
+            PRIMARY (n)
+            PRIMARY (1)
+          RETURN
+            PRIMARY (false)
+        FOR
+          VAR_DECL (i)
+            VAR_TYPE (int)
+            PRIMARY (2)
+          BINARY (<=)
+            BINARY (*)
+              PRIMARY (i)
+              PRIMARY (i)
+            PRIMARY (n)
+          POSTFIX (++)
+            PRIMARY (i)
+          IF
+            BINARY (==)
+              BINARY (%)
+                PRIMARY (n)
+                PRIMARY (i)
+              PRIMARY (0)
+            RETURN
+              PRIMARY (false)
+        RETURN
+          PRIMARY (true)
+  ECHO
+    CALL
+      PRIMARY (isPrime)
+      PRIMARY (17)
+  ECHO
+    CALL
+      PRIMARY (isPrime)
+      PRIMARY (20)

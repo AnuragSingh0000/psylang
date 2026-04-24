@@ -1,0 +1,79 @@
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> varDecl
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> inTypeDeclList varDecl
+ typeDecl -> TYPE IDENTIFIER LEFT_BRACE inTypeDeclList RIGHT_BRACE
+ declaration -> typeDecl
+ decList -> declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ echoStmt -> ECH expression SEMI_COLON
+ statement -> echoStmt
+ declaration -> statement
+ decList -> decList declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    decList
+      declaration
+        typeDecl
+          TYPE (type)
+          IDENTIFIER (Point)
+          LEFT_BRACE ({)
+          inTypeDeclList
+            inTypeDeclList
+              varDecl
+                VAR (var)
+                var_type
+                  INT (int)
+                IDENTIFIER (x)
+                SEMI_COLON (;)
+            varDecl
+              VAR (var)
+              var_type
+                INT (int)
+              IDENTIFIER (y)
+              SEMI_COLON (;)
+          RIGHT_BRACE (})
+    declaration
+      statement
+        echoStmt
+          ECH (echo)
+          expression
+            assignment
+              ternary
+                logic_or
+                  logic_and
+                    bitwise_or
+                      bitwise_xor
+                        bitwise_and
+                          equality
+                            comparison
+                              shift
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          IDENTIFIER (Point)
+          SEMI_COLON (;)

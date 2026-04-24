@@ -1,0 +1,7 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (b)
+    VAR_TYPE (bool)
+    BINARY (&&)
+      PRIMARY (true)
+      PRIMARY (10)

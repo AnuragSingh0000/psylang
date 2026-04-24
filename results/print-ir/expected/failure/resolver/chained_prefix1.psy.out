@@ -1,0 +1,9 @@
+Parsed OK
+error: Operand of prefix increment/decrement must be an l-value.
+  --> tests/failure/resolver/chained_prefix1.psy:2:1
+   |
+  2| --++counter;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

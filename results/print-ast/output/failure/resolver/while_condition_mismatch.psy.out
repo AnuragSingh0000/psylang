@@ -1,0 +1,6 @@
+Parsed OK
+PROGRAM
+  WHILE
+    PRIMARY ("true")
+    BLOCK
+      BREAK

@@ -1,0 +1,85 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (bubbleSort)
+    FUNCTION
+      TYPED_VAR (arr)
+        VAR_TYPE (dyn)
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      VAR_TYPE (dyn)
+      BLOCK
+        FOR
+          VAR_DECL (i)
+            VAR_TYPE (int)
+            PRIMARY (0)
+          BINARY (<)
+            PRIMARY (i)
+            BINARY (-)
+              PRIMARY (n)
+              PRIMARY (1)
+          POSTFIX (++)
+            PRIMARY (i)
+          FOR
+            VAR_DECL (j)
+              VAR_TYPE (int)
+              PRIMARY (0)
+            BINARY (<)
+              PRIMARY (j)
+              BINARY (-)
+                PRIMARY (n)
+                PRIMARY (1)
+            POSTFIX (++)
+              PRIMARY (j)
+            IF
+              BINARY (>)
+                INDEX
+                  PRIMARY (arr)
+                  PRIMARY (j)
+                INDEX
+                  PRIMARY (arr)
+                  BINARY (+)
+                    PRIMARY (j)
+                    PRIMARY (1)
+              BLOCK
+                VAR_DECL (temp)
+                  VAR_TYPE (dyn)
+                  INDEX
+                    PRIMARY (arr)
+                    PRIMARY (j)
+                EXPR_STMT
+                  ASSIGN (=)
+                    INDEX
+                      PRIMARY (arr)
+                      PRIMARY (j)
+                    INDEX
+                      PRIMARY (arr)
+                      BINARY (+)
+                        PRIMARY (j)
+                        PRIMARY (1)
+                EXPR_STMT
+                  ASSIGN (=)
+                    INDEX
+                      PRIMARY (arr)
+                      BINARY (+)
+                        PRIMARY (j)
+                        PRIMARY (1)
+                    PRIMARY (temp)
+        RETURN
+          PRIMARY (arr)
+  VAR_DECL (arr)
+    VAR_TYPE (list[5])
+    LIST
+      PRIMARY (5)
+      PRIMARY (1)
+      PRIMARY (4)
+      PRIMARY (2)
+      PRIMARY (8)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (arr)
+      CALL
+        PRIMARY (bubbleSort)
+        PRIMARY (arr)
+        PRIMARY (5)
+  ECHO
+    PRIMARY (arr)

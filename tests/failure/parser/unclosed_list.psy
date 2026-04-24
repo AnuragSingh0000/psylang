@@ -1,0 +1,8 @@
+if (true) {
+    var list[3] ls = [1, 2, 3;
+    echo "Hello World!";
+}
+
+var int a = 10;
+var int b = 5;
+echo a + b;

@@ -1,0 +1,15 @@
+fun isPalindrome(n: int) -> bool {
+    var int org = n;
+    var int rev = 0;
+
+    while (n > 0) {
+        var int d = n % 10;
+        rev = (rev * 10) + d;
+        n = n / 10;
+    }
+
+    ret org == rev;
+}
+
+echo isPalindrome(121);
+echo isPalindrome(123);

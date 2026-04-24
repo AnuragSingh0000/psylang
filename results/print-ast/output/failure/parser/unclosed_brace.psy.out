@@ -1,0 +1,2 @@
+error: syntax error, unexpected end of file
+  --> tests/failure/parser/unclosed_brace.psy:8:1

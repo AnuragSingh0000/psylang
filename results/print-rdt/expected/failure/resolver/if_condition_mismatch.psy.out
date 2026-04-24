@@ -1,0 +1,99 @@
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ echoStmt -> ECH expression SEMI_COLON
+ statement -> echoStmt
+ declaration -> statement
+ decList -> declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ statement -> block
+ ifStmt -> IF LEFT_PAREN expression RIGHT_PAREN statement
+ statement -> ifStmt
+ declaration -> statement
+ decList -> declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    declaration
+      statement
+        ifStmt
+          IF (if)
+          LEFT_PAREN (()
+          expression
+            assignment
+              ternary
+                logic_or
+                  logic_and
+                    bitwise_or
+                      bitwise_xor
+                        bitwise_and
+                          equality
+                            comparison
+                              shift
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          INT_CONSTANT (5)
+          RIGHT_PAREN ())
+          statement
+            block
+              LEFT_BRACE ({)
+              decList
+                declaration
+                  statement
+                    echoStmt
+                      ECH (echo)
+                      expression
+                        assignment
+                          ternary
+                            logic_or
+                              logic_and
+                                bitwise_or
+                                  bitwise_xor
+                                    bitwise_and
+                                      equality
+                                        comparison
+                                          shift
+                                            term
+                                              factor
+                                                unary
+                                                  call_access
+                                                    primary
+                                                      STRING_CONSTANT (hi)
+                      SEMI_COLON (;)
+              RIGHT_BRACE (})

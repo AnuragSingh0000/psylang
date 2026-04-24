@@ -1,0 +1,3 @@
+var string s1 = "hello";
+var string s2 = "world";
+var string s3 = s1 - s2;

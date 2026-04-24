@@ -1,0 +1,9 @@
+Parsed OK
+error: Member access requires a custom type object.
+  --> tests/failure/resolver/primitive_member_access.psy:3:15
+   |
+  3| var dyn val = number.toString;
+   |               ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

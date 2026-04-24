@@ -1,0 +1,32 @@
+type Point {
+    var float x;
+    var float y;
+}
+
+type Rect {
+    var Point origin;
+    var float width;
+    var float height;
+}
+
+fun isInside(p: Point, r: Rect) -> bool {
+    var bool withinX = (p.x >= r.origin.x) && (p.x <= r.origin.x + r.width);
+    var bool withinY = (p.y >= r.origin.y) && (p.y <= r.origin.y + r.height);
+
+    ret withinX && withinY;
+}
+
+var Point myPoint;
+myPoint.x = 5.0;
+myPoint.y = 10.0;
+
+var Rect myRect;
+myRect.origin.x = 0.0;
+myRect.origin.y = 0.0;
+myRect.width = 10.0;
+myRect.height = 20.0;
+
+if (isInside(myPoint, myRect))
+    echo "Collision detected";
+else
+    echo "No collision";

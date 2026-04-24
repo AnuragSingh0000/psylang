@@ -1,0 +1,9 @@
+Parsed OK
+error: Duplicate member 'id' in type 'Student'.
+  --> tests/failure/resolver/type_dup_field.psy:3:5
+   |
+  3|     var int id;
+   |     ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

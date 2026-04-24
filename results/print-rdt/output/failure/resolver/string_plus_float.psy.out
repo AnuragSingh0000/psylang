@@ -1,0 +1,110 @@
+ var_type -> FLOAT
+ primary -> FLOAT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> declaration
+ var_type -> DYN
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> term PLUS factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> decList declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    decList
+      declaration
+        varDecl
+          VAR (var)
+          var_type
+            FLOAT (float)
+          IDENTIFIER (num)
+          EQ (=)
+          expression
+            assignment
+              ternary
+                logic_or
+                  logic_and
+                    bitwise_or
+                      bitwise_xor
+                        bitwise_and
+                          equality
+                            comparison
+                              shift
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          FLOAT_CONSTANT (10.000000)
+          SEMI_COLON (;)
+    declaration
+      varDecl
+        VAR (var)
+        var_type
+          DYN (dyn)
+        IDENTIFIER (result)
+        EQ (=)
+        expression
+          assignment
+            ternary
+              logic_or
+                logic_and
+                  bitwise_or
+                    bitwise_xor
+                      bitwise_and
+                        equality
+                          comparison
+                            shift
+                              term
+                                term
+                                  factor
+                                    unary
+                                      call_access
+                                        primary
+                                          STRING_CONSTANT (cats)
+                                PLUS (+)
+                                factor
+                                  unary
+                                    call_access
+                                      primary
+                                        IDENTIFIER (num)
+        SEMI_COLON (;)

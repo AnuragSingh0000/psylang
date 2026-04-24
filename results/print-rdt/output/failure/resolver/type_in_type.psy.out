@@ -1,0 +1,6 @@
+error: syntax error, unexpected type, expecting var
+  --> tests/failure/resolver/type_in_type.psy:2:9
+   |
+  2|     type Addr {
+   |        ^--- Here
+

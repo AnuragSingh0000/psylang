@@ -1,0 +1,2 @@
+$$ echo "This won't be printed"; I am adding a comment here, nothing happens
+echo "This will be printed";  $$ echo "This won't either"; I am adding a comment here too

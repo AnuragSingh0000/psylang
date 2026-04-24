@@ -1,0 +1,9 @@
+Parsed OK
+error: List size mismatch: expected 2, got 3.
+  --> tests/failure/resolver/mismatched_list_size1.psy:1:22
+   |
+  1| var list[2] coords = [10, 20, 30];
+   |                      ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

@@ -1,0 +1,103 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Z)
+    VAR_DECL (q)
+      VAR_TYPE (int)
+    VAR_DECL (w)
+      VAR_TYPE (string)
+  FUN_DECL (foo)
+    FUNCTION
+      TYPED_VAR (a)
+        VAR_TYPE (float)
+      TYPED_VAR (b)
+        VAR_TYPE (bool)
+      VAR_TYPE (int)
+      BLOCK
+        RETURN
+          PRIMARY (42)
+  FUN_DECL (bar)
+    FUNCTION
+      TYPED_VAR (c)
+        VAR_TYPE (string)
+      TYPED_VAR (d)
+        VAR_TYPE (dyn)
+      VAR_TYPE (float)
+      BLOCK
+        RETURN
+          PRIMARY (3.141500)
+  FUN_DECL (baz)
+    FUNCTION
+      TYPED_VAR (e)
+        VAR_TYPE (list[2])
+      TYPED_VAR (f)
+        VAR_TYPE (Z)
+      VAR_TYPE (string)
+      BLOCK
+        RETURN
+          PRIMARY ("random")
+  FUN_DECL (qux)
+    FUNCTION
+      TYPED_VAR (g)
+        VAR_TYPE (int)
+      VAR_TYPE (bool)
+      BLOCK
+        RETURN
+          PRIMARY (true)
+  FUN_DECL (zap)
+    FUNCTION
+      TYPED_VAR (h)
+        VAR_TYPE (float)
+      TYPED_VAR (i)
+        VAR_TYPE (string)
+      TYPED_VAR (j)
+        VAR_TYPE (bool)
+      VAR_TYPE (dyn)
+      BLOCK
+        RETURN
+          PRIMARY (h)
+  FUN_DECL (zip)
+    FUNCTION
+      TYPED_VAR (k)
+        VAR_TYPE (Z)
+      VAR_TYPE (list[3])
+      BLOCK
+        RETURN
+          LIST
+            PRIMARY (1)
+            PRIMARY (false)
+            PRIMARY ("three")
+  FUN_DECL (bop)
+    FUNCTION
+      TYPED_VAR (l)
+        VAR_TYPE (dyn)
+      VAR_TYPE (Z)
+      BLOCK
+        VAR_DECL (m)
+          VAR_TYPE (Z)
+        EXPR_STMT
+          ASSIGN (=)
+            MEMBER (.q)
+              PRIMARY (m)
+            PRIMARY (99)
+        EXPR_STMT
+          ASSIGN (=)
+            MEMBER (.w)
+              PRIMARY (m)
+            PRIMARY ("test")
+        RETURN
+          PRIMARY (m)
+  FUN_DECL (fnd)
+    FUNCTION
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      TYPED_VAR (o)
+        VAR_TYPE (float)
+      VAR_TYPE (null)
+      BLOCK
+        VAR_DECL (p)
+          VAR_TYPE (int)
+          BINARY (+)
+            PRIMARY (n)
+            PRIMARY (1)
+        RETURN
+          PRIMARY (null)

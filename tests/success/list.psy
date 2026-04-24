@@ -1,0 +1,23 @@
+$$ Basic List
+var list[3] myData = [1, "two", 3.14];
+echo myData[1];
+myData[0] = "hi";
+
+$$ Mutable List modifications
+var list[3] scores = [10, 20, 30];
+scores[1] = 99; $$ scores is now [10, 99, 30]
+
+$$ Nested Lists (List containing lists)
+var list[2] matrix = [[1, 2], [3, 4]];
+echo matrix[0][1]; $$ Prints 2
+matrix[1][1] = 5;  $$ Modifies the nested list
+
+$$ Dynamic Lists
+var dyn mixedList = [1, "two", [3, 4]];
+mixedList[2][0] = 9; $$ Modifies the 0th element of the nested list
+
+$$ Mutable reference
+var dyn temp = [1, 2, 3];
+var dyn dupList = [temp, temp, temp];
+dupList[0][0] = 5;
+echo dupList[1][0]; $$ Prints 5 since the same reference is at index 1.

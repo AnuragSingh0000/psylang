@@ -1,0 +1,9 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (number)
+    VAR_TYPE (int)
+    PRIMARY (42)
+  VAR_DECL (val)
+    VAR_TYPE (dyn)
+    MEMBER (.toString)
+      PRIMARY (number)

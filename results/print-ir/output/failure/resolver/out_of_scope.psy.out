@@ -1,0 +1,9 @@
+Parsed OK
+error: Undeclared variable, function, or type 'local_var'.
+  --> tests/failure/resolver/out_of_scope.psy:4:6
+   |
+  4| echo local_var;
+   |      ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

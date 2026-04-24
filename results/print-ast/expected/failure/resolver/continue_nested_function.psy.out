@@ -1,0 +1,18 @@
+Parsed OK
+PROGRAM
+  WHILE
+    PRIMARY (true)
+    BLOCK
+      FUN_DECL (foo)
+        FUNCTION
+          TYPED_VAR (a)
+            VAR_TYPE (int)
+          TYPED_VAR (b)
+            VAR_TYPE (int)
+          VAR_TYPE (int)
+          BLOCK
+            CONTINUE
+            RETURN
+              BINARY (+)
+                PRIMARY (a)
+                PRIMARY (b)

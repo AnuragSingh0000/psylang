@@ -1,0 +1,12 @@
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> varDecl
+ var_type -> BOOL
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> inTypeDeclList varDecl
+error: syntax error, unexpected fun, expecting var or }
+  --> tests/failure/resolver/function_in_type.psy:5:8
+   |
+  5|     fun isOnline() -> bool {
+   |       ^--- Here
+

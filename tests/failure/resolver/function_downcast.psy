@@ -1,0 +1,4 @@
+fun getInt() -> int {
+    var float val = 9.99;
+    ret val;
+}

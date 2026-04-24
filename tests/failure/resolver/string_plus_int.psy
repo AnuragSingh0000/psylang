@@ -1,0 +1,2 @@
+var int num = 10;
+var dyn result = "cats" + num;

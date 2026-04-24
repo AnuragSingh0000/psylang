@@ -1,0 +1,3 @@
+ECHO
+STRING_CONSTANT: This will be printed
+SEMI_COLON

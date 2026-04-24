@@ -1,0 +1,4 @@
+fun doNothing() -> null {
+    echo "did nothing";
+    ret 1;
+}

@@ -1,0 +1,35 @@
+ var_type -> INT
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> BOOL
+ block -> LEFT_BRACE RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    declaration
+      funDecl
+        FUN (fun)
+        IDENTIFIER (foo)
+        function
+          LEFT_PAREN (()
+          parameters
+            typedVar
+              IDENTIFIER (g)
+              COLON (:)
+              var_type
+                INT (int)
+          RIGHT_PAREN ())
+          ARROW (->)
+          var_type
+            BOOL (bool)
+          block
+            LEFT_BRACE ({)
+            RIGHT_BRACE (})

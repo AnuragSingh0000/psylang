@@ -1,0 +1,5 @@
+type Point {
+    var int x;
+    var int y;
+}
+echo Point;

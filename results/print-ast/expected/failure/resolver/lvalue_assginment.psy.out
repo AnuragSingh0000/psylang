@@ -1,0 +1,6 @@
+Parsed OK
+PROGRAM
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (5)
+      PRIMARY (10)

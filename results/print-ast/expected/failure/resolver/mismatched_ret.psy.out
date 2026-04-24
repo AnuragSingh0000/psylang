@@ -1,0 +1,10 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (foo)
+    FUNCTION
+      TYPED_VAR (g)
+        VAR_TYPE (int)
+      VAR_TYPE (bool)
+      BLOCK
+        RETURN
+          PRIMARY (10)

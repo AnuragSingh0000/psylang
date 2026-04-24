@@ -1,0 +1,22 @@
+Parsed OK
+PROGRAM
+  TYPE_DECL (Point2D)
+    VAR_DECL (x)
+      VAR_TYPE (float)
+    VAR_DECL (y)
+      VAR_TYPE (float)
+  TYPE_DECL (Point3D)
+    VAR_DECL (x)
+      VAR_TYPE (float)
+    VAR_DECL (y)
+      VAR_TYPE (float)
+    VAR_DECL (z)
+      VAR_TYPE (float)
+  VAR_DECL (p2)
+    VAR_TYPE (Point2D)
+  VAR_DECL (p3)
+    VAR_TYPE (Point3D)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (p2)
+      PRIMARY (p3)

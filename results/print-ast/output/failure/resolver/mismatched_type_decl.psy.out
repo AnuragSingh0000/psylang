@@ -1,0 +1,5 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (name)
+    VAR_TYPE (int)
+    PRIMARY ("Eren")

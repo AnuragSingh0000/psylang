@@ -1,0 +1,9 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (is_valid)
+    VAR_TYPE (bool)
+    PRIMARY (true)
+  EXPR_STMT
+    ASSIGN (=)
+      PRIMARY (is_valid)
+      PRIMARY (1)

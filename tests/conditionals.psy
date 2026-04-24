@@ -1,9 +1,0 @@
-if (x > 0) {
-    echo " Positive ";
-} else if (x == 0) {
-    echo " Zero ";
-} else {
-    echo " Negative ";
-}
-
-var int max = ( a > b ) ? a : b ;

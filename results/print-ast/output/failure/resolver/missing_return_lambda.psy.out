@@ -1,0 +1,18 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (foo)
+    VAR_TYPE (dyn)
+    LAMBDA
+      FUNCTION
+        TYPED_VAR (g)
+          VAR_TYPE (int)
+        VAR_TYPE (bool)
+        BLOCK
+          IF
+            BINARY (<=)
+              PRIMARY (g)
+              PRIMARY (10)
+            BLOCK
+              RETURN
+                PRIMARY (true)
+            BLOCK

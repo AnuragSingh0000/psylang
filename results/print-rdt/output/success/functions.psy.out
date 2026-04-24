@@ -1,0 +1,964 @@
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> varDecl
+ var_type -> STRING
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> inTypeDeclList varDecl
+ typeDecl -> TYPE IDENTIFIER LEFT_BRACE inTypeDeclList RIGHT_BRACE
+ declaration -> typeDecl
+ decList -> declaration
+ var_type -> FLOAT
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> BOOL
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> parameters COMMA typedVar
+ var_type -> INT
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> decList declaration
+ var_type -> STRING
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> DYN
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> parameters COMMA typedVar
+ var_type -> FLOAT
+ primary -> FLOAT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> decList declaration
+ var_type -> LIST LEFT_SQUARE INT_CONSTANT RIGHT_SQUARE
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> IDENTIFIER
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> parameters COMMA typedVar
+ var_type -> STRING
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> decList declaration
+ var_type -> INT
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> BOOL
+ primary -> BOOL_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> decList declaration
+ var_type -> FLOAT
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> STRING
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> parameters COMMA typedVar
+ var_type -> BOOL
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> parameters COMMA typedVar
+ var_type -> DYN
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> decList declaration
+ var_type -> IDENTIFIER
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> LIST LEFT_SQUARE INT_CONSTANT RIGHT_SQUARE
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ elements -> expression
+ primary -> BOOL_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ elements -> elements COMMA expression
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ elements -> elements COMMA expression
+ primary -> LEFT_SQUARE elements RIGHT_SQUARE
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> decList declaration
+ var_type -> DYN
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> IDENTIFIER
+ var_type -> IDENTIFIER
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ declaration -> varDecl
+ decList -> declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ call_access -> call_access DOT IDENTIFIER
+ primary -> STRING_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ assignment -> call_access EQ assignment
+ expression -> assignment
+ exprStmt -> expression SEMI_COLON
+ statement -> exprStmt
+ declaration -> statement
+ decList -> decList declaration
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> decList declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> decList declaration
+ var_type -> INT
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> typedVar
+ var_type -> FLOAT
+ typedVar -> IDENTIFIER COLON var_type
+ parameters -> parameters COMMA typedVar
+ var_type -> NULL
+ var_type -> INT
+ primary -> IDENTIFIER
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ primary -> INT_CONSTANT
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> term PLUS factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ varDecl -> VAR var_type IDENTIFIER EQ expression SEMI_COLON
+ declaration -> varDecl
+ decList -> declaration
+ primary -> T_NULL
+ call_access -> primary
+ unary -> call_access
+ factor -> unary
+ term -> factor
+ shift -> term
+ comparison -> shift
+ equality -> comparison
+ bitwise_and -> equality
+ bitwise_xor -> bitwise_and
+ bitwise_or -> bitwise_xor
+ logic_and -> bitwise_or
+ logic_or -> logic_and
+ ternary -> logic_or
+ assignment -> ternary
+ expression -> assignment
+ returnStmt -> RET expression SEMI_COLON
+ statement -> returnStmt
+ declaration -> statement
+ decList -> decList declaration
+ block -> LEFT_BRACE decList RIGHT_BRACE
+ function -> LEFT_PAREN parameters RIGHT_PAREN ARROW var_type block
+ funDecl -> FUN IDENTIFIER function
+ declaration -> funDecl
+ decList -> decList declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    decList
+      decList
+        decList
+          decList
+            decList
+              decList
+                decList
+                  decList
+                    declaration
+                      typeDecl
+                        TYPE (type)
+                        IDENTIFIER (Z)
+                        LEFT_BRACE ({)
+                        inTypeDeclList
+                          inTypeDeclList
+                            varDecl
+                              VAR (var)
+                              var_type
+                                INT (int)
+                              IDENTIFIER (q)
+                              SEMI_COLON (;)
+                          varDecl
+                            VAR (var)
+                            var_type
+                              STRING (string)
+                            IDENTIFIER (w)
+                            SEMI_COLON (;)
+                        RIGHT_BRACE (})
+                  declaration
+                    funDecl
+                      FUN (fun)
+                      IDENTIFIER (foo)
+                      function
+                        LEFT_PAREN (()
+                        parameters
+                          parameters
+                            typedVar
+                              IDENTIFIER (a)
+                              COLON (:)
+                              var_type
+                                FLOAT (float)
+                          COMMA (,)
+                          typedVar
+                            IDENTIFIER (b)
+                            COLON (:)
+                            var_type
+                              BOOL (bool)
+                        RIGHT_PAREN ())
+                        ARROW (->)
+                        var_type
+                          INT (int)
+                        block
+                          LEFT_BRACE ({)
+                          decList
+                            declaration
+                              statement
+                                returnStmt
+                                  RET (ret)
+                                  expression
+                                    assignment
+                                      ternary
+                                        logic_or
+                                          logic_and
+                                            bitwise_or
+                                              bitwise_xor
+                                                bitwise_and
+                                                  equality
+                                                    comparison
+                                                      shift
+                                                        term
+                                                          factor
+                                                            unary
+                                                              call_access
+                                                                primary
+                                                                  INT_CONSTANT (42)
+                                  SEMI_COLON (;)
+                          RIGHT_BRACE (})
+                declaration
+                  funDecl
+                    FUN (fun)
+                    IDENTIFIER (bar)
+                    function
+                      LEFT_PAREN (()
+                      parameters
+                        parameters
+                          typedVar
+                            IDENTIFIER (c)
+                            COLON (:)
+                            var_type
+                              STRING (string)
+                        COMMA (,)
+                        typedVar
+                          IDENTIFIER (d)
+                          COLON (:)
+                          var_type
+                            DYN (dyn)
+                      RIGHT_PAREN ())
+                      ARROW (->)
+                      var_type
+                        FLOAT (float)
+                      block
+                        LEFT_BRACE ({)
+                        decList
+                          declaration
+                            statement
+                              returnStmt
+                                RET (ret)
+                                expression
+                                  assignment
+                                    ternary
+                                      logic_or
+                                        logic_and
+                                          bitwise_or
+                                            bitwise_xor
+                                              bitwise_and
+                                                equality
+                                                  comparison
+                                                    shift
+                                                      term
+                                                        factor
+                                                          unary
+                                                            call_access
+                                                              primary
+                                                                FLOAT_CONSTANT (3.141500)
+                                SEMI_COLON (;)
+                        RIGHT_BRACE (})
+              declaration
+                funDecl
+                  FUN (fun)
+                  IDENTIFIER (baz)
+                  function
+                    LEFT_PAREN (()
+                    parameters
+                      parameters
+                        typedVar
+                          IDENTIFIER (e)
+                          COLON (:)
+                          var_type
+                            LIST (list)
+                            LEFT_SQUARE ([)
+                            INT_CONSTANT (2)
+                            RIGHT_SQUARE (])
+                      COMMA (,)
+                      typedVar
+                        IDENTIFIER (f)
+                        COLON (:)
+                        var_type
+                          IDENTIFIER (Z)
+                    RIGHT_PAREN ())
+                    ARROW (->)
+                    var_type
+                      STRING (string)
+                    block
+                      LEFT_BRACE ({)
+                      decList
+                        declaration
+                          statement
+                            returnStmt
+                              RET (ret)
+                              expression
+                                assignment
+                                  ternary
+                                    logic_or
+                                      logic_and
+                                        bitwise_or
+                                          bitwise_xor
+                                            bitwise_and
+                                              equality
+                                                comparison
+                                                  shift
+                                                    term
+                                                      factor
+                                                        unary
+                                                          call_access
+                                                            primary
+                                                              STRING_CONSTANT (random)
+                              SEMI_COLON (;)
+                      RIGHT_BRACE (})
+            declaration
+              funDecl
+                FUN (fun)
+                IDENTIFIER (qux)
+                function
+                  LEFT_PAREN (()
+                  parameters
+                    typedVar
+                      IDENTIFIER (g)
+                      COLON (:)
+                      var_type
+                        INT (int)
+                  RIGHT_PAREN ())
+                  ARROW (->)
+                  var_type
+                    BOOL (bool)
+                  block
+                    LEFT_BRACE ({)
+                    decList
+                      declaration
+                        statement
+                          returnStmt
+                            RET (ret)
+                            expression
+                              assignment
+                                ternary
+                                  logic_or
+                                    logic_and
+                                      bitwise_or
+                                        bitwise_xor
+                                          bitwise_and
+                                            equality
+                                              comparison
+                                                shift
+                                                  term
+                                                    factor
+                                                      unary
+                                                        call_access
+                                                          primary
+                                                            BOOL_CONSTANT (true)
+                            SEMI_COLON (;)
+                    RIGHT_BRACE (})
+          declaration
+            funDecl
+              FUN (fun)
+              IDENTIFIER (zap)
+              function
+                LEFT_PAREN (()
+                parameters
+                  parameters
+                    parameters
+                      typedVar
+                        IDENTIFIER (h)
+                        COLON (:)
+                        var_type
+                          FLOAT (float)
+                    COMMA (,)
+                    typedVar
+                      IDENTIFIER (i)
+                      COLON (:)
+                      var_type
+                        STRING (string)
+                  COMMA (,)
+                  typedVar
+                    IDENTIFIER (j)
+                    COLON (:)
+                    var_type
+                      BOOL (bool)
+                RIGHT_PAREN ())
+                ARROW (->)
+                var_type
+                  DYN (dyn)
+                block
+                  LEFT_BRACE ({)
+                  decList
+                    declaration
+                      statement
+                        returnStmt
+                          RET (ret)
+                          expression
+                            assignment
+                              ternary
+                                logic_or
+                                  logic_and
+                                    bitwise_or
+                                      bitwise_xor
+                                        bitwise_and
+                                          equality
+                                            comparison
+                                              shift
+                                                term
+                                                  factor
+                                                    unary
+                                                      call_access
+                                                        primary
+                                                          IDENTIFIER (h)
+                          SEMI_COLON (;)
+                  RIGHT_BRACE (})
+        declaration
+          funDecl
+            FUN (fun)
+            IDENTIFIER (zip)
+            function
+              LEFT_PAREN (()
+              parameters
+                typedVar
+                  IDENTIFIER (k)
+                  COLON (:)
+                  var_type
+                    IDENTIFIER (Z)
+              RIGHT_PAREN ())
+              ARROW (->)
+              var_type
+                LIST (list)
+                LEFT_SQUARE ([)
+                INT_CONSTANT (3)
+                RIGHT_SQUARE (])
+              block
+                LEFT_BRACE ({)
+                decList
+                  declaration
+                    statement
+                      returnStmt
+                        RET (ret)
+                        expression
+                          assignment
+                            ternary
+                              logic_or
+                                logic_and
+                                  bitwise_or
+                                    bitwise_xor
+                                      bitwise_and
+                                        equality
+                                          comparison
+                                            shift
+                                              term
+                                                factor
+                                                  unary
+                                                    call_access
+                                                      primary
+                                                        LEFT_SQUARE ([)
+                                                        elements
+                                                          elements
+                                                            elements
+                                                              expression
+                                                                assignment
+                                                                  ternary
+                                                                    logic_or
+                                                                      logic_and
+                                                                        bitwise_or
+                                                                          bitwise_xor
+                                                                            bitwise_and
+                                                                              equality
+                                                                                comparison
+                                                                                  shift
+                                                                                    term
+                                                                                      factor
+                                                                                        unary
+                                                                                          call_access
+                                                                                            primary
+                                                                                              INT_CONSTANT (1)
+                                                            COMMA (,)
+                                                            expression
+                                                              assignment
+                                                                ternary
+                                                                  logic_or
+                                                                    logic_and
+                                                                      bitwise_or
+                                                                        bitwise_xor
+                                                                          bitwise_and
+                                                                            equality
+                                                                              comparison
+                                                                                shift
+                                                                                  term
+                                                                                    factor
+                                                                                      unary
+                                                                                        call_access
+                                                                                          primary
+                                                                                            BOOL_CONSTANT (false)
+                                                          COMMA (,)
+                                                          expression
+                                                            assignment
+                                                              ternary
+                                                                logic_or
+                                                                  logic_and
+                                                                    bitwise_or
+                                                                      bitwise_xor
+                                                                        bitwise_and
+                                                                          equality
+                                                                            comparison
+                                                                              shift
+                                                                                term
+                                                                                  factor
+                                                                                    unary
+                                                                                      call_access
+                                                                                        primary
+                                                                                          STRING_CONSTANT (three)
+                                                        RIGHT_SQUARE (])
+                        SEMI_COLON (;)
+                RIGHT_BRACE (})
+      declaration
+        funDecl
+          FUN (fun)
+          IDENTIFIER (bop)
+          function
+            LEFT_PAREN (()
+            parameters
+              typedVar
+                IDENTIFIER (l)
+                COLON (:)
+                var_type
+                  DYN (dyn)
+            RIGHT_PAREN ())
+            ARROW (->)
+            var_type
+              IDENTIFIER (Z)
+            block
+              LEFT_BRACE ({)
+              decList
+                decList
+                  decList
+                    decList
+                      declaration
+                        varDecl
+                          VAR (var)
+                          var_type
+                            IDENTIFIER (Z)
+                          IDENTIFIER (m)
+                          SEMI_COLON (;)
+                    declaration
+                      statement
+                        exprStmt
+                          expression
+                            assignment
+                              call_access
+                                call_access
+                                  primary
+                                    IDENTIFIER (m)
+                                DOT (.)
+                                IDENTIFIER (q)
+                              EQ (=)
+                              assignment
+                                ternary
+                                  logic_or
+                                    logic_and
+                                      bitwise_or
+                                        bitwise_xor
+                                          bitwise_and
+                                            equality
+                                              comparison
+                                                shift
+                                                  term
+                                                    factor
+                                                      unary
+                                                        call_access
+                                                          primary
+                                                            INT_CONSTANT (99)
+                          SEMI_COLON (;)
+                  declaration
+                    statement
+                      exprStmt
+                        expression
+                          assignment
+                            call_access
+                              call_access
+                                primary
+                                  IDENTIFIER (m)
+                              DOT (.)
+                              IDENTIFIER (w)
+                            EQ (=)
+                            assignment
+                              ternary
+                                logic_or
+                                  logic_and
+                                    bitwise_or
+                                      bitwise_xor
+                                        bitwise_and
+                                          equality
+                                            comparison
+                                              shift
+                                                term
+                                                  factor
+                                                    unary
+                                                      call_access
+                                                        primary
+                                                          STRING_CONSTANT (test)
+                        SEMI_COLON (;)
+                declaration
+                  statement
+                    returnStmt
+                      RET (ret)
+                      expression
+                        assignment
+                          ternary
+                            logic_or
+                              logic_and
+                                bitwise_or
+                                  bitwise_xor
+                                    bitwise_and
+                                      equality
+                                        comparison
+                                          shift
+                                            term
+                                              factor
+                                                unary
+                                                  call_access
+                                                    primary
+                                                      IDENTIFIER (m)
+                      SEMI_COLON (;)
+              RIGHT_BRACE (})
+    declaration
+      funDecl
+        FUN (fun)
+        IDENTIFIER (fnd)
+        function
+          LEFT_PAREN (()
+          parameters
+            parameters
+              typedVar
+                IDENTIFIER (n)
+                COLON (:)
+                var_type
+                  INT (int)
+            COMMA (,)
+            typedVar
+              IDENTIFIER (o)
+              COLON (:)
+              var_type
+                FLOAT (float)
+          RIGHT_PAREN ())
+          ARROW (->)
+          var_type
+            NULL (null)
+          block
+            LEFT_BRACE ({)
+            decList
+              decList
+                declaration
+                  varDecl
+                    VAR (var)
+                    var_type
+                      INT (int)
+                    IDENTIFIER (p)
+                    EQ (=)
+                    expression
+                      assignment
+                        ternary
+                          logic_or
+                            logic_and
+                              bitwise_or
+                                bitwise_xor
+                                  bitwise_and
+                                    equality
+                                      comparison
+                                        shift
+                                          term
+                                            term
+                                              factor
+                                                unary
+                                                  call_access
+                                                    primary
+                                                      IDENTIFIER (n)
+                                            PLUS (+)
+                                            factor
+                                              unary
+                                                call_access
+                                                  primary
+                                                    INT_CONSTANT (1)
+                    SEMI_COLON (;)
+              declaration
+                statement
+                  returnStmt
+                    RET (ret)
+                    expression
+                      assignment
+                        ternary
+                          logic_or
+                            logic_and
+                              bitwise_or
+                                bitwise_xor
+                                  bitwise_and
+                                    equality
+                                      comparison
+                                        shift
+                                          term
+                                            factor
+                                              unary
+                                                call_access
+                                                  primary
+                                                    T_NULL (null)
+                    SEMI_COLON (;)
+            RIGHT_BRACE (})

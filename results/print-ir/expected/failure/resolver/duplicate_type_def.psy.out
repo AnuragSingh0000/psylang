@@ -1,0 +1,9 @@
+Parsed OK
+error: Redeclaration of 'Box' in the same scope.
+  --> tests/failure/resolver/duplicate_type_def.psy:2:1
+   |
+  2| type Box { var int h; }
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

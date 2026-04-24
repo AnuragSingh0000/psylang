@@ -1,0 +1,5 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (flag)
+    VAR_TYPE (bool)
+    PRIMARY (null)

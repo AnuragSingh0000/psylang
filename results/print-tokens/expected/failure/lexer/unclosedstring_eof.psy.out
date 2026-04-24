@@ -1,0 +1,5 @@
+VAR
+STRING
+IDENTIFIER: temp
+EQ
+[Error at Line 1]: Unterminated string literal (end of file).

@@ -1,0 +1,88 @@
+$$ Every construct possible in the language
+
+var dyn v1;
+var int v2 = 123;
+var float v3 = -31.245;
+var bool v4 = true && false;
+var string v5 = "aBcD123$((*$@#)~~\"\\''";
+var list[5] v6 = [false, 1, "two", 3.14, v1];
+var dyn v7 = null;
+
+type SystemState {
+    var int id;
+    var bool online;
+
+    var dyn reboot;
+}
+
+fun fibo(n: int) -> int {
+    if (n <= 1) {
+        ret n;
+    }
+    ret fibo(n - 1) + fibo(n - 2);
+}
+
+fun dynReturn(state: SystemState) -> dyn {
+    ret (state.online == true) ? "OK" : null;
+}
+
+var float counter = 12.34;
+
+if (counter == 0) {
+    echo "Zero";
+} else if (counter > 0) {
+    echo "Positive";
+} else {
+    echo "Negative";
+}
+
+for (var int i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+        continue;
+    }
+    if (i == 7) {
+        break;
+    }
+    echo i;
+}
+
+while (counter > 0) {
+    counter--;
+}
+
+do {
+    counter++;
+} while (counter < 5);
+
+var SystemState state;
+state.id = 101;
+state.online = true;
+
+state.reboot = lambda(s: SystemState) -> null {
+    echo "Reboot";
+    s.online = false;
+};
+
+var int val = (10 - 2 * 4 / 2) % 3;
+var bool compare = (val > 0) && (val >= 1) || (val < 5) && (val <= 4) && (val == 1) && (val != 2);
+
+var int bits = (5 & 3) | 2 ^ 1;
+bits = ~bits;
+bits = bits << 1;
+bits = bits >> 1;
+
+val += 5;
+val -= 2;
+val *= 2;
+val /= 2;
+val %= 2;
+val++;
+++val;
+val--;
+--val;
+
+var int neg = -val;
+
+var bool flag = true;
+var bool flipped = !flag;
+var bool unflipped = !!flag;

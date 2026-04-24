@@ -1,0 +1,6 @@
+while (true) {
+    fun foo(a: int, b: int) -> int {
+        break;
+        ret a + b;
+    }
+}

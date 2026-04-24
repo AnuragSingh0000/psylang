@@ -1,0 +1,35 @@
+Parsed OK
+PROGRAM
+  FUN_DECL (countDivisors)
+    FUNCTION
+      TYPED_VAR (n)
+        VAR_TYPE (int)
+      VAR_TYPE (int)
+      BLOCK
+        VAR_DECL (count)
+          VAR_TYPE (int)
+          PRIMARY (0)
+        FOR
+          VAR_DECL (i)
+            VAR_TYPE (int)
+            PRIMARY (1)
+          BINARY (<=)
+            PRIMARY (i)
+            PRIMARY (n)
+          POSTFIX (++)
+            PRIMARY (i)
+          IF
+            BINARY (==)
+              BINARY (%)
+                PRIMARY (n)
+                PRIMARY (i)
+              PRIMARY (0)
+            EXPR_STMT
+              POSTFIX (++)
+                PRIMARY (count)
+        RETURN
+          PRIMARY (count)
+  ECHO
+    CALL
+      PRIMARY (countDivisors)
+      PRIMARY (12)

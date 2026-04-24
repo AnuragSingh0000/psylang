@@ -1,0 +1,9 @@
+Parsed OK
+error: Type mismatch in declaration of 'x'.
+  --> tests/failure/resolver/int_null_assign.psy:1:1
+   |
+  1| var int x = null;
+   | ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

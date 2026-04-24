@@ -1,0 +1,22 @@
+fun gcd(a: int, b: int) -> int {
+    while (b != 0) {
+        var int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    ret a;
+}
+
+fun solution(n: int) -> int {
+    var dyn lcm = lambda(a: int, b: int) -> int {
+        ret (a * b) / gcd(a, b);
+    };
+
+    var int result = 1;
+    for (var int i = 2; i <= n; i++)
+        result = lcm(result, i);
+
+    ret result;
+}
+
+echo solution(20);

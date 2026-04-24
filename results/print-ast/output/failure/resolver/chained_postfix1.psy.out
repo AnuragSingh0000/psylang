@@ -1,0 +1,9 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (counter)
+    VAR_TYPE (int)
+    PRIMARY (0)
+  EXPR_STMT
+    POSTFIX (++)
+      POSTFIX (++)
+        PRIMARY (counter)

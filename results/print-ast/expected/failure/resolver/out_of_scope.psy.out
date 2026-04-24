@@ -1,0 +1,10 @@
+Parsed OK
+PROGRAM
+  IF
+    PRIMARY (true)
+    BLOCK
+      VAR_DECL (local_var)
+        VAR_TYPE (int)
+        PRIMARY (100)
+  ECHO
+    PRIMARY (local_var)

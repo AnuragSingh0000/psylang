@@ -1,0 +1,9 @@
+Parsed OK
+error: Type mismatch in comparison operator.
+  --> tests/failure/resolver/comparison_mismatch.psy:3:17
+   |
+  3| var bool res = (flag == val);
+   |                 ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

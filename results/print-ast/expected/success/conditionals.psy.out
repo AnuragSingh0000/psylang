@@ -1,0 +1,57 @@
+Parsed OK
+PROGRAM
+  VAR_DECL (x)
+    VAR_TYPE (int)
+    PRIMARY (5)
+  IF
+    BINARY (>)
+      PRIMARY (x)
+      PRIMARY (0)
+    ECHO
+      PRIMARY ("Positive")
+    IF
+      BINARY (==)
+        PRIMARY (x)
+        PRIMARY (0)
+      ECHO
+        PRIMARY ("Zero")
+      ECHO
+        PRIMARY ("Negative")
+  IF
+    PRIMARY (true)
+    BLOCK
+      ECHO
+        PRIMARY ("True is True")
+  IF
+    PRIMARY (false)
+    BLOCK
+      ECHO
+        PRIMARY ("False is False")
+  IF
+    UNARY (!)
+      PRIMARY (true)
+    BLOCK
+      ECHO
+        PRIMARY ("Not True is False")
+  IF
+    UNARY (!)
+      PRIMARY (false)
+    BLOCK
+      ECHO
+        PRIMARY ("Not False is True")
+  VAR_DECL (a)
+    VAR_TYPE (int)
+    PRIMARY (5)
+  VAR_DECL (b)
+    VAR_TYPE (int)
+    PRIMARY (10)
+  VAR_DECL (max)
+    VAR_TYPE (int)
+    TERNARY
+      BINARY (>)
+        PRIMARY (a)
+        PRIMARY (b)
+      PRIMARY (a)
+      PRIMARY (b)
+  ECHO
+    PRIMARY (max)

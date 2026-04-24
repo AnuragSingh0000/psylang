@@ -1,0 +1,51 @@
+Parsed OK
+error: Index access requires a list.
+  --> tests/success/invalid_operations.psy:5:19
+   |
+  5| var dyn result1 = x[0];  $$ Should fail: cannot index int
+   |                   ^--- Here
+
+error: Index access requires a list.
+  --> tests/success/invalid_operations.psy:8:19
+   |
+  8| var dyn result2 = s[1];  $$ Should fail: cannot index string
+   |                   ^--- Here
+
+error: Index access requires a list.
+  --> tests/success/invalid_operations.psy:11:19
+   |
+ 11| var dyn result3 = flag[0];  $$ Should fail: cannot index bool
+   |                   ^--- Here
+
+error: Operand of unary '+' or '-' must be an integer or float.
+  --> tests/success/invalid_operations.psy:14:19
+   |
+ 14| var dyn result4 = -flag;  $$ Should fail: unary minus on bool
+   |                   ^--- Here
+
+error: Operand of '~' must be an integer.
+  --> tests/success/invalid_operations.psy:15:19
+   |
+ 15| var dyn result5 = ~s;     $$ Should fail: bitwise NOT on string
+   |                   ^--- Here
+
+error: Arithmetic operators only support int or float operands.
+  --> tests/success/invalid_operations.psy:18:19
+   |
+ 18| var dyn result6 = flag + flag;  $$ Should fail: bool + bool
+   |                   ^--- Here
+
+error: Invalid operation on string.
+  --> tests/success/invalid_operations.psy:19:19
+   |
+ 19| var dyn result7 = s * 3;        $$ Should fail: string * int
+   |                   ^--- Here
+
+error: Bitwise operators only support int operands.
+  --> tests/success/invalid_operations.psy:20:19
+   |
+ 20| var dyn result8 = flag & flag;  $$ Should fail: bitwise AND on bool
+   |                   ^--- Here
+
+
+Semantic analysis failed. Compilation stopped.

@@ -1,0 +1,46 @@
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> varDecl
+ typeDecl -> TYPE IDENTIFIER LEFT_BRACE inTypeDeclList RIGHT_BRACE
+ declaration -> typeDecl
+ decList -> declaration
+ var_type -> INT
+ varDecl -> VAR var_type IDENTIFIER SEMI_COLON
+ inTypeDeclList -> varDecl
+ typeDecl -> TYPE IDENTIFIER LEFT_BRACE inTypeDeclList RIGHT_BRACE
+ declaration -> typeDecl
+ decList -> decList declaration
+ program -> decList
+
+Parsed successfully.
+
+=== VISUAL DERIVATION TREE (Parse Tree) ===
+program
+  decList
+    decList
+      declaration
+        typeDecl
+          TYPE (type)
+          IDENTIFIER (Box)
+          LEFT_BRACE ({)
+          inTypeDeclList
+            varDecl
+              VAR (var)
+              var_type
+                INT (int)
+              IDENTIFIER (w)
+              SEMI_COLON (;)
+          RIGHT_BRACE (})
+    declaration
+      typeDecl
+        TYPE (type)
+        IDENTIFIER (Box)
+        LEFT_BRACE ({)
+        inTypeDeclList
+          varDecl
+            VAR (var)
+            var_type
+              INT (int)
+            IDENTIFIER (h)
+            SEMI_COLON (;)
+        RIGHT_BRACE (})

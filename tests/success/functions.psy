@@ -1,0 +1,40 @@
+type Z {
+    var int q;
+    var string w;
+}
+
+fun foo(a: float, b: bool) -> int {
+    ret 42;
+}
+
+fun bar(c: string, d: dyn) -> float {
+    ret 3.1415;
+}
+
+fun baz(e: list[2], f: Z) -> string {
+    ret "random";
+}
+
+fun qux(g: int) -> bool {
+    ret true;
+}
+
+fun zap(h: float, i: string, j: bool) -> dyn {
+    ret h;
+}
+
+fun zip(k: Z) -> list[3] {
+    ret [1, false, "three"];
+}
+
+fun bop(l: dyn) -> Z {
+    var Z m;
+    m.q = 99;
+    m.w = "test";
+    ret m;
+}
+
+fun fnd(n: int, o: float) -> null {
+    var int p = n + 1;
+    ret null;
+}

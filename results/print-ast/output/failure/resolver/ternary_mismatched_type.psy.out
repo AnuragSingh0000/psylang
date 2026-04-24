@@ -1,0 +1,9 @@
+Parsed OK
+PROGRAM
+  EXPR_STMT
+    TERNARY
+      BINARY (==)
+        PRIMARY (1)
+        PRIMARY (2)
+      PRIMARY (3)
+      PRIMARY ("4")
